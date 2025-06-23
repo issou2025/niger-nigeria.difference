@@ -30,7 +30,7 @@
     scroll-behavior: smooth;
   }
   body {
-    background: var(--main-bg);
+    background: linear-gradient(to bottom right, var(--main-bg), #e8f0fe);
     min-height: 100vh;
     font-family: 'Nunito', Arial, sans-serif;
     color: var(--text-main);
@@ -55,7 +55,7 @@
     transition: background var(--fade-duration);
   }
   .header-main h1 {
-    font-family: 'Montserrat', Arial, sans-serif;
+    font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
     font-size: 2rem;
     color: var(--text-alt);
     margin: 0 0 0.5rem 0;
@@ -65,6 +65,12 @@
     color: rgba(255,255,255,0.85);
     margin: 0 0 0.8rem 0;
     font-size: 1rem;
+  }
+
+  .page h2 {
+    font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+    color: var(--accent4);
+    text-align: center;
   }
   /* Language selector */
   #lang-select {
