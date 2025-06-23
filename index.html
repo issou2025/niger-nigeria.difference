@@ -6,663 +6,1131 @@
 <title>Niger vs Nigeria | Discover & Compare</title>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:600,700|Nunito:400,700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --main-bg: #f3f5fa;
-  --card-bg: #fff;
-  --accent: #4a90e2;
-  --accent2: #27ae60;
-  --accent3: #ff9800;
-  --accent4: #ff497c;
-  --text-main: #1a1a1a;
-  --text-alt: #fff;
-  --shadow: 0 4px 24px 0 rgba(44,62,80,0.09);
-  --radius: 18px;
-}
-.dark-mode {
-  --main-bg: #161b22;
-  --card-bg: #23283b;
-  --accent: #64b5f6;
-  --accent2: #43e97b;
-  --accent3: #ffe082;
-  --accent4: #ff7ca2;
-  --text-main: #f1f1f1;
-  --text-alt: #23283b;
-  --shadow: 0 6px 28px 0 rgba(0,0,0,0.18);
-}
-html,body {height:100%;}
-body {
-  background: var(--main-bg);
-  min-height:100vh;
-  font-family:'Nunito',Arial,sans-serif;
-  color:var(--text-main);
-  transition: background .4s, color .4s;
-}
-.header-main {
-  background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
-  padding: 2.2rem 1rem 1rem 1rem;
-  border-radius: 0 0 var(--radius) var(--radius);
-  box-shadow: var(--shadow);
-  text-align: center;
-  position:relative;
-  transition: background .4s;
-}
-.header-main h1 {
-  font-family: 'Montserrat',Arial,sans-serif;
-  font-size: 2.1rem;
-  color:var(--text-alt);
-  margin:0 0 .5rem 0;
-  letter-spacing:2px;
-}
-.header-main p {
-  color:rgba(255,255,255,0.85);
-  margin-bottom:.5rem;
-}
-.lang-switch {
-  display: flex;
-  gap:1rem;
-  justify-content: center;
-  margin-top: .2rem;
-}
-.lang-switch button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.7rem;
-  transition: transform .15s;
-  filter: grayscale(0.3);
-  opacity: .8;
-}
-.lang-switch button.active, .lang-switch button:hover {
-  transform: scale(1.17) rotate(-6deg);
-  opacity: 1;
-  filter: grayscale(0);
-}
-.navbar {
-  display: flex;
-  justify-content: center;
-  margin:1.2rem 0 .8rem 0;
-  gap:1rem;
-}
-.navbar button {
-  background: var(--card-bg);
-  border: none;
-  border-radius: var(--radius);
-  padding: .65rem 1.6rem;
-  font-size:1rem;
-  font-family: 'Montserrat',Arial,sans-serif;
-  font-weight: 700;
-  color: var(--accent);
-  box-shadow:0 2px 8px rgba(44,62,80,0.11);
-  cursor: pointer;
-  transition: background .25s, color .25s, box-shadow .25s;
-}
-.navbar button.active, .navbar button:hover {
-  background: var(--accent);
-  color: #fff;
-  box-shadow:0 2px 14px rgba(44,62,80,0.16);
-}
-.theme-toggle {
-  position:absolute;
-  top:1.4rem; right:1.5rem;
-  background:rgba(255,255,255,0.18);
-  border:none;
-  border-radius:50%;
-  width:40px; height:40px;
-  cursor:pointer;
-  color:#fff;
-  font-size:1.25rem;
-  box-shadow:0 2px 12px rgba(0,0,0,0.07);
-  transition: background .2s, color .3s;
-}
-.theme-toggle.dark {background:rgba(30,30,30,0.26); color:#ffe082;}
-.main {
-  margin:0 auto; max-width:950px; padding:1.5rem .8rem;
-  display:flex; flex-direction:column; min-height:63vh;
-}
-.page {display:none; animation:fadeIn .4s;}
-.page.active {display:block;}
-.card {
-  background:var(--card-bg);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  padding:1.5rem 1.2rem;
-  margin-bottom:1.5rem;
-  transition: background .3s, color .3s;
-}
-.factbox {
-  display: flex;align-items: center;gap:1rem;
-  margin-top:1rem;
-}
-.factbox button {
-  background:var(--accent4);
-  color:#fff;
-  border:none;
-  border-radius:16px;
-  padding:.55rem 1.1rem;
-  font-size:.99rem;
-  font-weight:700;
-  box-shadow:0 2px 10px rgba(44,62,80,0.13);
-  cursor:pointer;
-  transition: background .2s, transform .1s;
-}
-.factbox button:hover {background:var(--accent2);transform:scale(1.06);}
-.table-wrap {
-  overflow-x:auto;
-  margin-top:.8rem;
-}
-table {
-  width:100%;
-  border-collapse:collapse;
-  margin-bottom:.5rem;
-  background:var(--card-bg);
-  border-radius:10px;
-  box-shadow:0 2px 14px rgba(44,62,80,0.07);
-  overflow:hidden;
-}
-th,td {
-  padding:1rem .6rem;
-  text-align:left;
-  border-bottom:1px solid #f3f3f3;
-  font-size:1rem;
-}
-th {
-  background:var(--accent3);
-  color:var(--text-alt);
-  font-weight:700;
-  letter-spacing:1px;
-}
-tr:last-child td {border-bottom:none;}
-.searchbar {
-  margin-bottom:1rem;
-  display:flex;
-  align-items:center;
-  gap:.5rem;
-}
-.searchbar input {
-  flex:1;
-  border:1px solid #ddd;
-  border-radius:8px;
-  padding:.55rem 1rem;
-  font-size:1rem;
-  background:var(--main-bg);
-  color:var(--text-main);
-}
-@media (max-width:650px) {
-  .header-main h1{font-size:1.1rem;}
-  .main{padding:.5rem;}
-  .card{padding:.8rem;}
-  th,td{padding:.6rem .3rem;font-size:.96rem;}
-  .navbar button{padding:.5rem 1rem;}
-}
-@keyframes fadeIn {from{opacity:0;transform:translateY(14px);} to{opacity:1;transform:none;}}
-.quiz-question {font-weight:600;font-size:1.08rem;}
-.quiz-choices {display:flex;flex-direction:column;gap:.6rem;margin-top:.7rem;}
-.quiz-choices label {background:var(--main-bg);padding:.45rem 1rem;border-radius:8px;cursor:pointer;transition:background .2s;}
-.quiz-choices input[type=radio] {margin-right:.7em;}
-.quiz-choices label:hover {background:var(--accent4);color:#fff;}
-.quiz-result {margin-top:1rem;font-weight:700;}
-.contact-form {
-  display:flex;flex-direction:column;gap:.9rem;max-width:430px;margin:0 auto;
-}
-.contact-form input, .contact-form textarea {
-  padding:.7rem 1rem;
-  border-radius:8px;
-  border:1px solid #ccc;
-  font-size:1rem;
-  background:var(--main-bg);
-  color:var(--text-main);
-}
-.contact-form button {
-  background:var(--accent2);
-  color:#fff;
-  border:none;
-  border-radius:9px;
-  font-size:1.04rem;
-  padding:.65rem 1.1rem;
-  font-weight:700;
-  cursor:pointer;
-  box-shadow:0 2px 8px rgba(44,62,80,0.10);
-  margin-top:.7rem;
-  transition: background .22s;
-}
-.contact-form button:hover {background:var(--accent);}
-.contact-success {
-  background:var(--accent3);
-  color:var(--text-alt);
-  border-radius:7px;
-  padding:.65rem 1.2rem;
-  text-align:center;
-  margin-top:1rem;
-  font-weight:600;
-}
-::-webkit-scrollbar{height:8px;width:8px;}
-::-webkit-scrollbar-thumb{background:#bbb;border-radius:10px;}
-.dark-mode ::-webkit-scrollbar-thumb{background:#3a3a4d;}
+  :root {
+    --main-bg: #f3f5fa;
+    --card-bg: #fff;
+    --accent: #4a90e2;
+    --accent2: #27ae60;
+    --accent3: #ff9800;
+    --accent4: #ff497c;
+    --text-main: #1a1a1a;
+    --text-alt: #fff;
+    --shadow: 0 4px 24px 0 rgba(44,62,80,0.09);
+    --radius: 18px;
+    --fade-duration: 0.4s;
+  }
+  .dark-mode {
+    --main-bg: #161b22;
+    --card-bg: #23283b;
+    --accent: #64b5f6;
+    --accent2: #43e97b;
+    --accent3: #ffe082;
+    --accent4: #ff7ca2;
+    --text-main: #f1f1f1;
+    --text-alt: #23283b;
+    --shadow: 0 6px 28px 0 rgba(0,0,0,0.18);
+  }
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--main-bg);
+    min-height: 100vh;
+    font-family: 'Nunito', Arial, sans-serif;
+    color: var(--text-main);
+    transition: background var(--fade-duration), color var(--fade-duration);
+    position: relative;
+  }
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  a:hover, a:focus {
+    text-decoration: underline;
+  }
+  /* Header */
+  .header-main {
+    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+    padding: 1.8rem 1rem 1rem 1rem;
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    position: relative;
+    transition: background var(--fade-duration);
+  }
+  .header-main h1 {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 2rem;
+    color: var(--text-alt);
+    margin: 0 0 0.5rem 0;
+    letter-spacing: 2px;
+  }
+  .header-main p {
+    color: rgba(255,255,255,0.85);
+    margin: 0 0 0.8rem 0;
+    font-size: 1rem;
+  }
+  /* Lang switch */
+  .lang-switch {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 0.2rem;
+  }
+  .lang-switch button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.7rem;
+    transition: transform .15s;
+    filter: grayscale(0.3);
+    opacity: .8;
+    color: var(--text-alt);
+  }
+  .lang-switch button.active, .lang-switch button:hover {
+    transform: scale(1.2) rotate(-4deg);
+    opacity: 1;
+    filter: grayscale(0);
+  }
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0.8rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--main-bg);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 0;
+    transition: background var(--fade-duration);
+  }
+  .navbar button {
+    background: var(--card-bg);
+    border: none;
+    border-radius: var(--radius);
+    padding: 0.6rem 1.4rem;
+    font-size: 0.95rem;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 700;
+    color: var(--accent);
+    box-shadow: 0 2px 8px rgba(44,62,80,0.11);
+    cursor: pointer;
+    transition: background .25s, color .25s, box-shadow .25s;
+  }
+  .navbar button.active, .navbar button:hover {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 2px 14px rgba(44,62,80,0.16);
+  }
+  /* Hamburger menu for mobile */
+  #menu-toggle {
+    display: none;
+    position: absolute;
+    top: 1.4rem;
+    left: 1rem;
+    background: rgba(255,255,255,0.3);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.3rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    transition: background .2s, color .3s;
+  }
+  #menu-toggle.dark {
+    background: rgba(30,30,30,0.3);
+    color: var(--accent3);
+  }
+  /* Main area */
+  .main {
+    margin: 0 auto;
+    max-width: 950px;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 60vh;
+  }
+  .page {
+    display: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity var(--fade-duration), transform var(--fade-duration);
+  }
+  .page.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem 1.2rem;
+    margin-bottom: 1.5rem;
+    transition: background .3s, color .3s, transform .3s;
+  }
+  .card.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .card:hover {
+    transform: translateY(-3px);
+  }
+  /* Table responsive */
+  .table-wrap {
+    overflow-x: auto;
+    margin-top: .8rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: .5rem;
+    background: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 2px 14px rgba(44,62,80,0.07);
+    overflow: hidden;
+  }
+  th, td {
+    padding: 1rem .6rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 1rem;
+  }
+  th {
+    background: var(--accent3);
+    color: var(--text-alt);
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  tr:last-child td { border-bottom: none; }
+  /* Fact cards for mobile */
+  .fact-cards-container {
+    display: none;
+    margin-top: 1rem;
+  }
+  .fact-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: transform .3s;
+  }
+  .fact-card:hover {
+    transform: scale(1.02);
+  }
+  .fact-card h3 {
+    margin: 0 0 .5rem 0;
+    font-size: 1rem;
+    color: var(--accent);
+  }
+  .fact-card p {
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+  }
+  /* Search bar */
+  .searchbar {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+  .searchbar input {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: .55rem 1rem;
+    font-size: 1rem;
+    background: var(--main-bg);
+    color: var(--text-main);
+    transition: border-color .3s;
+  }
+  .searchbar input:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  /* Factbox */
+  .factbox {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  .factbox span {
+    flex: 1;
+  }
+  .factbox button {
+    background: var(--accent4);
+    color: #fff;
+    border: none;
+    border-radius: 16px;
+    padding: .55rem 1.1rem;
+    font-size: .99rem;
+    font-weight: 700;
+    box-shadow: 0 2px 10px rgba(44,62,80,0.13);
+    cursor: pointer;
+    transition: background .2s, transform .1s;
+  }
+  .factbox button:hover {
+    background: var(--accent2);
+    transform: scale(1.06);
+  }
+  /* Quiz */
+  .quiz-question {
+    font-weight: 600;
+    font-size: 1.08rem;
+  }
+  .quiz-choices {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    margin-top: .7rem;
+  }
+  .quiz-choices label {
+    background: var(--main-bg);
+    padding: .45rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background .2s, color .2s;
+  }
+  .quiz-choices input[type=radio] {
+    margin-right: .7em;
+  }
+  .quiz-choices label:hover {
+    background: var(--accent4);
+    color: #fff;
+  }
+  .quiz-result {
+    margin-top: 1rem;
+    font-weight: 700;
+    font-size: 1rem;
+    min-height: 1.2em;
+    transition: color .3s;
+  }
+  /* Contact form */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+    max-width: 430px;
+    margin: 0 auto;
+  }
+  .contact-form input, .contact-form textarea {
+    padding: .7rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    background: var(--main-bg);
+    color: var(--text-main);
+    transition: border-color .3s;
+  }
+  .contact-form input:focus, .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .contact-form button {
+    background: var(--accent2);
+    color: #fff;
+    border: none;
+    border-radius: 9px;
+    font-size: 1.04rem;
+    padding: .65rem 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+    margin-top: .7rem;
+    transition: background .22s;
+  }
+  .contact-form button:hover {
+    background: var(--accent);
+  }
+  .contact-success {
+    background: var(--accent3);
+    color: var(--text-alt);
+    border-radius: 7px;
+    padding: .65rem 1.2rem;
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: 600;
+    animation: fadeOut 3s forwards 0.5s;
+  }
+  @keyframes fadeOut {
+    to { opacity: 0; height: 0; margin: 0; padding: 0; }
+  }
+  /* Back to top */
+  #back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    transition: opacity .3s, transform .3s;
+  }
+  #back-to-top.show {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  #back-to-top.hide {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  /* Theme toggle */
+  .theme-toggle {
+    position: absolute;
+    top: 1.4rem;
+    right: 1.5rem;
+    background: rgba(255,255,255,0.18);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.25rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    transition: background .2s, color .3s;
+  }
+  .theme-toggle.dark {
+    background: rgba(30,30,30,0.26);
+    color: #ffe082;
+  }
+  .theme-toggle:focus {
+    outline: 2px dashed var(--accent);
+    outline-offset: 2px;
+  }
+  /* Share button */
+  #share-btn {
+    position: absolute;
+    top: 1.4rem;
+    right: 5rem;
+    background: rgba(255,255,255,0.18);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.15rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    transition: background .2s, color .3s;
+    display: none;
+  }
+  #share-btn.dark {
+    background: rgba(30,30,30,0.26);
+    color: #ffe082;
+  }
+  #share-btn:focus {
+    outline: 2px dashed var(--accent);
+    outline-offset: 2px;
+  }
+  /* Mobile adjustments */
+  @media (max-width: 700px) {
+    /* Hamburger visible */
+    #menu-toggle {
+      display: block;
+    }
+    .navbar {
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease-out;
+    }
+    .navbar.open {
+      max-height: 300px;
+      transition: max-height .5s ease-in;
+    }
+    /* Table hidden on small screens; show cards */
+    table {
+      display: none;
+    }
+    .fact-cards-container {
+      display: block;
+    }
+  }
+  @media (max-width: 500px) {
+    .header-main h1 {
+      font-size: 1.5rem;
+    }
+    .header-main p {
+      font-size: 0.9rem;
+    }
+    .lang-switch {
+      gap: .5rem;
+    }
+    .lang-switch button {
+      font-size: 1.4rem;
+    }
+  }
 </style>
 </head>
 <body>
-<div class="header-main">
-  <button class="theme-toggle" aria-label="Mode Sombre/Clair" title="Toggle Theme">🌞</button>
-  <h1 id="title-main">Niger vs Nigeria</h1>
-  <p id="subtitle-main">Discover the beauty, culture and facts about Niger and Nigeria.</p>
-  <div class="lang-switch">
-    <button data-lang="en" class="active" title="English">🇬🇧</button>
-    <button data-lang="fr" title="Français">🇫🇷</button>
-    <button data-lang="ha" title="Hausa">🇳🇪</button>
+  <div class="header-main">
+    <button id="menu-toggle" aria-label="Toggle Menu">☰</button>
+    <button class="theme-toggle" aria-label="Toggle Theme" title="Toggle Theme">🌞</button>
+    <button id="share-btn" aria-label="Share Page" title="Share">🔗</button>
+    <h1 id="title-main">Niger vs Nigeria</h1>
+    <p id="subtitle-main">Discover the beauty, culture and facts about Niger and Nigeria.</p>
+    <div class="lang-switch">
+      <button data-lang="en" class="active" title="English">🇬🇧</button>
+      <button data-lang="fr" title="Français">🇫🇷</button>
+      <button data-lang="ha" title="Hausa">🇳🇪</button>
+    </div>
   </div>
-</div>
-<div class="navbar">
-  <button data-page="home" class="active" id="nav-home">Home</button>
-  <button data-page="history" id="nav-history">History</button>
-  <button data-page="culture" id="nav-culture">Culture</button>
-  <button data-page="quiz" id="nav-quiz">Quiz</button>
-  <button data-page="contact" id="nav-contact">Contact</button>
-</div>
-<div class="main">
-  <div class="page active" id="page-home">
-    <div class="card">
-      <h2 id="home-title">Niger 🇳🇪 vs Nigeria 🇳🇬</h2>
-      <div class="searchbar">
-        <input type="text" id="search-main" placeholder="Search a fact...">
+  <div class="navbar" id="navbar">
+    <button data-page="home" class="active" id="nav-home">Home</button>
+    <button data-page="history" id="nav-history">History</button>
+    <button data-page="culture" id="nav-culture">Culture</button>
+    <button data-page="quiz" id="nav-quiz">Quiz</button>
+    <button data-page="contact" id="nav-contact">Contact</button>
+  </div>
+  <div class="main">
+    <!-- Home Page -->
+    <div class="page active" id="page-home">
+      <div class="card">
+        <h2 id="home-title">Niger 🇳🇪 vs Nigeria 🇳🇬</h2>
+        <div class="searchbar">
+          <input type="text" id="search-main" placeholder="Search a fact...">
+        </div>
+        <div class="table-wrap">
+          <table id="main-table">
+            <tr><th id="th-fact">Fact</th><th id="th-niger">Niger</th><th id="th-nigeria">Nigeria</th></tr>
+            <tr><td>Capital</td><td>Niamey</td><td>Abuja</td></tr>
+            <tr><td>Largest city</td><td>Niamey</td><td>Lagos</td></tr>
+            <tr><td>Official language</td><td>French</td><td>English</td></tr>
+            <tr><td>Area</td><td>1,267,000 km²</td><td>923,770 km²</td></tr>
+            <tr><td>Population (2023)</td><td>~27 million</td><td>~220 million</td></tr>
+            <tr><td>Currency</td><td>CFA franc (XOF)</td><td>Naira (NGN)</td></tr>
+            <tr><td>Independence</td><td>August 3, 1960</td><td>October 1, 1960</td></tr>
+            <tr><td>Neighbours</td><td>Algeria, Libya, Chad, Nigeria, Benin, Burkina Faso, Mali</td><td>Benin, Niger, Chad, Cameroon</td></tr>
+            <tr><td>Internet Domain</td><td>.ne</td><td>.ng</td></tr>
+            <tr><td>Time zone</td><td>UTC+1</td><td>UTC+1</td></tr>
+          </table>
+          <div class="fact-cards-container" id="fact-cards-container">
+            <!-- Les “cards” pour mobile seront générées ici par JS -->
+          </div>
+        </div>
+        <div class="factbox">
+          <span id="random-fact">Did you know? Niger and Nigeria were both French and British colonies.</span>
+          <button id="btn-fact">🔁 Random Fact</button>
+          <button id="share-fact-btn" title="Share this fact" style="background: var(--accent); color:#fff; border:none; border-radius:12px; padding:.5rem 1rem; font-weight:600; cursor:pointer; display:none;">Share Fact</button>
+        </div>
       </div>
-      <div class="table-wrap">
-      <table id="main-table">
-        <tr><th id="th-fact">Fact</th><th id="th-niger">Niger</th><th id="th-nigeria">Nigeria</th></tr>
-        <tr><td>Capital</td><td>Niamey</td><td>Abuja</td></tr>
-        <tr><td>Largest city</td><td>Niamey</td><td>Lagos</td></tr>
-        <tr><td>Official language</td><td>French</td><td>English</td></tr>
-        <tr><td>Area</td><td>1,267,000 km²</td><td>923,770 km²</td></tr>
-        <tr><td>Population (2023)</td><td>~27 million</td><td>~220 million</td></tr>
-        <tr><td>Currency</td><td>CFA franc (XOF)</td><td>Naira (NGN)</td></tr>
-        <tr><td>Independence</td><td>August 3, 1960</td><td>October 1, 1960</td></tr>
-        <tr><td>Neighbours</td><td>Algeria, Libya, Chad, Nigeria, Benin, Burkina Faso, Mali</td><td>Benin, Niger, Chad, Cameroon</td></tr>
-        <tr><td>Internet Domain</td><td>.ne</td><td>.ng</td></tr>
-        <tr><td>Time zone</td><td>UTC+1</td><td>UTC+1</td></tr>
-      </table>
-      </div>
-      <div class="factbox">
-        <span id="random-fact">Did you know? Niger and Nigeria were both French and British colonies.</span>
-        <button id="btn-fact">🔁 Random Fact</button>
+    </div>
+    <!-- History Page -->
+    <div class="page" id="page-history">
+      <div class="card">
+        <h2 id="history-title">History</h2>
+        <p id="history-intro">
+          Niger and Nigeria, despite their proximity and similar names, have distinct colonial pasts and paths to independence.
+        </p>
+        <ul id="history-list" style="margin-top:1rem;line-height:1.85;">
+          <li><b>Niger</b>: Formerly colonized by France. Independence: August 3, 1960.</li>
+          <li><b>Nigeria</b>: Formerly colonized by Britain. Independence: October 1, 1960.</li>
+          <li>Both countries are named after the Niger River, which flows through their territories.</li>
+          <li>Nigeria’s population is the largest in Africa, while Niger is more sparsely populated but geographically larger.</li>
+          <li>The boundaries were drawn during colonial times, leading to some shared ethnic groups across both borders.</li>
+        </ul>
       </div>
     </div>
-  </div>
-  <div class="page" id="page-history">
-    <div class="card">
-      <h2 id="history-title">History</h2>
-      <p id="history-intro">
-        Niger and Nigeria, despite their proximity and similar names, have distinct colonial pasts and paths to independence.
-      </p>
-      <ul id="history-list" style="margin-top:1rem;line-height:1.85;">
-        <li><b>Niger</b>: Formerly colonized by France. Independence: August 3, 1960.</li>
-        <li><b>Nigeria</b>: Formerly colonized by Britain. Independence: October 1, 1960.</li>
-        <li>Both countries are named after the Niger River, which flows through their territories.</li>
-        <li>Nigeria’s population is the largest in Africa, while Niger is more sparsely populated but geographically larger.</li>
-        <li>The boundaries were drawn during colonial times, leading to some shared ethnic groups across both borders.</li>
-      </ul>
-    </div>
-  </div>
-  <div class="page" id="page-culture">
-    <div class="card">
-      <h2 id="culture-title">Culture & Languages</h2>
-      <p id="culture-intro">Niger and Nigeria are home to vibrant cultures and hundreds of languages.</p>
-      <ul id="culture-list" style="margin-top:1rem;line-height:1.85;">
-        <li>Niger is a crossroads for Hausa, Zarma-Songhai, Tuareg, Fulani, and Kanuri cultures.</li>
-        <li>Nigeria has over 250 ethnic groups, including Hausa, Yoruba, Igbo, Fulani, and Kanuri.</li>
-        <li>Major languages in Niger: French (official), Hausa, Zarma, Tamajeq, Fulfulde, Kanuri.</li>
-        <li>Major languages in Nigeria: English (official), Hausa, Yoruba, Igbo, Fulani, Kanuri, Ibibio, Tiv, Edo, and many others.</li>
-        <li>Both countries celebrate colorful festivals, music (Afrobeat, Hausa rap, Tuareg blues), and vibrant clothing styles.</li>
-      </ul>
-    </div>
-  </div>
-  <div class="page" id="page-quiz">
-    <div class="card">
-      <h2 id="quiz-title">Quiz: Niger or Nigeria?</h2>
-      <div id="quiz-box">
-        <!-- Quiz is loaded by JS depending on language -->
+    <!-- Culture Page -->
+    <div class="page" id="page-culture">
+      <div class="card">
+        <h2 id="culture-title">Culture & Languages</h2>
+        <p id="culture-intro">Niger and Nigeria are home to vibrant cultures and hundreds of languages.</p>
+        <ul id="culture-list" style="margin-top:1rem;line-height:1.85;">
+          <li>Niger is a crossroads for Hausa, Zarma-Songhai, Tuareg, Fulani, and Kanuri cultures.</li>
+          <li>Nigeria has over 250 ethnic groups, including Hausa, Yoruba, Igbo, Fulani, and Kanuri.</li>
+          <li>Major languages in Niger: French (official), Hausa, Zarma, Tamajeq, Fulfulde, Kanuri.</li>
+          <li>Major languages in Nigeria: English (official), Hausa, Yoruba, Igbo, Fulani, Kanuri, Ibibio, Tiv, Edo, and many others.</li>
+          <li>Both countries celebrate colorful festivals, music (Afrobeat, Hausa rap, Tuareg blues), and vibrant clothing styles.</li>
+        </ul>
+        <!-- Optionnel: Liens vers Google Maps (ou iframe si clé API disponible) -->
+        <div style="margin-top:1.5rem; display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
+          <a href="https://www.google.com/maps/search/Niamey,+Niger" target="_blank" style="background: var(--accent2); color:#fff; padding:.6rem 1rem; border-radius:8px; text-decoration:none; font-weight:600;">Voir Niamey sur la carte</a>
+          <a href="https://www.google.com/maps/search/Abuja,+Nigeria" target="_blank" style="background: var(--accent2); color:#fff; padding:.6rem 1rem; border-radius:8px; text-decoration:none; font-weight:600;">Voir Abuja sur la carte</a>
+        </div>
       </div>
-      <div class="quiz-result" id="quiz-result"></div>
+    </div>
+    <!-- Quiz Page -->
+    <div class="page" id="page-quiz">
+      <div class="card">
+        <h2 id="quiz-title">Quiz: Niger or Nigeria?</h2>
+        <div id="quiz-box">
+          <!-- Quiz chargé par JS -->
+        </div>
+        <div class="quiz-result" id="quiz-result"></div>
+      </div>
+    </div>
+    <!-- Contact Page -->
+    <div class="page" id="page-contact">
+      <div class="card">
+        <h2 id="contact-title">Contact</h2>
+        <form class="contact-form" id="contact-form">
+          <input type="text" id="contact-name" required placeholder="Your Name / Nom">
+          <input type="email" id="contact-email" required placeholder="Your Email">
+          <textarea id="contact-msg" required placeholder="Your message..."></textarea>
+          <button type="submit" id="contact-btn">Send</button>
+        </form>
+        <div class="contact-success" id="contact-success" style="display:none"></div>
+      </div>
     </div>
   </div>
-  <div class="page" id="page-contact">
-    <div class="card">
-      <h2 id="contact-title">Contact</h2>
-      <form class="contact-form" id="contact-form">
-        <input type="text" id="contact-name" required placeholder="Your Name / Nom">
-        <input type="email" id="contact-email" required placeholder="Your Email">
-        <textarea id="contact-msg" required placeholder="Your message..."></textarea>
-        <button type="submit" id="contact-btn">Send</button>
-      </form>
-      <div class="contact-success" id="contact-success" style="display:none"></div>
-    </div>
-  </div>
-</div>
+  <!-- Back to top button -->
+  <button id="back-to-top" aria-label="Back to top">↑</button>
+
 <script>
-const translations = {
-  en: {
-    title: "Niger vs Nigeria",
-    subtitle: "Discover the beauty, culture and facts about Niger and Nigeria.",
-    nav: ["Home", "History", "Culture", "Quiz", "Contact"],
-    th: ["Fact","Niger","Nigeria"],
-    homeTitle:"Niger 🇳🇪 vs Nigeria 🇳🇬",
-    search:"Search a fact...",
-    facts: [
-      "Niger is one of the hottest countries in the world.",
-      "Nigeria is Africa’s most populous country.",
-      "Niger's flag: orange-white-green with orange dot. Nigeria's: green-white-green.",
-      "Nigeria's capital is Abuja. Niger's is Niamey.",
-      "Niger River passes through both countries.",
-      "Nigeria has Nollywood – 2nd largest film industry globally.",
-      "Niger has the world's youngest median age: ~15 years.",
-      "Niger is mainly desert (the Sahara covers over 80%).",
-      "Nigerians love football! (Super Eagles).",
-      "French is Niger's official language; English for Nigeria."
-    ],
-    historyTitle:"History",
-    historyIntro:"Niger and Nigeria, despite their proximity and similar names, have distinct colonial pasts and paths to independence.",
-    history:[
-      "<b>Niger</b>: Formerly colonized by France. Independence: August 3, 1960.",
-      "<b>Nigeria</b>: Formerly colonized by Britain. Independence: October 1, 1960.",
-      "Both countries are named after the Niger River, which flows through their territories.",
-      "Nigeria’s population is the largest in Africa, while Niger is more sparsely populated but geographically larger.",
-      "The boundaries were drawn during colonial times, leading to some shared ethnic groups across both borders."
-    ],
-    cultureTitle:"Culture & Languages",
-    cultureIntro:"Niger and Nigeria are home to vibrant cultures and hundreds of languages.",
-    culture:[
-      "Niger is a crossroads for Hausa, Zarma-Songhai, Tuareg, Fulani, and Kanuri cultures.",
-      "Nigeria has over 250 ethnic groups, including Hausa, Yoruba, Igbo, Fulani, and Kanuri.",
-      "Major languages in Niger: French (official), Hausa, Zarma, Tamajeq, Fulfulde, Kanuri.",
-      "Major languages in Nigeria: English (official), Hausa, Yoruba, Igbo, Fulani, Kanuri, Ibibio, Tiv, Edo, and many others.",
-      "Both countries celebrate colorful festivals, music (Afrobeat, Hausa rap, Tuareg blues), and vibrant clothing styles."
-    ],
-    quizTitle:"Quiz: Niger or Nigeria?",
-    quiz:[
-      {
-        q:"Which country is the most populous in Africa?",
-        a:["Niger","Nigeria","Chad"],
-        r:1
-      },
-      {
-        q:"What is the capital of Niger?",
-        a:["Niamey","Abuja","Lagos"],
-        r:0
-      },
-      {
-        q:"Which country has French as its official language?",
-        a:["Niger","Nigeria","Both"],
-        r:0
-      },
-      {
-        q:"Which country’s largest city is Lagos?",
-        a:["Niger","Nigeria","Benin"],
-        r:1
-      }
-    ],
-    contactTitle:"Contact",
-    contactBtn:"Send",
-    contactThanks:"Thank you for your message!",
-  },
-  fr: {
-    title:"Niger vs Nigéria",
-    subtitle:"Découvrez la beauté, la culture et les faits sur le Niger et le Nigéria.",
-    nav: ["Accueil", "Histoire", "Culture", "Quiz", "Contact"],
-    th: ["Élément","Niger","Nigéria"],
-    homeTitle:"Niger 🇳🇪 vs Nigéria 🇳🇬",
-    search:"Rechercher...",
-    facts: [
-      "Le Niger est l’un des pays les plus chauds au monde.",
-      "Le Nigéria est le pays le plus peuplé d’Afrique.",
-      "Le drapeau du Niger : orange-blanc-vert avec un cercle orange. Nigéria : vert-blanc-vert.",
-      "La capitale du Nigéria est Abuja, celle du Niger est Niamey.",
-      "Le fleuve Niger traverse les deux pays.",
-      "Le Nigéria a Nollywood, 2e plus grande industrie cinématographique du monde.",
-      "Le Niger a la population la plus jeune du monde (âge médian ~15 ans).",
-      "Le Niger est principalement désertique (Sahara couvre plus de 80%).",
-      "Les Nigérians adorent le football ! (Super Eagles).",
-      "Le français est la langue officielle au Niger ; l’anglais au Nigéria."
-    ],
-    historyTitle:"Histoire",
-    historyIntro:"Le Niger et le Nigéria, bien que voisins et aux noms similaires, ont une histoire coloniale et des trajectoires différentes.",
-    history:[
-      "<b>Niger</b> : Ancienne colonie française. Indépendance : 3 août 1960.",
-      "<b>Nigéria</b> : Ancienne colonie britannique. Indépendance : 1er octobre 1960.",
-      "Les deux pays portent le nom du fleuve Niger qui les traverse.",
-      "Le Nigéria a la plus grande population d’Afrique, le Niger est plus vaste mais moins peuplé.",
-      "Les frontières tracées à l’époque coloniale ont créé des groupes ethniques partagés."
-    ],
-    cultureTitle:"Culture & Langues",
-    cultureIntro:"Le Niger et le Nigéria possèdent des cultures vibrantes et des centaines de langues.",
-    culture:[
-      "Le Niger rassemble les cultures Hausa, Zarma-Songhaï, Touareg, Peul, Kanuri.",
-      "Le Nigéria compte plus de 250 groupes ethniques dont Hausa, Yoruba, Igbo, Peul, Kanuri.",
-      "Langues majeures au Niger : français (off.), haoussa, zarma, tamajeq, fulfulde, kanouri.",
-      "Langues majeures au Nigéria : anglais (off.), haoussa, yoruba, igbo, peul, kanouri, ibibio, tiv, edo, etc.",
-      "Festivals colorés, musiques (Afrobeat, rap haoussa, blues touareg), et habits traditionnels animent les deux pays."
-    ],
-    quizTitle:"Quiz : Niger ou Nigéria ?",
-    quiz:[
-      {
-        q:"Quel pays est le plus peuplé d’Afrique ?",
-        a:["Niger","Nigéria","Tchad"],
-        r:1
-      },
-      {
-        q:"Quelle est la capitale du Niger ?",
-        a:["Niamey","Abuja","Lagos"],
-        r:0
-      },
-      {
-        q:"Quel pays a le français pour langue officielle ?",
-        a:["Niger","Nigéria","Les deux"],
-        r:0
-      },
-      {
-        q:"Dans quel pays Lagos est-il la plus grande ville ?",
-        a:["Niger","Nigéria","Bénin"],
-        r:1
-      }
-    ],
-    contactTitle:"Contact",
-    contactBtn:"Envoyer",
-    contactThanks:"Merci pour votre message !",
-  },
-  ha: {
-    title:"Chadi vs Najeriya",
-    subtitle:"Gano bambanci, al'adu da gaskiya game da Chadi da Najeriya.",
-    nav:["Farko", "Tarihi", "Al'adu", "Quiz", "Tuntuɓi"],
-    th:["Bayani","Chadi","Najeriya"],
-    homeTitle:"Chadi 🇳🇪 vs Najeriya 🇳🇬",
-    search:"Bincika...",
-    facts: [
-      "Chadi na daga cikin ƙasashe mafi zafi a duniya.",
-      "Najeriya ita ce ƙasa mafi yawan jama’a a Afirka.",
-      "Tutar Chadi: orange-fari-kore da madauwari; Najeriya: kore-fari-kore.",
-      "Babban birnin Najeriya Abuja ne, Chadi Niamey.",
-      "Kogin Niger yana ratsa kasashen biyu.",
-      "Najeriya na da Nollywood – masana'antar fim ta biyu mafi girma a duniya.",
-      "Mafi ƙarancin shekarun jama'a a Chadi (~15).",
-      "Sahara ta mamaye fiye da 80% na yankin Chadi.",
-      "Yan Najeriya sun fi son kwallon kafa! (Super Eagles).",
-      "Faransanci na hukuma a Chadi, Turanci a Najeriya."
-    ],
-    historyTitle:"Tarihi",
-    historyIntro:"Chadi da Najeriya, duk da kusanci da sunaye iri ɗaya, suna da tarihinsu na mulkin mallaka da hanyoyin samun 'yanci.",
-    history:[
-      "<b>Chadi</b>: Mallakar Faransa ce da farko. 'Yanci: 3 ga Agusta, 1960.",
-      "<b>Najeriya</b>: Mallakar Birtaniya ce da farko. 'Yanci: 1 ga Oktoba, 1960.",
-      "Duka kasashen sun samo sunan su daga Kogin Niger da ke ratsawa.",
-      "Najeriya ita ce mafi yawan jama'a, Chadi ya fi girma da yashi.",
-      "Iyakoki na zamanin mulkin mallaka sun haifar da kabilu masu tarayya."
-    ],
-    cultureTitle:"Al'adu & Harsuna",
-    cultureIntro:"Chadi da Najeriya na da al'adu iri-iri da harsuna fiye da dari biyu.",
-    culture:[
-      "Chadi na cike da al'adun Hausa, Zarma, Tuareg, Fulani, Kanuri.",
-      "Najeriya na da fiye da kabilu 250: Hausa, Yarbawa, Igbo, Fulani, Kanuri, da sauransu.",
-      "Harsunan Chadi: Faransanci (na hukuma), Hausa, Zarma, Tamasheq, Fulfulde, Kanuri.",
-      "Harsunan Najeriya: Turanci (na hukuma), Hausa, Yarbawa, Igbo, Fulani, Kanuri, Ibibio, Tiv, Edo, da sauransu.",
-      "Biki, kiɗa (Afrobeat, Hausa rap, Tuareg blues), da tufafi na musamman su ne kashin bayan al'adunsu."
-    ],
-    quizTitle:"Quiz: Chadi ko Najeriya?",
-    quiz:[
-      {
-        q:"Wace ƙasa ce ta fi jama’a yawa a Afirka?",
-        a:["Chadi","Najeriya","Kamaru"],
-        r:1
-      },
-      {
-        q:"Menene babban birnin Chadi?",
-        a:["Niamey","Abuja","Lagos"],
-        r:0
-      },
-      {
-        q:"A wace ƙasa Faransanci ke zama na hukuma?",
-        a:["Chadi","Najeriya","Dukkansu"],
-        r:0
-      },
-      {
-        q:"A wace ƙasa Lagos ce birni mafi girma?",
-        a:["Chadi","Najeriya","Bene"],
-        r:1
-      }
-    ],
-    contactTitle:"Tuntuɓi",
-    contactBtn:"Aika",
-    contactThanks:"Na gode da saƙonka!",
-  }
-};
-
-const state = {lang:"en",page:"home",quizI:0, quizScore:0};
-const $ = s => document.querySelector(s);
-const $$ = s => document.querySelectorAll(s);
-
-function setLang(lang){
-  state.lang=lang;
-  // Header
-  $('#title-main').textContent = translations[lang].title;
-  $('#subtitle-main').textContent = translations[lang].subtitle;
-  $$('.lang-switch button').forEach(b=>{
-    b.classList.toggle('active', b.dataset.lang===lang);
-  });
-  // Navbar
-  $$('.navbar button').forEach((b,i)=>{
-    b.textContent = translations[lang].nav[i];
-  });
-  // Table
-  const th=translations[lang].th;
-  $('#th-fact').textContent = th[0];
-  $('#th-niger').textContent = th[1];
-  $('#th-nigeria').textContent = th[2];
-  $('#home-title').textContent = translations[lang].homeTitle;
-  $('#search-main').placeholder = translations[lang].search;
-  // Facts
-  $('#random-fact').textContent = translations[lang].facts[0];
-  // History/Culture
-  $('#history-title').textContent = translations[lang].historyTitle;
-  $('#history-intro').textContent = translations[lang].historyIntro;
-  $('#history-list').innerHTML = translations[lang].history.map(e=>"<li>"+e+"</li>").join('');
-  $('#culture-title').textContent = translations[lang].cultureTitle;
-  $('#culture-intro').textContent = translations[lang].cultureIntro;
-  $('#culture-list').innerHTML = translations[lang].culture.map(e=>"<li>"+e+"</li>").join('');
-  // Quiz
-  $('#quiz-title').textContent = translations[lang].quizTitle;
-  state.quizI = 0;
-  state.quizScore = 0;
-  loadQuiz();
-  // Contact
-  $('#contact-title').textContent = translations[lang].contactTitle;
-  $('#contact-btn').textContent = translations[lang].contactBtn;
-  $('#contact-success').textContent = translations[lang].contactThanks;
-}
-
-function setPage(page){
-  state.page=page;
-  $$('.page').forEach(p=>p.classList.remove('active'));
-  $('#page-'+page).classList.add('active');
-  $$('.navbar button').forEach(b=>{
-    b.classList.toggle('active', b.dataset.page===page);
-  });
-}
-
-function randFact(){
-  const facts=translations[state.lang].facts;
-  const idx=Math.floor(Math.random()*facts.length);
-  $('#random-fact').textContent=facts[idx];
-}
-
-function filterTable(){
-  const val = $('#search-main').value.toLowerCase();
-  $('#main-table').querySelectorAll("tr").forEach((row,i)=>{
-    if(i===0) return;
-    row.style.display = row.textContent.toLowerCase().includes(val)?"":"none";
-  });
-}
-
-function loadQuiz(){
-  const quiz = translations[state.lang].quiz;
-  if(state.quizI >= quiz.length){
-    $('#quiz-box').innerHTML = `<div style="font-size:1.12rem;"><b>Score:</b> ${state.quizScore}/${quiz.length}</div>`;
-    $('#quiz-result').textContent = '';
-    state.quizI = 0; state.quizScore = 0;
-    setTimeout(loadQuiz, 2400);
-    return;
-  }
-  const q = quiz[state.quizI];
-  let s = `<div class="quiz-question">${q.q}</div><div class="quiz-choices">`;
-  q.a.forEach((c,i)=>{
-    s += `<label><input type="radio" name="quiz" value="${i}"> ${c}</label>`;
-  });
-  s += '</div><button id="quiz-next" style="margin-top:1.1rem;background:var(--accent);color:#fff;font-weight:700;border-radius:8px;border:none;padding:.55rem 1.6rem;cursor:pointer;">OK</button>';
-  $('#quiz-box').innerHTML = s;
-  $('#quiz-result').textContent = '';
-  $('#quiz-next').onclick = function(){
-    const v = $('input[name="quiz"]:checked');
-    if(!v) return;
-    if(Number(v.value) === q.r){
-      $('#quiz-result').textContent = (state.lang==="fr"?"Bonne réponse! ":"Correct! ");
-      state.quizScore++;
-    } else {
-      $('#quiz-result').textContent = (state.lang==="ha"?"Ba daidai ba.":"Incorrect!");
+  // Traductions
+  const translations = {
+    en: {
+      title: "Niger vs Nigeria",
+      subtitle: "Discover the beauty, culture and facts about Niger and Nigeria.",
+      nav: ["Home", "History", "Culture", "Quiz", "Contact"],
+      th: ["Fact","Niger","Nigeria"],
+      homeTitle:"Niger 🇳🇪 vs Nigeria 🇳🇬",
+      search:"Search a fact...",
+      facts: [
+        "Niger is one of the hottest countries in the world.",
+        "Nigeria is Africa’s most populous country.",
+        "Niger's flag: orange-white-green with orange dot. Nigeria's: green-white-green.",
+        "Nigeria's capital is Abuja. Niger's is Niamey.",
+        "Niger River passes through both countries.",
+        "Nigeria has Nollywood – 2nd largest film industry globally.",
+        "Niger has the world's youngest median age: ~15 years.",
+        "Niger is mainly desert (the Sahara covers over 80%).",
+        "Nigerians love football! (Super Eagles).",
+        "French is Niger's official language; English for Nigeria."
+      ],
+      historyTitle:"History",
+      historyIntro:"Niger and Nigeria, despite their proximity and similar names, have distinct colonial pasts and paths to independence.",
+      history:[
+        "<b>Niger</b>: Formerly colonized by France. Independence: August 3, 1960.",
+        "<b>Nigeria</b>: Formerly colonized by Britain. Independence: October 1, 1960.",
+        "Both countries are named after the Niger River, which flows through their territories.",
+        "Nigeria’s population is the largest in Africa, while Niger is more sparsely populated but geographically larger.",
+        "The boundaries were drawn during colonial times, leading to some shared ethnic groups across both borders."
+      ],
+      cultureTitle:"Culture & Languages",
+      cultureIntro:"Niger and Nigeria are home to vibrant cultures and hundreds of languages.",
+      culture:[
+        "Niger is a crossroads for Hausa, Zarma-Songhai, Tuareg, Fulani, and Kanuri cultures.",
+        "Nigeria has over 250 ethnic groups, including Hausa, Yoruba, Igbo, Fulani, and Kanuri.",
+        "Major languages in Niger: French (official), Hausa, Zarma, Tamajeq, Fulfulde, Kanuri.",
+        "Major languages in Nigeria: English (official), Hausa, Yoruba, Igbo, Fulani, Kanuri, Ibibio, Tiv, Edo, and many others.",
+        "Both countries celebrate colorful festivals, music (Afrobeat, Hausa rap, Tuareg blues), and vibrant clothing styles."
+      ],
+      quizTitle:"Quiz: Niger or Nigeria?",
+      quiz:[
+        {
+          q:"Which country is the most populous in Africa?",
+          a:["Niger","Nigeria","Chad"],
+          r:1
+        },
+        {
+          q:"What is the capital of Niger?",
+          a:["Niamey","Abuja","Lagos"],
+          r:0
+        },
+        {
+          q:"Which country has French as its official language?",
+          a:["Niger","Nigeria","Both"],
+          r:0
+        },
+        {
+          q:"Which country’s largest city is Lagos?",
+          a:["Niger","Nigeria","Benin"],
+          r:1
+        }
+      ],
+      contactTitle:"Contact",
+      contactBtn:"Send",
+      contactThanks:"Thank you for your message!",
+      correctText: "Correct!",
+      incorrectText: "Incorrect!"
+    },
+    fr: {
+      title:"Niger vs Nigéria",
+      subtitle:"Découvrez la beauté, la culture et les faits sur le Niger et le Nigéria.",
+      nav: ["Accueil", "Histoire", "Culture", "Quiz", "Contact"],
+      th: ["Élément","Niger","Nigéria"],
+      homeTitle:"Niger 🇳🇪 vs Nigéria 🇳🇬",
+      search:"Rechercher...",
+      facts: [
+        "Le Niger est l’un des pays les plus chauds au monde.",
+        "Le Nigéria est le pays le plus peuplé d’Afrique.",
+        "Le drapeau du Niger : orange-blanc-vert avec un cercle orange. Nigéria : vert-blanc-vert.",
+        "La capitale du Nigéria est Abuja, celle du Niger est Niamey.",
+        "Le fleuve Niger traverse les deux pays.",
+        "Le Nigéria a Nollywood, 2e plus grande industrie cinématographique du monde.",
+        "Le Niger a la population la plus jeune du monde (âge médian ~15 ans).",
+        "Le Niger est principalement désertique (Sahara couvre plus de 80%).",
+        "Les Nigérians adorent le football ! (Super Eagles).",
+        "Le français est la langue officielle au Niger ; l’anglais au Nigéria."
+      ],
+      historyTitle:"Histoire",
+      historyIntro:"Le Niger et le Nigéria, bien que voisins et aux noms similaires, ont une histoire coloniale et des trajectoires différentes.",
+      history:[
+        "<b>Niger</b> : Ancienne colonie française. Indépendance : 3 août 1960.",
+        "<b>Nigéria</b> : Ancienne colonie britannique. Indépendance : 1er octobre 1960.",
+        "Les deux pays portent le nom du fleuve Niger qui les traverse.",
+        "Le Nigéria a la plus grande population d’Afrique, le Niger est plus vaste mais moins peuplé.",
+        "Les frontières tracées à l’époque coloniale ont créé des groupes ethniques partagés."
+      ],
+      cultureTitle:"Culture & Langues",
+      cultureIntro:"Le Niger et le Nigéria possèdent des cultures vibrantes et des centaines de langues.",
+      culture:[
+        "Le Niger rassemble les cultures Hausa, Zarma-Songhaï, Touareg, Peul, Kanuri.",
+        "Le Nigéria compte plus de 250 groupes ethniques dont Hausa, Yoruba, Igbo, Peul, Kanuri.",
+        "Langues majeures au Niger : français (off.), haoussa, zarma, tamajeq, fulfulde, kanouri.",
+        "Langues majeures au Nigéria : anglais (off.), haoussa, yoruba, igbo, peul, kanouri, ibibio, tiv, edo, etc.",
+        "Festivals colorés, musiques (Afrobeat, rap haoussa, blues touareg), et habits traditionnels animent les deux pays."
+      ],
+      quizTitle:"Quiz : Niger ou Nigéria ?",
+      quiz:[
+        {
+          q:"Quel pays est le plus peuplé d’Afrique ?",
+          a:["Niger","Nigéria","Tchad"],
+          r:1
+        },
+        {
+          q:"Quelle est la capitale du Niger ?",
+          a:["Niamey","Abuja","Lagos"],
+          r:0
+        },
+        {
+          q:"Quel pays a le français pour langue officielle ?",
+          a:["Niger","Nigéria","Les deux"],
+          r:0
+        },
+        {
+          q:"Dans quel pays Lagos est-il la plus grande ville ?",
+          a:["Niger","Nigéria","Bénin"],
+          r:1
+        }
+      ],
+      contactTitle:"Contact",
+      contactBtn:"Envoyer",
+      contactThanks:"Merci pour votre message !",
+      correctText: "Bonne réponse!",
+      incorrectText: "Incorrect!"
+    },
+    ha: {
+      title:"Chadi vs Najeriya",
+      subtitle:"Gano bambanci, al'adu da gaskiya game da Chadi da Najeriya.",
+      nav:["Farko", "Tarihi", "Al'adu", "Quiz", "Tuntuɓi"],
+      th:["Bayani","Chadi","Najeriya"],
+      homeTitle:"Chadi 🇳🇪 vs Najeriya 🇳🇬",
+      search:"Bincika...",
+      facts: [
+        "Chadi na daga cikin ƙasashe mafi zafi a duniya.",
+        "Najeriya ita ce ƙasa mafi yawan jama’a a Afirka.",
+        "Tutar Chadi: orange-fari-kore da madauwari; Najeriya: kore-fari-kore.",
+        "Babban birnin Najeriya Abuja ne, Chadi Niamey.",
+        "Kogin Niger yana ratsa kasashen biyu.",
+        "Najeriya na da Nollywood – masana'antar fim ta biyu mafi girma a duniya.",
+        "Mafi ƙarancin shekarun jama'a a Chadi (~15).",
+        "Sahara ta mamaye fiye da 80% na yankin Chadi.",
+        "Yan Najeriya sun fi son kwallon kafa! (Super Eagles).",
+        "Faransanci na hukuma a Chadi, Turanci a Najeriya."
+      ],
+      historyTitle:"Tarihi",
+      historyIntro:"Chadi da Najeriya, duk da kusanci da sunaye iri ɗaya, suna da tarihinsu na mulkin mallaka da hanyoyin samun 'yanci.",
+      history:[
+        "<b>Chadi</b>: Mallakar Faransa ce da farko. 'Yanci: 3 ga Agusta, 1960.",
+        "<b>Najeriya</b>: Mallakar Birtaniya ce da farko. 'Yanci: 1 ga Oktoba, 1960.",
+        "Duka kasashen sun samo sunan su daga Kogin Niger da ke ratsawa.",
+        "Najeriya ita ce mafi yawan jama'a, Chadi ya fi girma da yashi.",
+        "Iyakoki na zamanin mulkin mallaka sun haifar da kabilu masu tarayya."
+      ],
+      cultureTitle:"Al'adu & Harsuna",
+      cultureIntro:"Chadi da Najeriya na da al'adu iri-iri da harsuna fiye da dari biyu.",
+      culture:[
+        "Chadi na cike da al'adun Hausa, Zarma, Tuareg, Fulani, Kanuri.",
+        "Najeriya na da fiye da kabilu 250: Hausa, Yarbawa, Igbo, Fulani, Kanuri, da sauransu.",
+        "Harsunan Chadi: Faransanci (na hukuma), Hausa, Zarma, Tamasheq, Fulfulde, Kanuri.",
+        "Harsunan Najeriya: Turanci (na hukuma), Hausa, Yarbawa, Igbo, Fulani, Kanuri, Ibibio, Tiv, Edo, da sauransu.",
+        "Biki, kiɗa (Afrobeat, Hausa rap, Tuareg blues), da tufafi na musamman su ne kashin bayan al'adunsu."
+      ],
+      quizTitle:"Quiz: Chadi ko Najeriya?",
+      quiz:[
+        {
+          q:"Wace ƙasa ce ta fi jama’a yawa a Afirka?",
+          a:["Chadi","Najeriya","Kamaru"],
+          r:1
+        },
+        {
+          q:"Menene babban birnin Chadi?",
+          a:["Niamey","Abuja","Lagos"],
+          r:0
+        },
+        {
+          q:"A wace ƙasa Faransanci ke zama na hukuma?",
+          a:["Chadi","Najeriya","Dukkansu"],
+          r:0
+        },
+        {
+          q:"A wace ƙasa Lagos ce birni mafi girma?",
+          a:["Chadi","Najeriya","Bene"],
+          r:1
+        }
+      ],
+      contactTitle:"Tuntuɓi",
+      contactBtn:"Aika",
+      contactThanks:"Na gode da saƙonka!",
+      correctText: "Daidai ne!",
+      incorrectText: "Ba daidai ba."
     }
-    state.quizI++;
-    setTimeout(loadQuiz, 1050);
+  };
+
+  const state = {lang:"en",page:"home",quizI:0, quizScore:0};
+  const $ = s => document.querySelector(s);
+  const $$ = s => document.querySelectorAll(s);
+
+  // Gestion de la langue
+  function setLang(lang){
+    state.lang=lang;
+    // Header
+    $('#title-main').textContent = translations[lang].title;
+    $('#subtitle-main').textContent = translations[lang].subtitle;
+    $$('.lang-switch button').forEach(b=>{
+      b.classList.toggle('active', b.dataset.lang===lang);
+    });
+    // Navbar
+    $$('.navbar button').forEach((b,i)=>{
+      b.textContent = translations[lang].nav[i];
+    });
+    // Table headers
+    const ths = translations[lang].th;
+    $('#th-fact').textContent = ths[0];
+    $('#th-niger').textContent = ths[1];
+    $('#th-nigeria').textContent = ths[2];
+    $('#home-title').textContent = translations[lang].homeTitle;
+    $('#search-main').placeholder = translations[lang].search;
+    // Random fact initial
+    $('#random-fact').textContent = translations[lang].facts[0];
+    // History/Culture
+    $('#history-title').textContent = translations[lang].historyTitle;
+    $('#history-intro').textContent = translations[lang].historyIntro;
+    $('#history-list').innerHTML = translations[lang].history.map(e=>"<li>"+e+"</li>").join('');
+    $('#culture-title').textContent = translations[lang].cultureTitle;
+    $('#culture-intro').textContent = translations[lang].cultureIntro;
+    $('#culture-list').innerHTML = translations[lang].culture.map(e=>"<li>"+e+"</li>").join('');
+    // Quiz
+    $('#quiz-title').textContent = translations[lang].quizTitle;
+    state.quizI = 0;
+    state.quizScore = 0;
+    loadQuiz();
+    // Contact
+    $('#contact-title').textContent = translations[lang].contactTitle;
+    $('#contact-btn').textContent = translations[lang].contactBtn;
+    $('#contact-success').textContent = translations[lang].contactThanks;
   }
-}
 
-// Navigation
-$$('.lang-switch button').forEach(b=>{
-  b.onclick = ()=>{setLang(b.dataset.lang);}
-});
-$$('.navbar button').forEach(b=>{
-  b.onclick = ()=>{setPage(b.dataset.page);}
-});
-$('#btn-fact').onclick = randFact;
-$('#search-main').oninput = filterTable;
+  // Gestion des pages
+  function setPage(page){
+    state.page=page;
+    $$('.page').forEach(p=>p.classList.remove('active'));
+    $('#page-'+page).classList.add('active');
+    $$('.navbar button').forEach(b=>{
+      b.classList.toggle('active', b.dataset.page===page);
+    });
+    // Quand on change de page, scroll en haut de la .main
+    document.querySelector('.main').scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-// Theme
-function setTheme(mode){
-  if(mode==='dark'){document.documentElement.classList.add('dark-mode');$('.theme-toggle').textContent="🌚";}
-  else{document.documentElement.classList.remove('dark-mode');$('.theme-toggle').textContent="🌞";}
-  localStorage.setItem('theme',mode);
-}
-const theme0 = localStorage.getItem('theme')||'light';
-setTheme(theme0);
-$('.theme-toggle').onclick = function(){
-  const c = document.documentElement.classList.contains('dark-mode')?'dark':'light';
-  setTheme(c==='dark'?'light':'dark');
-}
+  // Random fact
+  function randFact(){
+    const facts=translations[state.lang].facts;
+    const idx=Math.floor(Math.random()*facts.length);
+    $('#random-fact').textContent=facts[idx];
+    // Si partage de fait possible
+    if(navigator.share){
+      $('#share-fact-btn').style.display = 'inline-block';
+      $('#share-fact-btn').dataset.fact = facts[idx];
+    }
+  }
 
-// Contact fake
-$('#contact-form').onsubmit = function(e){
-  e.preventDefault();
-  $('#contact-success').style.display = '';
-  $('#contact-form').reset();
-  setTimeout(()=>{$('#contact-success').style.display = 'none';},3000);
-};
+  // Filtrer la table
+  function filterTable(){
+    const val = $('#search-main').value.toLowerCase();
+    const rows = $('#main-table').querySelectorAll("tr");
+    rows.forEach((row,i)=>{
+      if(i===0) return;
+      row.style.display = row.textContent.toLowerCase().includes(val)?"":"none";
+    });
+    // Si mobile, re-générer les cartes en tenant compte du filtre
+    if(window.innerWidth <= 700){
+      renderFactCards();
+    }
+  }
 
-// Initial
-setLang('en');
-setPage('home');
+  // Quiz loading
+  function loadQuiz(){
+    const quiz = translations[state.lang].quiz;
+    if(state.quizI >= quiz.length){
+      $('#quiz-box').innerHTML = `<div style="font-size:1.12rem;"><b>Score:</b> ${state.quizScore}/${quiz.length}</div>`;
+      $('#quiz-result').textContent = '';
+      setTimeout(()=>{
+        state.quizI = 0; state.quizScore = 0;
+        loadQuiz();
+      }, 2500);
+      return;
+    }
+    const q = quiz[state.quizI];
+    let s = `<div class="quiz-question">${q.q}</div><div class="quiz-choices">`;
+    q.a.forEach((c,i)=>{
+      s += `<label><input type="radio" name="quiz" value="${i}"> ${c}</label>`;
+    });
+    s += '</div><button id="quiz-next" style="margin-top:1.1rem;background:var(--accent);color:#fff;font-weight:700;border-radius:8px;border:none;padding:.55rem 1.6rem;cursor:pointer;">OK</button>';
+    $('#quiz-box').innerHTML = s;
+    $('#quiz-result').textContent = '';
+    // Petite animation d'apparition
+    const box = $('#quiz-box');
+    box.style.opacity = 0;
+    setTimeout(()=>{ box.style.transition='opacity 0.4s'; box.style.opacity=1; },10);
+    $('#quiz-next').onclick = function(){
+      const v = $('input[name="quiz"]:checked');
+      if(!v) return;
+      const isCorrect = Number(v.value) === q.r;
+      const resultEl = $('#quiz-result');
+      if(isCorrect){
+        resultEl.style.color = 'var(--accent2)';
+        resultEl.textContent = translations[state.lang].correctText;
+        state.quizScore++;
+      } else {
+        resultEl.style.color = 'var(--accent4)';
+        resultEl.textContent = translations[state.lang].incorrectText;
+      }
+      state.quizI++;
+      setTimeout(loadQuiz, 1200);
+    }
+  }
+
+  // Menu mobile toggle
+  function initMenuToggle(){
+    const menuBtn = $('#menu-toggle');
+    const nav = $('#navbar');
+    menuBtn.onclick = ()=>{
+      nav.classList.toggle('open');
+    };
+    // Fermer le menu si on clique sur un item
+    $$('.navbar button').forEach(b=>{
+      b.onclick = ()=>{
+        setPage(b.dataset.page);
+        if(window.innerWidth <= 700){
+          nav.classList.remove('open');
+        }
+      };
+    });
+  }
+
+  // Back to top
+  function initBackToTop(){
+    const btn = $('#back-to-top');
+    window.addEventListener('scroll', ()=>{
+      if(window.scrollY > 300){
+        btn.classList.add('show');
+      } else {
+        btn.classList.remove('show');
+      }
+    });
+    btn.onclick = ()=>{
+      window.scrollTo({top:0, behavior:'smooth'});
+    };
+  }
+
+  // Theme toggle
+  function setTheme(mode){
+    if(mode==='dark'){
+      document.documentElement.classList.add('dark-mode');
+      $('.theme-toggle').textContent="🌚";
+      $('#menu-toggle').classList.add('dark');
+      $('.theme-toggle').classList.add('dark');
+      $('#share-btn').classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark-mode');
+      $('.theme-toggle').textContent="🌞";
+      $('#menu-toggle').classList.remove('dark');
+      $('.theme-toggle').classList.remove('dark');
+      $('#share-btn').classList.remove('dark');
+    }
+    localStorage.setItem('theme',mode);
+  }
+  function initThemeToggle(){
+    const theme0 = localStorage.getItem('theme')||'light';
+    setTheme(theme0);
+    $('.theme-toggle').onclick = function(){
+      const next = document.documentElement.classList.contains('dark-mode')?'light':'dark';
+      setTheme(next);
+    };
+  }
+
+  // Share page
+  function initShare(){
+    if(navigator.share){
+      $('#share-btn').style.display='block';
+      $('#share-btn').onclick = ()=>{
+        const shareData = {
+          title: translations[state.lang].title,
+          text: translations[state.lang].subtitle,
+          url: window.location.href
+        };
+        navigator.share(shareData).catch(()=>{ /* silent */ });
+      };
+      // Share fact button
+      $('#share-fact-btn').onclick = ()=>{
+        const factText = $('#share-fact-btn').dataset.fact || $('#random-fact').textContent;
+        navigator.share({
+          title: translations[state.lang].title,
+          text: factText,
+          url: window.location.href
+        }).catch(()=>{});
+      };
+    }
+  }
+
+  // IntersectionObserver pour apparitions
+  function initObserver(){
+    const options = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, options);
+    // Observer sur les cards
+    $$('.card').forEach(el=>{
+      el.classList.add('fade-in');
+      observer.observe(el);
+    });
+    // Observer sur fact-cards
+    // On appellera observer.observe() lors de la génération
+  }
+
+  // Génération de “cards” pour la table Facts sur mobile
+  function renderFactCards(){
+    const container = $('#fact-cards-container');
+    container.innerHTML = ''; // on vide
+    const table = $('#main-table');
+    if(!table) return;
+    const headers = Array.from(table.querySelectorAll('tr th')).map(th=>th.textContent.trim());
+    const rows = Array.from(table.querySelectorAll('tr')).slice(1);
+    rows.forEach(row=>{
+      // Filtre : si row cachée à cause de la recherche, skip
+      if(row.style.display==='none') return;
+      const cells = Array.from(row.querySelectorAll('td'));
+      if(cells.length < headers.length) return;
+      const factTitle = cells[0].textContent.trim();
+      const nigerVal = cells[1].textContent.trim();
+      const nigeriaVal = cells[2].textContent.trim();
+      const card = document.createElement('div');
+      card.className = 'fact-card fade-in';
+      const h3 = document.createElement('h3');
+      h3.textContent = `${headers[0]}: ${factTitle}`;
+      const p1 = document.createElement('p');
+      p1.innerHTML = `<strong>${headers[1]}:</strong> ${nigerVal}`;
+      const p2 = document.createElement('p');
+      p2.innerHTML = `<strong>${headers[2]}:</strong> ${nigeriaVal}`;
+      card.appendChild(h3);
+      card.appendChild(p1);
+      card.appendChild(p2);
+      container.appendChild(card);
+      // Observer pour animation
+      const observer = new IntersectionObserver((entries, obs)=>{
+        entries.forEach(en=>{
+          if(en.isIntersecting){
+            en.target.classList.add('visible');
+            obs.unobserve(en.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      observer.observe(card);
+    });
+  }
+
+  // Sur resize, re-render cards si besoin
+  function initResizeListener(){
+    window.addEventListener('resize', ()=>{
+      if(window.innerWidth <= 700){
+        renderFactCards();
+      }
+    });
+    // Au chargement initial
+    if(window.innerWidth <= 700){
+      renderFactCards();
+    }
+  }
+
+  // Contact form fake
+  function initContact(){
+    $('#contact-form').onsubmit = function(e){
+      e.preventDefault();
+      $('#contact-success').style.display = '';
+      $('#contact-form').reset();
+      setTimeout(()=>{
+        $('#contact-success').style.display = 'none';
+      },3000);
+    };
+  }
+
+  // Initialisation globale
+  document.addEventListener('DOMContentLoaded', ()=>{
+    // Langue initiale
+    setLang('en');
+    // Page initiale
+    setPage('home');
+    // Menu toggle
+    initMenuToggle();
+    // Bouton back-to-top
+    initBackToTop();
+    // Theme toggle
+    initThemeToggle();
+    // Share
+    initShare();
+    // Observer animations
+    initObserver();
+    // Resize pour cards
+    initResizeListener();
+    // Recherche
+    $('#search-main').oninput = filterTable;
+    // Random fact
+    $('#btn-fact').onclick = randFact;
+    // Navigation (pour bureau également)
+    $$('.navbar button').forEach(b=>{
+      b.onclick = ()=>{ setPage(b.dataset.page); };
+    });
+    // Quiz initial
+    loadQuiz();
+    // Contact
+    initContact();
+  });
 </script>
 </body>
 </html>
