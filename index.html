@@ -1560,6 +1560,8 @@
   function setLang(lang){
     if(!translations[lang]) lang = "en";
     state.lang = lang;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
     // Header title, subtitle
     $('#title-main').textContent = translations[lang].title;
     $('#subtitle-main').textContent = translations[lang].subtitle;
