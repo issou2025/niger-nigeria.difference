@@ -66,6 +66,7 @@
     // Map buttons
     $('#map-niamey').textContent = translations[lang].viewNiamey;
     $('#map-abuja').textContent = translations[lang].viewAbuja;
+    $('#footer-text').textContent = translations[lang].footerText;
     // Quiz page title
     $('#quiz-title').textContent = translations[lang].nav.quiz + ": " + translations[lang].homeTitle;
     // Reset quiz state
