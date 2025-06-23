@@ -78,6 +78,19 @@
     margin: 0 0 0.8rem 0;
     font-size: 1rem;
   }
+  /* Footer */
+  .footer-main {
+    background: linear-gradient(90deg, var(--accent3), var(--accent2), var(--accent));
+    color: var(--text-alt);
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+    border-radius: var(--radius) var(--radius) 0 0;
+    box-shadow: var(--shadow);
+  }
+  .colorful-mode .footer-main {
+    animation: gradientShift 15s ease infinite;
+  }
   /* Animated gradient for colorful mode */
   @keyframes gradientShift {
     0% { background-position: 0% 50%; }

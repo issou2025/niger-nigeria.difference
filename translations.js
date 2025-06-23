@@ -166,7 +166,8 @@
       },
       // About map links
       viewNiamey: "View Niamey",
-      viewAbuja: "View Abuja"
+      viewAbuja: "View Abuja",
+      footerText: "© 2024 Niger vs Nigeria. All rights reserved."
     },
 
     fr: {
@@ -326,7 +327,8 @@
         nameLabel: "Nom :"
       },
       viewNiamey: "Voir Niamey",
-      viewAbuja: "Voir Abuja"
+      viewAbuja: "Voir Abuja",
+      footerText: "© 2024 Niger vs Nigéria. Tous droits réservés."
     },
 
     ha: {
@@ -486,7 +488,8 @@
         nameLabel: "Suna:"
       },
       viewNiamey: "Duba Niamey",
-      viewAbuja: "Duba Abuja"
+      viewAbuja: "Duba Abuja",
+      footerText: "© 2024 Nijar da Najeriya. Duk haƙƙoƙi na ajiye."
     },
 
     ar: {
@@ -646,7 +649,8 @@
         nameLabel: "الاسم:"
       },
       viewNiamey: "عرض نيامي",
-      viewAbuja: "عرض أبوجا"
+      viewAbuja: "عرض أبوجا",
+      footerText: "© 2024 النيجر ونيجيريا. جميع الحقوق محفوظة."
     },
 
     es: {
@@ -806,7 +810,8 @@
         nameLabel: "Nombre:"
       },
       viewNiamey: "Ver Niamey",
-      viewAbuja: "Ver Abuja"
+      viewAbuja: "Ver Abuja",
+      footerText: "© 2024 Níger vs Nigeria. Todos los derechos reservados."
     },
 
     zh: {
@@ -966,6 +971,7 @@
         nameLabel: "姓名："
       },
       viewNiamey: "查看尼亚美",
-      viewAbuja: "查看阿布贾"
+      viewAbuja: "查看阿布贾",
+      footerText: "© 2024 尼日尔 vs 尼日利亚。保留所有权利。"
     }
   };
