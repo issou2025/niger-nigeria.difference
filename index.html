@@ -18,8 +18,7 @@
     --shadow: 0 4px 24px 0 rgba(44,62,80,0.09);
     --radius: 18px;
     --fade-duration: 0.4s;
-    --select-bg: #fff;
-    --select-text: #1a1a1a;
+    --nav-height: 60px;
   }
   .dark-mode {
     --main-bg: #161b22;
@@ -31,8 +30,6 @@
     --text-main: #f1f1f1;
     --text-alt: #23283b;
     --shadow: 0 6px 28px 0 rgba(0,0,0,0.18);
-    --select-bg: #23283b;
-    --select-text: #f1f1f1;
   }
   html, body {
     height: 100%;
@@ -77,21 +74,18 @@
     margin: 0 0 0.8rem 0;
     font-size: 1rem;
   }
-  /* Lang select */
+  /* Language selector */
   #lang-select {
+    margin-top: 0.5rem;
     padding: 0.4rem 0.6rem;
     border-radius: 8px;
     border: none;
     font-size: 1rem;
-    font-family: inherit;
-    background: var(--select-bg);
-    color: var(--select-text);
     cursor: pointer;
     transition: background .3s, color .3s;
-    margin-top: 0.5rem;
   }
   #lang-select:focus {
-    outline: 2px dashed var(--accent);
+    outline: 2px dashed var(--text-alt);
     outline-offset: 2px;
   }
   /* Navbar */
@@ -318,55 +312,13 @@
     min-height: 1.2em;
     transition: color .3s;
   }
-  /* Contact form */
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: .9rem;
-    max-width: 430px;
-    margin: 0 auto;
-  }
-  .contact-form input, .contact-form textarea {
-    padding: .7rem 1rem;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+  /* Contact card */
+  .contact-info p {
+    margin: 0.5rem 0;
     font-size: 1rem;
-    background: var(--main-bg);
-    color: var(--text-main);
-    transition: border-color .3s;
   }
-  .contact-form input:focus, .contact-form textarea:focus {
-    outline: none;
-    border-color: var(--accent);
-  }
-  .contact-form button {
-    background: var(--accent2);
-    color: #fff;
-    border: none;
-    border-radius: 9px;
-    font-size: 1.04rem;
-    padding: .65rem 1.1rem;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(44,62,80,0.10);
-    margin-top: .7rem;
-    transition: background .22s;
-  }
-  .contact-form button:hover {
-    background: var(--accent);
-  }
-  .contact-success {
-    background: var(--accent3);
-    color: var(--text-alt);
-    border-radius: 7px;
-    padding: .65rem 1.2rem;
-    text-align: center;
-    margin-top: 1rem;
-    font-weight: 600;
-    animation: fadeOut 3s forwards 0.5s;
-  }
-  @keyframes fadeOut {
-    to { opacity: 0; height: 0; margin: 0; padding: 0; }
+  .contact-info strong {
+    color: var(--accent);
   }
   /* Back to top */
   #back-to-top {
@@ -461,7 +413,7 @@
       transition: max-height .3s ease-out;
     }
     .navbar.open {
-      max-height: 400px;
+      max-height: 300px;
       transition: max-height .5s ease-in;
     }
     /* Table hidden on small screens; show cards */
@@ -482,34 +434,39 @@
     #lang-select {
       font-size: 0.9rem;
     }
-    #menu-toggle {
-      left: 0.5rem;
-    }
   }
 </style>
 </head>
 <body>
+  <!-- Header -->
   <div class="header-main">
     <button id="menu-toggle" aria-label="Toggle Menu">☰</button>
     <button class="theme-toggle" aria-label="Toggle Theme" title="Toggle Theme">🌞</button>
     <button id="share-btn" aria-label="Share Page" title="Share">🔗</button>
     <h1 id="title-main">Niger vs Nigeria</h1>
     <p id="subtitle-main">Discover the beauty, culture and facts about Niger and Nigeria.</p>
+    <!-- Language selector -->
     <select id="lang-select" aria-label="Select Language">
       <option value="en">English</option>
       <option value="fr">Français</option>
       <option value="ha">Hausa</option>
       <option value="ar">العربية</option>
+      <option value="es">Español</option>
+      <option value="zh">中文</option>
     </select>
   </div>
+
+  <!-- Navbar -->
   <div class="navbar" id="navbar">
     <button data-page="home" class="active" id="nav-home">Home</button>
+    <button data-page="about" id="nav-about">About</button>
     <button data-page="history" id="nav-history">History</button>
     <button data-page="culture" id="nav-culture">Culture</button>
-    <button data-page="about" id="nav-about">About</button>
     <button data-page="quiz" id="nav-quiz">Quiz</button>
     <button data-page="contact" id="nav-contact">Contact</button>
   </div>
+
+  <!-- Main content -->
   <div class="main">
     <!-- Home Page -->
     <div class="page active" id="page-home">
@@ -521,87 +478,84 @@
         <div class="table-wrap">
           <table id="main-table">
             <tr><th id="th-fact">Fact</th><th id="th-niger">Niger</th><th id="th-nigeria">Nigeria</th></tr>
-            <!-- Quelques exemples initiaux, peuvent être modifiés dynamiquement plus bas -->
             <tr><td>Capital</td><td>Niamey</td><td>Abuja</td></tr>
             <tr><td>Largest city</td><td>Niamey</td><td>Lagos</td></tr>
             <tr><td>Official language</td><td>French</td><td>English</td></tr>
             <tr><td>Area</td><td>1,267,000 km²</td><td>923,770 km²</td></tr>
             <tr><td>Population (2023)</td><td>~27 million</td><td>~220 million</td></tr>
-            <tr><td>Currency</td><td>CFA franc (XOF)</td><td>Naira (NGN)</td></tr>
-            <tr><td>Independence</td><td>August 3, 1960</td><td>October 1, 1960</td></tr>
-            <tr><td>Neighbours</td><td>Algeria, Libya, Chad, Nigeria, Benin, Burkina Faso, Mali</td><td>Benin, Niger, Chad, Cameroon</td></tr>
+            <tr><td>Median age</td><td>~15 years</td><td>~18 years</td></tr>
+            <tr><td>GDP per capita (approx.)</td><td>~$600 USD</td><td>~$2,400 USD</td></tr>
+            <tr><td>Main natural resource</td><td>Uranium, énergie solaire potentielle</td><td>Oil, gas</td></tr>
+            <tr><td>Climate</td><td>Predominantly desert (Sahara)</td><td>Tropical, varied</td></tr>
+            <tr><td>Cultural richness</td><td>Diverse ethnic groups: Hausa, Zarma, Tuareg, Fulani, Kanuri, etc.</td><td>Over 250 ethnic groups</td></tr>
             <tr><td>Internet Domain</td><td>.ne</td><td>.ng</td></tr>
             <tr><td>Time zone</td><td>UTC+1</td><td>UTC+1</td></tr>
+            <tr><td>Independence</td><td>August 3, 1960</td><td>October 1, 1960</td></tr>
           </table>
           <div class="fact-cards-container" id="fact-cards-container">
-            <!-- Les “cards” pour mobile seront générées ici par JS -->
+            <!-- Pour mobile, JS générera des cartes -->
           </div>
         </div>
         <div class="factbox">
-          <span id="random-fact">Did you know? Niger and Nigeria were both French and British colonies.</span>
+          <span id="random-fact">Did you know? Niger and Nigeria share the Niger River but have distinct paths to independence.</span>
           <button id="btn-fact">🔁 Random Fact</button>
           <button id="share-fact-btn" title="Share this fact" style="background: var(--accent); color:#fff; border:none; border-radius:12px; padding:.5rem 1rem; font-weight:600; cursor:pointer; display:none;">Share Fact</button>
         </div>
       </div>
     </div>
+
+    <!-- About (Présentation) Page -->
+    <div class="page" id="page-about">
+      <div class="card">
+        <h2 id="about-title">About Niger</h2>
+        <div id="about-content">
+          <!-- Contenu inséré par JS selon langue -->
+        </div>
+      </div>
+    </div>
+
     <!-- History Page -->
     <div class="page" id="page-history">
       <div class="card">
         <h2 id="history-title">History</h2>
-        <p id="history-intro">
-          Niger and Nigeria, despite their proximity and similar names, have distinct colonial pasts and paths to independence.
-        </p>
+        <p id="history-intro">Niger and Nigeria, despite their proximity and similar names, have distinct colonial pasts and paths to independence.</p>
         <ul id="history-list" style="margin-top:1rem;line-height:1.85;">
-          <!-- Contenu rempli dynamiquement -->
+          <!-- Items insérés par JS -->
         </ul>
       </div>
     </div>
+
     <!-- Culture Page -->
     <div class="page" id="page-culture">
       <div class="card">
         <h2 id="culture-title">Culture & Languages</h2>
         <p id="culture-intro">Niger and Nigeria are home to vibrant cultures and hundreds of languages.</p>
         <ul id="culture-list" style="margin-top:1rem;line-height:1.85;">
-          <!-- Contenu rempli dynamiquement -->
+          <!-- Items insérés par JS -->
         </ul>
         <div style="margin-top:1.5rem; display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
-          <a href="#" id="link-niamey-map" target="_blank" style="background: var(--accent2); color:#fff; padding:.6rem 1rem; border-radius:8px; text-decoration:none; font-weight:600;">Voir Niamey sur la carte</a>
-          <a href="#" id="link-abuja-map" target="_blank" style="background: var(--accent2); color:#fff; padding:.6rem 1rem; border-radius:8px; text-decoration:none; font-weight:600;">Voir Abuja sur la carte</a>
+          <a href="https://www.google.com/maps/search/Niamey,+Niger" target="_blank" id="map-niamey" style="background: var(--accent2); color:#fff; padding:.6rem 1rem; border-radius:8px; text-decoration:none; font-weight:600;">View Niamey</a>
+          <a href="https://www.google.com/maps/search/Abuja,+Nigeria" target="_blank" id="map-abuja" style="background: var(--accent2); color:#fff; padding:.6rem 1rem; border-radius:8px; text-decoration:none; font-weight:600;">View Abuja</a>
         </div>
       </div>
     </div>
-    <!-- About Page -->
-    <div class="page" id="page-about">
-      <div class="card">
-        <h2 id="about-title">About Niger</h2>
-        <div id="about-content">
-          <!-- Contenu rempli dynamiquement -->
-        </div>
-      </div>
-    </div>
+
     <!-- Quiz Page -->
     <div class="page" id="page-quiz">
       <div class="card">
         <h2 id="quiz-title">Quiz: Niger or Nigeria?</h2>
         <div id="quiz-box">
-          <!-- Quiz chargé par JS -->
+          <!-- Inséré par JS -->
         </div>
         <div class="quiz-result" id="quiz-result"></div>
       </div>
     </div>
+
     <!-- Contact Page -->
     <div class="page" id="page-contact">
       <div class="card">
         <h2 id="contact-title">Contact</h2>
-        <form class="contact-form" id="contact-form">
-          <input type="text" id="contact-name" required placeholder="Your Name / Nom">
-          <input type="email" id="contact-email" required placeholder="Your Email">
-          <textarea id="contact-msg" required placeholder="Your message..."></textarea>
-          <button type="submit" id="contact-btn">Send</button>
-        </form>
-        <div class="contact-success" id="contact-success" style="display:none"></div>
-        <div style="margin-top:1.2rem; font-size:0.95rem; line-height:1.5;">
-          <!-- Coordonnées fixes -->
+        <div class="contact-info">
           <p><strong>Email:</strong> <a href="mailto:entreprise2rc@gmail.com">entreprise2rc@gmail.com</a></p>
           <p><strong>WhatsApp:</strong> <a href="https://wa.me/22796380877" target="_blank">+227 96 38 08 77</a></p>
           <p><strong>Name:</strong> Issoufou Abdou Chéfou</p>
@@ -609,502 +563,1076 @@
       </div>
     </div>
   </div>
+
   <!-- Back to top button -->
   <button id="back-to-top" aria-label="Back to top">↑</button>
 
 <script>
-  // Traductions pour 4 langues
+  // Traductions pour 6 langues
   const translations = {
     en: {
+      // Header
       title: "Niger vs Nigeria",
       subtitle: "Discover the beauty, culture and facts about Niger and Nigeria.",
-      nav: ["Home", "History", "Culture", "About", "Quiz", "Contact"],
-      th: ["Fact","Niger","Nigeria"],
-      homeTitle:"Niger 🇳🇪 vs Nigeria 🇳🇬",
-      search:"Search a fact...",
-      facts: [
-        "Niger has one of the hottest climates in the world.",
-        "Nigeria is Africa’s most populous country.",
-        "The Niger River flows through both countries, but Niger remains more sparsely populated.",
-        "Niamey (Niger) is smaller in population than Lagos but is the thriving capital of Niger.",
-        "Niger has the youngest median age in the world (~15 years).",
-        "Niger's economy is developing, with growing sectors: agriculture, mining, renewable energy.",
-        "Niger boasts rich cultural heritage: Tuareg festivals, Zarma-Songhai traditions, Fulani arts.",
-        "Despite challenges, Nigeriens show resilience and innovation in entrepreneurship.",
-        "Niger is larger in area than Nigeria, with vast desert landscapes and unique biodiversity.",
-        "Nigeriens invest dans l’éducation et la jeunesse pour l’avenir du pays."
+      langOptions: [
+        {value:"en", label:"English"},
+        {value:"fr", label:"Français"},
+        {value:"ha", label:"Hausa"},
+        {value:"ar", label:"العربية"},
+        {value:"es", label:"Español"},
+        {value:"zh", label:"中文"}
       ],
-      historyTitle:"History",
-      historyIntro:"Niger and Nigeria share the Niger River but have distinct historical trajectories.",
-      history:[
+      // Navbar
+      nav: {
+        home: "Home",
+        about: "About Niger",
+        history: "History",
+        culture: "Culture",
+        quiz: "Quiz",
+        contact: "Contact"
+      },
+      // Home / Table
+      th: ["Fact","Niger","Nigeria"],
+      homeTitle: "Niger 🇳🇪 vs Nigeria 🇳🇬",
+      searchPlaceholder: "Search a fact...",
+      facts: [
+        "Niger has a larger land area than Nigeria.",
+        "Nigeria is more populous than Niger.",
+        "Niger’s capital is Niamey; Nigeria’s capital is Abuja.",
+        "Niger’s median age (~15) is among the youngest globally.",
+        "Niger has vast desert regions (Sahara covering >80%).",
+        "Nigeria is known for Nollywood; Niger for rich cultural heritage.",
+        "Niger is one of the top uranium producers worldwide.",
+        "Both countries share the Niger River, vital for local agriculture.",
+        "French is official in Niger; English in Nigeria.",
+        "Niger’s population growth is high, offering a young workforce."
+      ],
+      // Random fact prefix
+      randomFactPrefix: "Did you know? ",
+      // About Niger
+      aboutTitle: "About Niger",
+      aboutContent: [
+        "Niger is a landlocked country in West Africa, named after the Niger River. It is characterized by vast desert landscapes in the north (the Sahara), the Sahelian belt in the center, and more fertile areas in the south.",
+        "The population of Niger is among the youngest in the world, with a median age of around 15–16 years, offering both challenges and opportunities for education, innovation, and a dynamic workforce.",
+        "Niger’s economy relies on agriculture (mainly subsistence farming), livestock, uranium mining, and emerging potential in solar energy. Infrastructure development and value-added industries are key priorities.",
+        "Culturally, Niger is home to diverse ethnic groups—Hausa, Zarma-Songhai, Tuareg, Fulani, Kanuri, Arabs, Tubu, and more—each contributing to rich traditions in music, crafts, festivals, and storytelling.",
+        "Despite climatic and economic challenges, Nigeriens demonstrate resilience and creativity: innovations in sustainable agriculture, digital startups, and local entrepreneurship are on the rise.",
+        "Tourism in Niger includes attractions like the Saharan oases and dunes, Air Mountains, Tenere desert, W National Park (shared with neighboring countries), and cultural festivals celebrated by Tuareg and other communities.",
+        "Education and human capital development are central: numerous initiatives focus on improving school access, vocational training, and digital literacy to harness the potential of the youth bulge.",
+        "Nigerien cuisine features staples like millet, sorghum, rice, and dishes such as tuwo, millet porridge, sauces with local vegetables, and grilled meats; hospitality is a core cultural value.",
+        "Niger plays a strategic role in regional security and cooperation in the Sahel; understanding its culture, challenges, and potential is essential for partnerships in development and innovation.",
+        "As Niger grows and modernizes, balancing tradition and innovation is crucial: empowering local entrepreneurs, supporting education, and leveraging renewable energy can drive sustainable progress."
+      ],
+      // History
+      historyIntro: "Niger and Nigeria, despite proximity and similar names, have distinct colonial histories and paths to independence.",
+      historyList: [
         "<b>Niger</b>: Formerly colonized by France. Independence: August 3, 1960.",
         "<b>Nigeria</b>: Formerly colonized by Britain. Independence: October 1, 1960.",
-        "The Niger River gave both countries their names but each forged its own path.",
-        "Niger’s population grew steadily; Nigeria’s population exploded, making it the largest in Africa.",
-        "Shared ethnic groups cross the border, but national identities evolved differently.",
-        "Niger focused on stability and gradual development; Nigeria faced larger-scale conflicts and rapid urbanization."
+        "Both countries derive their names from the Niger River, which flows through both territories.",
+        "Niger is larger in area but less densely populated; Nigeria has the largest population in Africa.",
+        "Colonial-era borders split ethnic groups; cross-border communities share languages and cultures.",
+        "Post-independence, both countries charted different development paths; Niger faces desertification and economic challenges.",
+        "Nigeria’s economy is larger (oil, industry), while Niger focuses on mining (uranium), agriculture, and emerging sectors.",
+        "Cooperation on river management, security, and trade exists, but each nation maintains its unique identity and priorities."
       ],
-      cultureTitle:"Culture & Languages",
-      cultureIntro:"Niger and Nigeria are culturally rich; Niger has unique traditions deserving global recognition.",
-      culture:[
-        "Niger: crossroads of Hausa, Zarma-Songhai, Tuareg, Fulani, Kanuri cultures with vibrant festivals.",
-        "Nigeria: over 250 ethnic groups including Hausa, Yoruba, Igbo, each with rich heritage.",
-        "Languages in Niger: French (official), Hausa, Zarma, Tamajeq, Fulfulde, Kanuri.",
-        "Languages in Nigeria: English (official), Hausa, Yoruba, Igbo, Fulfulde, Kanuri, Ibibio, Tiv, Edo, etc.",
-        "Nigerien music: Tuareg blues, Hausa folk; Nigeria: Afrobeat, Highlife, Nollywood cinema.",
-        "Traditional clothing: in Niger, boubous colorés et turbans touareg; Nigeria: agbada, gele, tenues variées."
+      // Culture
+      cultureIntro: "Niger and Nigeria host vibrant cultures, arts, and languages, reflecting West Africa’s diversity.",
+      cultureList: [
+        "Niger: major ethnic groups include Hausa, Zarma-Songhai, Tuareg, Fulani, Kanuri, Arabs, Tubu.",
+        "Nigeria: over 250 ethnic groups, including Hausa, Yoruba, Igbo, Fulani, Kanuri, Efik, Tiv, Edo, among others.",
+        "Languages in Niger: French (official), Hausa, Zarma, Tamajeq, Fulfulde, Kanuri, Arabic dialects, Tubu languages.",
+        "Languages in Nigeria: English (official), Hausa, Yoruba, Igbo, Fulfulde, Kanuri, Ibibio, Tiv, Edo, and many more.",
+        "Music: Nigerien desert blues, Tuareg guitar, Hausa traditional melodies; Nigerian Afrobeat, highlife, hip-hop.",
+        "Festivals: Cure Salee in Niger, traditional Tuareg festivals; Nigeria’s Durbar, Yoruba festivals, Igbo New Yam Festival.",
+        "Crafts: Nigerien leatherwork, silver jewelry by Tuareg, weaving; Nigerian textiles (Aso Oke), beadwork.",
+        "Cuisine: Niger: millet, sorghum, rice dishes; Nigeria: jollof rice, pounded yam, egusi soup; both emphasize communal meals.",
+        "Clothing: colorful robes in Nigerien Sahel; Nigeria’s diverse traditional attire (agbada, buba/iro, wrappers).",
+        "Cultural exchange: border markets, shared languages (e.g., Hausa spoken in both), but each retains unique customs."
       ],
-      aboutTitle:"About Niger",
-      aboutContent:[
-        "<p>Niger, officially the Republic of Niger, is a landlocked country in West Africa, named after the Niger River. It is the largest country in West Africa by area, covering around 1.27 million km², yet it remains sparsely populated due to the Sahara desert covering much of its territory.</p>",
-        "<p>The population of Niger is among the youngest in the world (median age ~15 years). Youth represent both a challenge and an opportunity: with education, innovation and entrepreneurship, the younger generation can drive future growth.</p>",
-        "<p>Economically, Niger relies on agriculture (millet, sorghum, livestock), mining (uranium exports), and is exploring renewable energy (solar projects). Investment in infrastructure and human capital is crucial.</p>",
-        "<p>Culturally, Niger is rich: from the Tuareg festivals in the desert to Zarma markets on riverbanks, from Fulani pastoral traditions to Kanuri architectural heritage. The diversity fosters creativity and resilience.</p>",
-        "<p>Challenges include climate change impacts, water scarcity, and socio-economic development. Nevertheless, Nigeriens innovate: small businesses, digital services, artisanal crafts reach global markets via the internet.</p>",
-        "<p>Niger’s strategic vision includes improving education, empowering women and youth, promoting sustainable agriculture, and leveraging technology. The spirit of resilience and solidarity defines the nation.</p>",
-        "<p>As global interest in West Africa grows, Niger stands out for its cultural authenticity, natural beauty (desert landscapes, wildlife reserves), and welcoming population. Discover Niger’s potential and contribute to its bright future.</p>"
-      ],
-      quizTitle:"Quiz: Niger or Nigeria?",
-      quiz:[
+      // Quiz: array of questions
+      quiz: [
         {
-          q:"Which country has the youngest median age (~15 years)?",
-          a:["Nigeria","Niger","Both equally"],
-          r:1
+          q: "Which country has the larger land area?",
+          a: ["Nigeria", "Niger", "They are equal"],
+          r: 1
         },
         {
-          q:"Which country is larger by area?",
-          a:["Nigeria","Niger","They are equal"],
-          r:1
+          q: "Which country’s capital is Niamey?",
+          a: ["Nigeria", "Niger", "Both"],
+          r: 1
         },
         {
-          q:"Which capital is Niamey?",
-          a:["Nigeria","Niger","Neither"],
-          r:1
+          q: "Which country has French as its official language?",
+          a: ["Nigeria", "Niger", "Both"],
+          r: 1
         },
         {
-          q:"Which country was colonized by France?",
-          a:["Niger","Nigeria","Both"],
-          r:0
+          q: "Which country’s population is larger?",
+          a: ["Niger", "Nigeria", "They are about the same"],
+          r: 1
         },
         {
-          q:"Which country’s major desert is the Sahara covering over 80%?",
-          a:["Nigeria","Niger","Both"],
-          r:1
+          q: "Which country is one of the top uranium producers in the world?",
+          a: ["Nigeria", "Niger", "Both"],
+          r: 1
         },
         {
-          q:"Which country’s official language is French?",
-          a:["Nigeria","Niger","Both"],
-          r:1
+          q: "Which country’s median age is around 15, among the youngest globally?",
+          a: ["Nigeria", "Niger", "Both"],
+          r: 1
         },
         {
-          q:"Which country has a larger surface area in West Africa?",
-          a:["Nigeria","Niger","They are equal"],
-          r:1
+          q: "Which country was colonized by France?",
+          a: ["Nigeria", "Niger", "Both"],
+          r: 1
         },
         {
-          q:"Which country’s film industry is called Nollywood?",
-          a:["Niger","Nigeria","Both"],
-          r:1
+          q: "Which country’s largest city is Lagos?",
+          a: ["Niger", "Nigeria", "Neither"],
+          r: 1
         },
         {
-          q:"Which country’s economy relies significantly on uranium exports?",
-          a:["Nigeria","Niger","Both"],
-          r:1
+          q: "Which country is predominantly desert (Sahara covers over 80%)?",
+          a: ["Nigeria", "Niger", "Both"],
+          r: 1
         },
         {
-          q:"Which country is landlocked?",
-          a:["Nigeria","Niger","Both"],
-          r:1
+          q: "Which country’s currency is the CFA franc (XOF)?",
+          a: ["Nigeria", "Niger", "Both"],
+          r: 1
+        },
+        {
+          q: "Which country’s economy relies significantly on oil exports?",
+          a: ["Niger", "Nigeria", "Both"],
+          r: 1
+        },
+        {
+          q: "Which country’s official language is English?",
+          a: ["Niger", "Nigeria", "Both"],
+          r: 1
+        },
+        {
+          q: "Which country’s name in English appears first alphabetically?",
+          a: ["Niger", "Nigeria", "They are the same"], 
+          r: 0
+        },
+        {
+          q: "Which country has a younger average population?",
+          a: ["Nigeria", "Niger", "They are equal"], 
+          r: 1
+        },
+        {
+          q: "Which country is landlocked?",
+          a: ["Nigeria", "Niger", "Both"], 
+          r: 1
         }
       ],
-      contactTitle:"Contact",
-      contactBtn:"Send",
-      contactThanks:"Thank you for your message!",
       correctText: "Correct!",
-      incorrectText: "Incorrect!"
+      incorrectText: "Incorrect!",
+      // Contact labels
+      contact: {
+        emailLabel: "Email:",
+        whatsappLabel: "WhatsApp:",
+        nameLabel: "Name:"
+      },
+      // About map links
+      viewNiamey: "View Niamey",
+      viewAbuja: "View Abuja"
     },
+
     fr: {
-      title:"Niger vs Nigéria",
-      subtitle:"Découvrez la beauté, la culture et les faits sur le Niger et le Nigéria.",
-      nav: ["Accueil", "Histoire", "Culture", "À propos", "Quiz", "Contact"],
-      th: ["Élément","Niger","Nigéria"],
-      homeTitle:"Niger 🇳🇪 vs Nigéria 🇳🇬",
-      search:"Rechercher une information...",
-      facts: [
-        "Le Niger a l’un des climats les plus chauds au monde.",
-        "Le Nigéria est le pays le plus peuplé d’Afrique.",
-        "Le fleuve Niger traverse les deux pays, mais le Niger reste moins peuplé.",
-        "Niamey (Niger) est plus petit que Lagos mais est la capitale dynamique du Niger.",
-        "Le Niger a l’âge médian le plus jeune (~15 ans).",
-        "Économie du Niger en croissance : agriculture, mines, énergie renouvelable.",
-        "Patrimoine culturel riche : festivals touareg, traditions Zarma-Songhai, arts peuls.",
-        "Malgré les défis, les Nigériens font preuve de résilience et d’innovation entrepreneuriale.",
-        "Le Niger est plus vaste en superficie que le Nigéria, avec de vastes paysages désertiques.",
-        "Les Nigériens investissent dans l’éducation et la jeunesse pour l’avenir du pays."
+      title: "Niger vs Nigéria",
+      subtitle: "Découvrez la beauté, la culture et les faits sur le Niger et le Nigéria.",
+      langOptions: [
+        {value:"en", label:"English"},
+        {value:"fr", label:"Français"},
+        {value:"ha", label:"Hausa"},
+        {value:"ar", label:"العربية"},
+        {value:"es", label:"Español"},
+        {value:"zh", label:"中文"}
       ],
-      historyTitle:"Histoire",
-      historyIntro:"Le Niger et le Nigéria partagent le fleuve Niger mais ont des trajectoires historiques distinctes.",
-      history:[
+      nav: {
+        home: "Accueil",
+        about: "Présentation",
+        history: "Histoire",
+        culture: "Culture",
+        quiz: "Quiz",
+        contact: "Contact"
+      },
+      th: ["Élément","Niger","Nigéria"],
+      homeTitle: "Niger 🇳🇪 vs Nigéria 🇳🇬",
+      searchPlaceholder: "Rechercher un fait...",
+      facts: [
+        "Le Niger a une superficie plus grande que le Nigéria.",
+        "Le Nigéria est plus peuplé que le Niger.",
+        "La capitale du Niger est Niamey ; celle du Nigéria est Abuja.",
+        "L’âge médian au Niger (~15 ans) est parmi les plus jeunes au monde.",
+        "Le Niger est principalement désertique (le Sahara couvre >80%).",
+        "Le Nigéria est connu pour Nollywood ; le Niger pour son riche patrimoine culturel.",
+        "Le Niger est l’un des principaux producteurs d’uranium au monde.",
+        "Les deux pays partagent le fleuve Niger, vital pour l’agriculture locale.",
+        "Le français est officiel au Niger ; l’anglais au Nigéria.",
+        "La croissance démographique au Niger est élevée, offrant une main-d’œuvre jeune."
+      ],
+      randomFactPrefix: "Le saviez-vous ? ",
+      aboutTitle: "Présentation du Niger",
+      aboutContent: [
+        "Le Niger est un pays enclavé d’Afrique de l’Ouest, nommé d’après le fleuve Niger. Il se caractérise par de vastes paysages désertiques au nord (le Sahara), la zone sahélienne au centre et des régions plus fertiles au sud.",
+        "La population du Niger est parmi les plus jeunes au monde, avec un âge médian d’environ 15–16 ans, ce qui représente à la fois des défis et des opportunités pour l’éducation, l’innovation et une main-d’œuvre dynamique.",
+        "L’économie nigérienne repose sur l’agriculture (principalement vivrière), l’élevage, l’extraction d’uranium et un potentiel croissant pour l’énergie solaire. Le développement des infrastructures et des industries à valeur ajoutée est une priorité.",
+        "Sur le plan culturel, le Niger abrite divers groupes ethniques : Haoussa, Zarma-Songhaï, Touareg, Peul, Kanuri, Arabes, Toubou, etc., chacun contribuant à des traditions riches en musique, artisanat, festivals et contes.",
+        "Malgré les défis climatiques et économiques, les Nigériens font preuve de résilience et de créativité : innovations dans l’agriculture durable, startups numériques et entrepreneuriat local sont en plein essor.",
+        "Le tourisme au Niger inclut les oasis et dunes sahariennes, les monts Air, le désert du Ténéré, le parc national W (partagé avec des pays voisins) et les festivals culturels organisés par les Touaregs et d’autres communautés.",
+        "L’éducation et le développement du capital humain sont au cœur des initiatives : améliorer l’accès à l’école, la formation professionnelle et la littératie numérique pour exploiter le potentiel de la jeunesse.",
+        "La cuisine nigérienne comprend le mil, le sorgho, le riz et des plats tels que le tuwo, les bouillies de mil, les sauces aux légumes locaux et les viandes grillées ; l’hospitalité est une valeur culturelle essentielle.",
+        "Le Niger joue un rôle stratégique en matière de sécurité régionale et de coopération dans le Sahel ; comprendre sa culture, ses défis et son potentiel est crucial pour les partenariats de développement et d’innovation.",
+        "À mesure que le Niger se modernise, l’équilibre entre tradition et innovation est indispensable : soutenir les entrepreneurs locaux, promouvoir l’éducation et exploiter les énergies renouvelables peut conduire à un progrès durable."
+      ],
+      historyIntro: "Le Niger et le Nigéria, malgré leur proximité et des noms similaires, ont des histoires coloniales et des trajectoires d’indépendance distinctes.",
+      historyList: [
         "<b>Niger</b> : Ancienne colonie française. Indépendance : 3 août 1960.",
         "<b>Nigéria</b> : Ancienne colonie britannique. Indépendance : 1er octobre 1960.",
-        "Le fleuve Niger a donné son nom aux deux pays, mais chacun a tracé sa propre voie.",
-        "La population du Niger a augmenté progressivement ; celle du Nigéria a explosé, faisant de lui le plus peuplé d’Afrique.",
-        "Des groupes ethniques traversent la frontière, mais les identités nationales ont évolué différemment.",
-        "Le Niger a misé sur la stabilité et le développement progressif ; le Nigéria a connu des conflits à plus grande échelle et une urbanisation rapide."
+        "Les deux pays tiennent leur nom du fleuve Niger, qui les traverse tous deux.",
+        "Le Niger est plus vaste en superficie mais moins densément peuplé ; le Nigéria a la plus grande population d’Afrique.",
+        "Les frontières héritées de l’époque coloniale ont scindé des groupes ethniques, créant des communautés transfrontalières partageant langues et cultures.",
+        "Depuis l’indépendance, les deux pays ont suivi des parcours de développement différents ; le Niger fait face à la désertification et à des défis économiques.",
+        "L’économie nigériane est plus grande (pétrole, industrie), tandis que le Niger se concentre sur l’extraction d’uranium, l’agriculture et des secteurs émergents.",
+        "La coopération existe pour la gestion du fleuve, la sécurité et le commerce, mais chaque nation conserve son identité et ses priorités propres."
       ],
-      cultureTitle:"Culture & Langues",
-      cultureIntro:"Le Niger et le Nigéria sont riches culturellement ; le Niger mérite une reconnaissance mondiale pour ses traditions uniques.",
-      culture:[
-        "Niger : carrefour des cultures Hausa, Zarma-Songhaï, Touareg, Peul, Kanuri avec festivals vibrants.",
-        "Nigéria : plus de 250 groupes ethniques dont Hausa, Yoruba, Igbo, chacun avec un héritage riche.",
-        "Langues au Niger : français (officiel), haoussa, zarma, tamajeq, fulfulde, kanouri.",
-        "Langues au Nigéria : anglais (officiel), haoussa, yoruba, igbo, fulfulde, kanouri, ibibio, tiv, edo, etc.",
-        "Musique nigérienne : blues touareg, folk haoussa ; Nigéria : Afrobeat, Highlife, cinéma Nollywood.",
-        "Tenues traditionnelles : au Niger, boubous colorés et turbans touareg ; Nigéria : agbada, gele, tenues variées."
+      cultureIntro: "Le Niger et le Nigéria sont le siège de cultures dynamiques, d’arts et de langues, reflet de la diversité de l’Afrique de l’Ouest.",
+      cultureList: [
+        "Niger : groupes ethniques majeurs : Haoussa, Zarma-Songhaï, Touareg, Peul, Kanuri, Arabes, Toubou.",
+        "Nigéria : plus de 250 groupes ethniques, dont Haoussa, Yoruba, Igbo, Peul, Kanuri, Efik, Tiv, Edo, etc.",
+        "Langues au Niger : français (officiel), haoussa, zarma, tamajeq, fulfulde, kanouri, dialectes arabes, langues toubou.",
+        "Langues au Nigéria : anglais (officiel), haoussa, yoruba, igbo, fulfulde, kanouri, ibibio, tiv, edo, et bien d’autres.",
+        "Musique : blues désertique nigérien, guitare touareg, mélodies traditionnelles haoussa ; Afrobeat nigérian, highlife, hip-hop.",
+        "Festivals : Cure Salee au Niger, festivals touaregs ; Durbar au Nigéria, fêtes yoruba, Nouvel Fête de l’igname chez les Igbo.",
+        "Artisanat : cuir nigérien, bijoux en argent touareg, tissage ; textiles nigérians (Aso Oke), perlerie.",
+        "Cuisine : Niger : mil, sorgho, riz, sauces locales ; Nigéria : jollof rice, pounded yam, egusi ; repas communautaires valorisés.",
+        "Tenues : robes colorées sahéliennes au Niger ; tenues traditionnelles nigérianes variées (agbada, buba/iro, wrappers).",
+        "Échanges culturels : marchés frontaliers, langue haoussa commune, mais chaque pays conserve ses coutumes uniques."
       ],
-      aboutTitle:"À propos du Niger",
-      aboutContent:[
-        "<p>Le Niger, officiellement République du Niger, est un pays enclavé d’Afrique de l’Ouest, nommé d’après le fleuve Niger. C’est le plus grand pays d’Afrique de l’Ouest par superficie (environ 1,27 million km²), mais il reste faiblement peuplé en raison du désert du Sahara couvrant une grande partie du territoire.</p>",
-        "<p>La population du Niger est l’une des plus jeunes au monde (âge médian ~15 ans). Cette jeunesse représente à la fois un défi et une opportunité : avec l’éducation, l’innovation et l’entrepreneuriat, la jeune génération peut impulser la croissance future.</p>",
-        "<p>Économiquement, le Niger repose sur l’agriculture (mil, sorgho, élevage), l’exploitation minière (exportations d’uranium), et explore les énergies renouvelables (projets solaires). Les investissements en infrastructures et capital humain sont cruciaux.</p>",
-        "<p>Cultuellement, le Niger est riche : des festivals touareg dans le désert aux marchés Zarma au bord des rivières, des traditions pastorales peules à l’architecture kanuri. Cette diversité nourrit créativité et résilience.</p>",
-        "<p>Les défis incluent les impacts du changement climatique, la rareté de l’eau et le développement socio-économique. Néanmoins, les Nigériens innovent : petites entreprises, services numériques, artisanat accèdent aux marchés mondiaux via Internet.</p>",
-        "<p>La vision stratégique du Niger inclut l’amélioration de l’éducation, l’autonomisation des femmes et des jeunes, la promotion d’une agriculture durable et l’exploitation de la technologie. L’esprit de résilience et de solidarité caractérise la nation.</p>",
-        "<p>Alors que l’intérêt mondial pour l’Afrique de l’Ouest croît, le Niger se distingue par son authenticité culturelle, sa beauté naturelle (paysages désertiques, réserves fauniques) et sa population accueillante. Découvrez le potentiel du Niger et contribuez à son avenir prometteur.</p>"
-      ],
-      quizTitle:"Quiz : Niger ou Nigéria ?",
-      quiz:[
+      quiz: [
         {
-          q:"Lequel a l’âge médian le plus jeune (~15 ans) ?",
-          a:["Nigéria","Niger","Les deux"],
-          r:1
+          q: "Quel pays a la plus grande superficie ?",
+          a: ["Nigéria", "Niger", "Ils sont égaux"],
+          r: 1
         },
         {
-          q:"Lequel est plus vaste en superficie ?",
-          a:["Nigéria","Niger","Ils sont égaux"],
-          r:1
+          q: "Quelle capitale est Niamey ?",
+          a: ["Nigéria", "Niger", "Les deux"],
+          r: 1
         },
         {
-          q:"Niamey est la capitale de quel pays ?",
-          a:["Nigéria","Niger","Aucun"],
-          r:1
+          q: "Quel pays a le français comme langue officielle ?",
+          a: ["Nigéria", "Niger", "Les deux"],
+          r: 1
         },
         {
-          q:"Quel pays a été colonisé par la France ?",
-          a:["Niger","Nigéria","Les deux"],
-          r:0
+          q: "Quel pays est plus peuplé ?",
+          a: ["Niger", "Nigéria", "À peu près le même"], 
+          r: 1
         },
         {
-          q:"Le désert du Sahara couvre plus de 80% de quel pays ?",
-          a:["Nigéria","Niger","Les deux"],
-          r:1
+          q: "Quel pays est un des principaux producteurs d’uranium ?",
+          a: ["Nigéria", "Niger", "Les deux"],
+          r: 1
         },
         {
-          q:"Le français est langue officielle de quel pays ?",
-          a:["Nigéria","Niger","Les deux"],
-          r:1
+          q: "Quel pays a un âge médian d’environ 15 ans ?",
+          a: ["Nigéria", "Niger", "Les deux"],
+          r: 1
         },
         {
-          q:"Quel pays est enclavé ?",
-          a:["Nigéria","Niger","Les deux"],
-          r:1
+          q: "Quel pays a été colonisé par la France ?",
+          a: ["Nigéria", "Niger", "Les deux"],
+          r: 1
         },
         {
-          q:"L’uranium est exporté de quel pays ?",
-          a:["Nigéria","Niger","Les deux"],
-          r:1
+          q: "Dans quel pays se trouve la ville de Lagos ?",
+          a: ["Niger", "Nigéria", "Aucun"],
+          r: 1
         },
         {
-          q:"Le film industry 'Nollywood' appartient à quel pays ?",
-          a:["Niger","Nigéria","Les deux"],
-          r:1
+          q: "Quel pays est majoritairement désertique (Sahara >80%) ?",
+          a: ["Nigéria", "Niger", "Les deux"],
+          r: 1
         },
         {
-          q:"Quel pays est le plus peuplé d’Afrique ?",
-          a:["Niger","Nigéria","Les deux"],
-          r:1
+          q: "La monnaie du pays est le franc CFA (XOF) dans lequel ?",
+          a: ["Nigéria", "Niger", "Les deux"],
+          r: 1
+        },
+        {
+          q: "Quel pays dépend fortement des exportations de pétrole ?",
+          a: ["Niger", "Nigéria", "Les deux"],
+          r: 1
+        },
+        {
+          q: "Quelle langue officielle est l’anglais ?",
+          a: ["Niger", "Nigéria", "Les deux"],
+          r: 1
+        },
+        {
+          q: "Quel nom apparaît en premier par ordre alphabétique ?",
+          a: ["Niger", "Nigéria", "Identique"], 
+          r: 0
+        },
+        {
+          q: "Quel pays a la population la plus jeune ?",
+          a: ["Nigéria", "Niger", "Égalité"], 
+          r: 1
+        },
+        {
+          q: "Quel pays est enclavé ?",
+          a: ["Nigéria", "Niger", "Les deux"], 
+          r: 1
         }
       ],
-      contactTitle:"Contact",
-      contactBtn:"Envoyer",
-      contactThanks:"Merci pour votre message !",
       correctText: "Bonne réponse !",
-      incorrectText: "Incorrect !"
+      incorrectText: "Incorrect !",
+      contact: {
+        emailLabel: "Email :",
+        whatsappLabel: "WhatsApp :",
+        nameLabel: "Nom :"
+      },
+      viewNiamey: "Voir Niamey",
+      viewAbuja: "Voir Abuja"
     },
+
     ha: {
-      title:"Chadi vs Najeriya",
-      subtitle:"Gano bambanci, al'adu da gaskiya game da Chadi da Najeriya.",
-      nav:["Farko", "Tarihi", "Al'adu", "Game da", "Quiz", "Tuntuɓi"],
-      th:["Bayani","Chadi","Najeriya"],
-      homeTitle:"Chadi 🇳🇪 vs Najeriya 🇳🇬",
-      search:"Bincika gaskiya...",
+      title: "Nijar vs Najeriya",
+      subtitle: "Gano kyau, al’adu da gaskiya game da Nijar da Najeriya.",
+      langOptions: [
+        {value:"en", label:"English"},
+        {value:"fr", label:"Français"},
+        {value:"ha", label:"Hausa"},
+        {value:"ar", label:"العربية"},
+        {value:"es", label:"Español"},
+        {value:"zh", label:"中文"}
+      ],
+      nav: {
+        home: "Gida",
+        about: "Gabatarwa",
+        history: "Tarihi",
+        culture: "Al’adu",
+        quiz: "Quiz",
+        contact: "Tuntuɓi"
+      },
+      th: ["Bayanan","Nijar","Najeriya"],
+      homeTitle: "Nijar 🇳🇪 vs Najeriya 🇳🇬",
+      searchPlaceholder: "Bincika wani bayani...",
       facts: [
-        "Chadi na ɗaya daga cikin ƙasashe mafi zafi a duniya.",
-        "Najeriya ita ce ƙasa mafi yawan jama’a a Afirka.",
-        "Kogin Niger yana bi ta ƙasashen biyu, amma Chadi ya yi ƙasa a yawan jama’a.",
-        "Niamey (Chadi) ƙaramar birni ne fiye da Lagos amma babban birnin Chadi ne.",
-        "Chadi yana da matakin shekarun matsakaici mafi ƙanƙanta (~15).",
-        "Tattalin arzikin Chadi yana tasowa: noma, ma’adanai, makamashi mai sabuntawa.",
-        "Gado na al’adu mai tarin yawa: bukukuwan Tuareg, al’adun Zarma-Songhai, fasahar Fulani.",
-        "Mutanen Chadi suna nuna juriya da kirkire-kirkire wajen kasuwanci.",
-        "Chadi yafi Najeriya girma a yanki, da yanayin hamada da ke kawo abubuwan gani na musamman.",
-        "Chadi yana saka jari a ilimi da matasa don makomar kasa."
+        "Nijar na da filin ƙasa mafi girma fiye da Najeriya.",
+        "Najeriya tana da yawan jama’a fiye da Nijar.",
+        "Babban birnin Nijar shine Niamey; na Najeriya shine Abuja.",
+        "Matsakaicin shekaru a Nijar (~15) na daga cikin mafi ƙarancin a duniya.",
+        "Nijar yana da yanki mafi yawan hamada (Sahara >80%).",
+        "Najeriya ta shahara da Nollywood; Nijar na da arzikin al’adu.",
+        "Nijar na ɗaya daga cikin manyan masu hakar uranium a duniya.",
+        "Duk ƙasashen suna raba kogin Niger, mai mahimmanci ga aikin gona.",
+        "Faransanci ita ce hukuma a Nijar; Turanci a Najeriya.",
+        "Yawan haɓakar jama’a a Nijar yana da girma, yana samar da matasa masu yawa."
       ],
-      historyTitle:"Tarihi",
-      historyIntro:"Chadi da Najeriya suna da Kogin Niger a rabonsu amma tarihin su ya bambanta.",
-      history:[
-        "<b>Chadi</b>: Koloniyal na Faransa. Ranta 'yanci: 3 ga Agusta, 1960.",
-        "<b>Najeriya</b>: Koloniyal na Birtaniya. Ranta 'yanci: 1 ga Oktoba, 1960.",
-        "Kogin Niger ya ba da suna ga kasashen biyu, amma kowanne ya tsara makomarsa daban.",
-        "Yawan jama’ar Chadi ya karu a hankali; na Najeriya ya yi yawa sosai, ya zama mafi yawan a Afirka.",
-        "Kabilu da dama suna wuce gona da iri tsakanin kasa, amma asalin kasa ya bambanta.",
-        "Chadi ya mai da hankali kan tsaro da ci gaba mataki-mataki; Najeriya ta fuskanci manyan kalubale da saurin birni."
+      randomFactPrefix: "Ka sani kuwa? ",
+      aboutTitle: "Game da Nijar",
+      aboutContent: [
+        "Nijar ƙasa ce a tsakiyar-ƙasar Afirka ta Yamma, an ɗauki sunanta daga kogin Niger. Yana da manyan hamada a arewa (Sahara), yankin Sahel a tsakiyar, da wurare masu ɗan ƙasa a kudu.",
+        "Yawan jama’ar Nijar yana da matasa sosai, matsakaicin shekaru ~15–16, wanda ke kawo kalubale da dama wajen ilimi, ƙirƙira da ƙarfi aikin yi.",
+        "Tattalin arzikin Nijar ya dogara ne kan aikin gona (yawanci don abinci), dabbobi, hakar uranium, da yiwuwar amfani da wutar lantarki daga rana. Haɓaka hanyoyi da masana’antu suna da muhimmanci.",
+        "A al’adu, Nijar na ɗauke da ƙabilu da yawa: Haoussa, Zarma, Tuareg, Fulani, Kanuri, Larabawa, Tubu, da sauransu, duk suna ba da gudummawa ta kiɗa, sana’o’i, bukukuwa da labarai.",
+        "Duk da ƙalubalen yanayi da tattalin arziki, ’yan Nijar suna nuna juriyya da ƙirƙira: sabbin hanyoyi a noma mai ɗorewa, farawa na dijital da kasuwanci suna ƙaruwa.",
+        "Yawon buɗe ido a Nijar yana haɗa hamadar Sahara, tsaunukan Air, dazuzzuka Tenere, Filin shakatawa na W (tare da ƙasashen gaba), da bukukuwan al’adu na Tuareg da ƙabilu.",
+        "Ilimi da haɓaka ɗan adam suna da muhimmanci: shirye-shiryen bunƙasa makarantu, horo na sana’o’i, da ƙwarewar dijital don haɓaka matasan.",
+        "Abincin Nijar ya haɗa da masara, dawa, shinkafa da abinci irin su tuwo, miya da nama; karimci babban ɓangare ne na al’ada.",
+        "Nijar na taka muhimmiyar rawa a harkokin tsaro da haɗin kai a Sahel; fahimtar al’adunsa, ƙalubale da damar sa yana da mahimmanci ga haɗin gwiwar ci gaba.",
+        "Yayinda Nijar ke haɓaka, haɗa al’ada da ƙirƙira yana da muhimmanci: tallafa wa matasa masu ƙirƙira, inganta ilimi da amfani da makamashin sabuntawa na iya kawo ci gaba mai ɗorewa."
       ],
-      cultureTitle:"Al'adu & Harsuna",
-      cultureIntro:"Chadi da Najeriya suna da arzikin al’adu; Chadi yana da abubuwan musamman da zasuyi tasiri.",
-      culture:[
-        "Chadi: haɗin Hausa, Zarma-Songhai, Tuareg, Fulani, Kanuri tare da bukukuwan ban sha’awa.",
-        "Najeriya: kabilu sama da 250 ciki har da Hausa, Yoruba, Igbo, kowanne da al’adunsa.",
-        "Harsuna a Chadi: Faransanci (na hukuma), Hausa, Zarma, Tamajeq, Fulfulde, Kanuri.",
-        "Harsuna a Najeriya: Turanci (na hukuma), Hausa, Yoruba, Igbo, Fulfulde, Kanuri, Ibibio, Tiv, Edo, da sauransu.",
-        "Kade-kade a Chadi: blues na Tuareg, wakokin Hausa; Najeriya: Afrobeat, Nollywood.",
-        "Sutura ta gargajiya: a Chadi, kayan boubou masu launi da turban Tuareg; Najeriya: agbada, gele, tufafi iri-iri."
+      historyIntro: "Nijar da Najeriya, duk da kusanci da kama suna, suna da tarihin mulkin mallaka da hanyoyin samun ’yanci daban-daban.",
+      historyList: [
+        "<b>Nijar</b>: Tsohuwar mulkin Faransa. 'Yanci: 3 ga Agusta, 1960.",
+        "<b>Najeriya</b>: Tsohuwar mulkin Birtaniya. 'Yanci: 1 ga Oktoba, 1960.",
+        "Duk ƙasashen suna da sunansu daga kogin Niger.",
+        "Nijar ya fi girma a ƙasa amma ƙananan jama’a; Najeriya na da yawan jama’a mafi girma a Afirka.",
+        "Iyakokin mulkin mallaka sun raba ƙabilu, suna haifar da al’ummomi masu alaƙa a ɓangarorin.",
+        "Bayan ’yanci, Nijar da Najeriya sun bi hanyoyi daban; Nijar na fuskantar bushewa da ƙalubalen tattalin arziki.",
+        "Najeriya tana da tattalin arziki mai ƙarfi (mai, masana’antu), Nijar na dogara kan uranium, noma da sabbin fannonin.",
+        "Akwai haɗin kai a kula da kogi, tsaro da kasuwanci, amma kowace ƙasa na da manufofi da al’adun ta."
       ],
-      aboutTitle:"Game da Chadi",
-      aboutContent:[
-        "<p>Chadi, a hukumance Jamhuriyar Chadi, ƙasa ce da babu teku a Afirka ta Yamma, an sanya sunanta daga Kogin Niger. Shi ne ƙasa mafi girma a Afirka ta Yamma ta fuskar yanki, kusan 1.27 miliyan km², amma yawan jama’a ya yi ƙasa saboda hamadar Sahara ta mamaye yanki mai yawa.</p>",
-        "<p>Yawan jama’ar Chadi yana da matakin shekarun matsakaici ƙanana (~15 shekaru). Wannan matasa suna nufi dama da dama: tare da ilimi, kirkire-kirkire da kasuwanci, matasan za su iya kawo ci gaba mai ɗorewa.</p>",
-        "<p>Tattalin arziki: noma (dawa, gero, kiwo), ma’adanai (uranium), da ayyukan makamashi mai sabuntawa (haske rana). Zuba jari a ababen more rayuwa da inganta rayuwar jama’a suna da muhimmanci.</p>",
-        "<p>Al’adu: Chadi yana da bambancin al’adu: bukukuwan Tuareg a hamada, kasuwannin Zarma a bakin koguna, al’adun Fulani da gine-ginen Kanuri. Wannan bambanci yana inganta kirkire-kirkire.</p>",
-        "<p>Kalubale: sauyin yanayi, ƙarancin ruwa, da ci gaban tattalin arziki. Duk da haka, Chadi yana ganin kirkire-kirkire: kananan kamfanoni, sabis na dijital, kayan hannu suna isa kasuwannin duniya ta yanar gizo.</p>",
-        "<p>Manufofin gaba: inganta ilimi, karfafa mata da matasa, inganta noma mai ɗorewa, amfani da fasaha. Ruhin juriya da haɗin kai sun kasance ginshiƙi.</p>",
-        "<p>Yayin da duniya ke ƙara janyo hankali ga Afirka ta Yamma, Chadi yana fitowa da ainihin al’adu, kyawawan yanayi (hamadun hamada, wuraren ajiyar dabbobi), da maraba da baki. Gano damar Chadi kuma ka taimaka wajen haske makomarsa.</p>"
+      cultureIntro: "Nijar da Najeriya suna da al’adu masu kayatarwa, fasaha da harsuna, suna nuna bambancin Afirka ta Yamma.",
+      cultureList: [
+        "Nijar: manyan ƙabilu: Haoussa, Zarma, Tuareg, Fulani, Kanuri, Larabawa, Tubu.",
+        "Najeriya: ƙabilu >250: Haoussa, Yoruba, Igbo, Fulani, Kanuri, Efik, Tiv, Edo, da sauransu.",
+        "Harsuna a Nijar: Faransanci (hukumance), haoussa, zarma, tamajeq, fulfulde, kanouri, larabci, tubu.",
+        "Harsuna a Najeriya: Turanci (hukumance), haoussa, yoruba, igbo, fulfulde, kanouri, ibibio, tiv, edo, da sauransu.",
+        "Kiɗa: blues hamada na Nijar, guitar Touareg, sautukan Haoussa; Afrobeat Najeriya, highlife, hip-hop.",
+        "Bukukuwa: Cure Salee Nijar, bukukuwa na Tuareg; Durbar Najeriya, bukukuwan Yoruba, New Yam Igbo.",
+        "Sana’o’i: fata Nijar, kayan azurfa Touareg, ɗinki; zanen Najeriya (Aso Oke), kayan ado da lu’u-lu’u.",
+        "Abinci: Nijar: masara, dawa, shinkafa, miya; Najeriya: jollof, pounded yam, egusi; cin abinci tare yana da muhimmanci.",
+        "Tufafi: launuka masu haske na Sahel a Nijar; tufafin gargajiya iri-iri a Najeriya (agbada, buba/iro, wrappers).",
+        "Canjin al’adu: kasuwannin iyaka, harshen haoussa a biyu, amma kowace ƙasa na da al’adun ta."
       ],
-      quizTitle:"Quiz: Chadi ko Najeriya?",
-      quiz:[
+      quiz: [
         {
-          q:"Wacce ƙasa ke da matakin shekarun matsakaici ƙanana (~15)?",
-          a:["Najeriya","Chadi","Duka biyun"],
-          r:1
+          q: "Wanne ƙasa ke da filin ƙasa mafi girma?",
+          a: ["Najeriya", "Nijar", "Duk daidai"], 
+          r: 1
         },
         {
-          q:"Wacce ƙasa tafi girma ta fuskar yanki?",
-          a:["Najeriya","Chadi","Suna daidai"],
-          r:1
+          q: "Wacce babban birni shine Niamey?",
+          a: ["Najeriya", "Nijar", "Duka biyu"], 
+          r: 1
         },
         {
-          q:"Niamey babban birni ne na wacce ƙasa?",
-          a:["Najeriya","Chadi","Babu"],
-          r:1
+          q: "Wacce ƙasa ke da Faransanci a matsayin hukuma?",
+          a: ["Najeriya", "Nijar", "Duka"], 
+          r: 1
         },
         {
-          q:"Wacce ƙasa take cikin tsohuwar mulkin Faransa?",
-          a:["Chadi","Najeriya","Duka"],
-          r:0
+          q: "Wacce ƙasa ke da yawan jama’a mafi yawa?",
+          a: ["Nijar", "Najeriya", "Kusan ɗaya"], 
+          r: 1
         },
         {
-          q:"Hamadar Sahara na rufe sama da 80% na wacce ƙasa?",
-          a:["Najeriya","Chadi","Duka"],
-          r:1
+          q: "Wacce ƙasa na daga cikin manyan masu hakar uranium?",
+          a: ["Najeriya", "Nijar", "Duka"], 
+          r: 1
         },
         {
-          q:"Wacce ƙasa ba ta da teku?",
-          a:["Najeriya","Chadi","Duka"],
-          r:1
+          q: "Wacce ƙasa ke da matsakaicin shekaru ~15?",
+          a: ["Najeriya", "Nijar", "Duka"], 
+          r: 1
         },
         {
-          q:"Uranium ana fitarwa daga wacce ƙasa?",
-          a:["Najeriya","Chadi","Duka"],
-          r:1
+          q: "An mallaki wacce ƙasa da Faransa?",
+          a: ["Najeriya", "Nijar", "Duka"], 
+          r: 1
         },
         {
-          q:"Masana'antar fim ta Nollywood tana na wacce ƙasa?",
-          a:["Chadi","Najeriya","Duka"],
-          r:1
+          q: "A wanne ƙasa ake samun birnin Lagos?",
+          a: ["Nijar", "Najeriya", "Babu"], 
+          r: 1
         },
         {
-          q:"Wacce ƙasa ce mafi yawan jama’a a Afirka?",
-          a:["Chadi","Najeriya","Duka"],
-          r:1
+          q: "Wacce ƙasa ta fi hamada (Sahara >80%)?",
+          a: ["Najeriya", "Nijar", "Duka"], 
+          r: 1
         },
         {
-          q:"Wacce ƙasa ke akai-akai ci gaba da kirkire-kirkire daga matasa?",
-          a:["Najeriya","Chadi","Duka"],
-          r:1
+          q: "Wacce ƙasar ke amfani da franc CFA (XOF)?",
+          a: ["Najeriya", "Nijar", "Duka"], 
+          r: 1
+        },
+        {
+          q: "Wacce ƙasa ke dogara da man fetur wajen fitarwa?",
+          a: ["Nijar", "Najeriya", "Duka"], 
+          r: 1
+        },
+        {
+          q: "Wacce harshen hukuma shine Turanci?",
+          a: ["Nijar", "Najeriya", "Duka"], 
+          r: 1
+        },
+        {
+          q: "Wane suna ya fara a jeri haruffa?",
+          a: ["Nijar", "Najeriya", "Daidai"], 
+          r: 0
+        },
+        {
+          q: "Wacce ƙasa ke da matasa mafi yawa?",
+          a: ["Najeriya", "Nijar", "Daidai"], 
+          r: 1
+        },
+        {
+          q: "Wacce ƙasa ce ba ta da teku (enclaved)?",
+          a: ["Najeriya", "Nijar", "Duka"], 
+          r: 1
         }
       ],
-      contactTitle:"Tuntuɓi",
-      contactBtn:"Aika",
-      contactThanks:"Na gode da saƙonka!",
       correctText: "Daidai ne!",
-      incorrectText: "Ba daidai ba."
+      incorrectText: "Ba daidai ba!",
+      contact: {
+        emailLabel: "Email:",
+        whatsappLabel: "WhatsApp:",
+        nameLabel: "Suna:"
+      },
+      viewNiamey: "Duba Niamey",
+      viewAbuja: "Duba Abuja"
     },
+
     ar: {
-      title:"النيجر مقابل نيجيريا",
-      subtitle:"اكتشف جمال وثقافة وحقائق عن النيجر ونيجيريا.",
-      nav:["الرئيسية","التاريخ","الثقافة","نبذة","اختبار","اتصل"],
-      th:["حقيقة","النيجر","نيجيريا"],
-      homeTitle:"النيجر 🇳🇪 مقابل نيجيريا 🇳🇬",
-      search:"ابحث عن حقيقة...",
+      title: "النيجر مقابل نيجيريا",
+      subtitle: "اكتشف جمال وثقافة وحقائق عن النيجر ونيجيريا.",
+      langOptions: [
+        {value:"en", label:"English"},
+        {value:"fr", label:"Français"},
+        {value:"ha", label:"Hausa"},
+        {value:"ar", label:"العربية"},
+        {value:"es", label:"Español"},
+        {value:"zh", label:"中文"}
+      ],
+      nav: {
+        home: "الرئيسية",
+        about: "عن النيجر",
+        history: "التاريخ",
+        culture: "الثقافة",
+        quiz: "اختبار",
+        contact: "اتصل"
+      },
+      th: ["العنصر","النيجر","نيجيريا"],
+      homeTitle: "النيجر 🇳🇪 vs نيجيريا 🇳🇬",
+      searchPlaceholder: "ابحث عن معلومة...",
       facts: [
-        "النيجر لديها أحد أصغر متوسط أعمار في العالم (~15 عامًا).",
-        "نيجيريا هي الدولة الأكثر اكتظاظًا بالسكان في إفريقيا.",
-        "نهر النيجر يمر في كلا البلدين، لكن النيجر أقل سكانًا.",
-        "نيامي (النيجر) أصغر من لاغوس ولكنه العاصمة الحيوية للنيجر.",
-        "يغطي الصحراء الكبرى أكثر من 80% من مساحة النيجر.",
-        "يعتمد اقتصاد النيجر على الزراعة والتعدين (اليورانيوم) والطاقة المتجددة.",
-        "تراث ثقافي غني: مهرجانات الطوارق، تقاليد الزارما والسونغهاي، فنون الفولاني.",
-        "النيجريون يظهرون الصمود والابتكار في ريادة الأعمال رغم التحديات.",
-        "النيجر أكبر من نيجيريا بمساحة، مع مناظر صحراوية فريدة وتنوع بيولوجي.",
-        "النيجر يستثمر في التعليم والشباب لبناء مستقبل مستدام."
+        "النيجر أكبر مساحة من نيجيريا.",
+        "نيجيريا أكثر سكاناً من النيجر.",
+        "عاصمة النيجر هي نيامي؛ وعاصمة نيجيريا هي أبوجا.",
+        "متوسط عمر السكان في النيجر (~15) من الأصغر عالمياً.",
+        "النيجر يغلب عليه الطابع الصحراوي (الصحراء الكبرى تغطي >80%).",
+        "نيجيريا تشتهر بصناعة Nollywood؛ أما النيجر فلديه تراث ثقافي غني.",
+        "النيجر من كبار منتجي اليورانيوم في العالم.",
+        "يشترك البلدان في نهر النيجر المهم للزراعة.",
+        "الفرنسية اللغة الرسمية في النيجر؛ الإنجليزية في نيجيريا.",
+        "النمو السكاني في النيجر مرتفع، ما يوفر قوة عاملة شابة."
       ],
-      historyTitle:"التاريخ",
-      historyIntro:"يتشارك النيجر ونيجيريا نهر النيجر لكن لكل منهما مسار تاريخي مختلف.",
-      history:[
-        "<b>النيجر</b>: كانت مستعمرة فرنسية. الاستقلال: 3 أغسطس 1960.",
-        "<b>نيجيريا</b>: كانت مستعمرة بريطانية. الاستقلال: 1 أكتوبر 1960.",
-        "أعطى نهر النيجر اسمه لكلا البلدين، لكن كلٌ سلك طريقه الخاص.",
-        "نما عدد سكان النيجر ببطء؛ نيجيريا شهدت انفجارًا سكانيًا لتصبح الأكبر في إفريقيا.",
-        "تتشارك بعض الجماعات العرقية عبر الحدود، لكن الهويات الوطنية تطورت بشكل مختلف.",
-        "ركزت النيجر على الاستقرار والتنمية التدريجية؛ واجهت نيجيريا تحديات أوسع وتحضرًا سريعًا."
+      randomFactPrefix: "هل تعلم؟ ",
+      aboutTitle: "عن النيجر",
+      aboutContent: [
+        "النيجر دولة حبيسة في غرب إفريقيا، سُميت نسبة إلى نهر النيجر. تتميز بمناطق صحراوية شاسعة في الشمال (الصحراء الكبرى)، وحزام السهل (الساحل) في الوسط، ومناطق أكثر خصوبة في الجنوب.",
+        "يعد سكان النيجر من الأصغر سناً في العالم، بمتوسط عمر يقارب 15–16 سنة، مما يمثل تحديات وفرصاً في التعليم والابتكار والقوى العاملة.",
+        "يعتمد اقتصاد النيجر على الزراعة (زراعة الكفاف)، وتربية المواشي، وتعدين اليورانيوم، وإمكانات متنامية في الطاقة الشمسية. تطوير البنية التحتية والصناعات ذات القيمة المضافة ذو أولوية.",
+        "ثقافياً، يضم النيجر مجموعات عرقية متنوعة: الهوسة، الزرما-سونغهاي، الطوارق، الفولاني، الكنوري، العرب، التبو وغيرها، مما يثري التقاليد في الموسيقى والحرف والمهرجانات والحكايات.",
+        "رغم التحديات المناخية والاقتصادية، يظهر النيجرون مرونة وإبداعاً: ابتكارات في الزراعة المستدامة والشركات الرقمية وريادة الأعمال المحلية في تزايد.",
+        "السياحة في النيجر تشمل الواحات والكثبان الصحراوية، جبال آير، صحراء تينيري، متنزه W الوطني (مشترك مع دول مجاورة)، والمهرجانات الثقافية التي ينظمها الطوارق ومجتمعات أخرى.",
+        "التعليم وتنمية الموارد البشرية محور مبادرات تحسين وصول المدارس، والتدريب المهني، والمهارات الرقمية للاستفادة من إمكانيات الشباب.",
+        "المطبخ النيجر: الدخن، الدخن الأبيض، الأرز، وأطباق مثل التوو (عجينة الدخن)، الصلصات بالخضار المحلية، واللحوم المشوية؛ والضيافة قيمة أساسية.",
+        "يلعب النيجر دوراً استراتيجياً في الأمن والتعاون الإقليمي في الساحل؛ وفهم ثقافته وتحدياته وإمكاناته ضروري للشراكات في التنمية والابتكار.",
+        "مع تطور النيجر، يعد التوازن بين التقاليد والابتكار أمراً حاسماً: دعم رواد الأعمال المحليين، وتعزيز التعليم، والاستفادة من الطاقة المتجددة يمكن أن يدفع التقدم المستدام."
       ],
-      cultureTitle:"الثقافة واللغات",
-      cultureIntro:"النيجر ونيجيريا غنيتان ثقافيًا؛ يتميز النيجر بتقاليد فريدة تستحق التقدير العالمي.",
-      culture:[
-        "النيجر: ملتقى ثقافات Hausa وZarma-Songhai وTuareg وFulani وKanuri مع مهرجانات حيوية.",
-        "نيجيريا: أكثر من 250 مجموعة عرقية مثل Hausa وYoruba وIgbo، لكل منها تراث غني.",
-        "لغات النيجر: الفرنسية (رسمية)، Hausa، Zarma، Tamajeq، Fulfulde، Kanuri.",
-        "لغات نيجيريا: الإنجليزية (رسمية)، Hausa، Yoruba، Igbo، Fulfulde، Kanuri، Ibibio، Tiv، Edo، وغيرها.",
-        "موسيقى النيجر: بلوز الطوارق، الفولكلور Hausa؛ نيجيريا: Afrobeat، Nollywood السينمائي.",
-        "الملابس التقليدية: في النيجر، الثياب الملونة وعمائم الطوارق؛ في نيجيريا: agbada وgele وتنوع آخر."
+      historyIntro: "النيجر ونيجيريا، رغم التقارب والتشابه في الأسماء، لديهما تاريخ استعمار ومسارات استقلال مختلفة.",
+      historyList: [
+        "<b>النيجر</b>: كانت مستعمرة فرنسية سابقاً. الاستقلال: 3 أغسطس 1960.",
+        "<b>نيجيريا</b>: كانت مستعمرة بريطانية سابقاً. الاستقلال: 1 أكتوبر 1960.",
+        "اسم البلدين مستمد من نهر النيجر الذي يجري فيهما.",
+        "النيجر أكبر مساحة لكن أقل سكاناً؛ ونيجيريا هي الأكثر سكاناً في إفريقيا.",
+        "الحدود القديمة فصلت مجموعات عرقية، مما خلق مجتمعات مشتركة عبر الحدود.",
+        "بعد الاستقلال، تفاوتت مسارات التنمية؛ يواجه النيجر تحديات الصحراء والاقتصاد.",
+        "اقتصاد نيجيريا أكبر (النفط والصناعة)، بينما يركز النيجر على اليورانيوم والزراعة وقطاعات ناشئة.",
+        "هناك تعاون بشأن إدارة النهر والأمن والتجارة، لكن لكل دولة هويتها وأولوياتها."
       ],
-      aboutTitle:"نبذة عن النيجر",
-      aboutContent:[
-        "<p>النيجر، رسميًا جمهورية النيجر، دولة حبيسة في غرب إفريقيا، سُميت نسبةً إلى نهر النيجر. إنها أكبر دولة في غرب إفريقيا من حيث المساحة (~1.27 مليون كم²)، لكنها قليلة الكثافة السكانية بسبب الصحراء الكبرى التي تغطي الجزء الأكبر منها.</p>",
-        "<p>يعد متوسط العمر في النيجر من بين الأصغر عالميًا (~15 عامًا). تمثل هذه الفئة الشابة تحديًا وفرصة: من خلال التعليم والابتكار وريادة الأعمال، يمكن للشباب دفع النمو المستقبلي.</p>",
-        "<p>اقتصاديًا، يعتمد النيجر على الزراعة (الدخن، والسرغوم، وتربية الماشية)، والتعدين (تصدير اليورانيوم)، ويستكشف الطاقة المتجددة (مشاريع شمسية). الاستثمار في البنية التحتية ورأس المال البشري أمر حاسم.</p>",
-        "<p>ثقافيًا، النيجر غني: من مهرجانات الطوارق في الصحراء إلى أسواق Zarma على ضفاف الأنهار، من تقاليد Fulani إلى التراث المعماري Kanuri. هذا التنوع يعزز الإبداع والصمود.</p>",
-        "<p>تشمل التحديات آثار تغير المناخ، ونقص المياه، والتنمية الاجتماعية والاقتصادية. ومع ذلك، يبتكر النيجريون: شركات صغيرة، وخدمات رقمية، وحرف يدوية تصل إلى الأسواق العالمية عبر الإنترنت.</p>",
-        "<p>تشمل الرؤية الاستراتيجية للنيجر تحسين التعليم وتمكين النساء والشباب وتعزيز الزراعة المستدامة واستغلال التكنولوجيا. روح الصمود والتضامن تميز الأمة.</p>",
-        "<p>مع تزايد الاهتمام العالمي بغرب إفريقيا، يبرز النيجر بأصالته الثقافية، وجماله الطبيعي (مناظر الصحراء، والمحميات الطبيعية)، وسكانه المضيافين. اكتشف إمكانات النيجر وساهم في مستقبله المشرق.</p>"
+      cultureIntro: "النيجر ونيجيريا يحضنان ثقافات نابضة وفنوناً ولغات تعكس تنوع غرب إفريقيا.",
+      cultureList: [
+        "النيجر: مجموعات عرقية رئيسية: الهوسة، الزرما-سونغهاي، الطوارق، الفولاني، الكنوري، العرب، التبو.",
+        "نيجيريا: أكثر من 250 مجموعة عرقية، منها الهوسة، اليوروبا، الإيغبو، الفولاني، الكنوري، الإفيك، التيف، الإيدو وغيرها.",
+        "لغات النيجر: الفرنسية (رسمية)، الهوسا، الزرما، تماشق، الفولفِلة، الكنوري، لهجات عربية، لغات تبو.",
+        "لغات نيجيريا: الإنجليزية (رسمية)، الهوسا، اليوروبا، الإيغبو، الفولفِلة، الكنوري، الإبيبيو، التيف، الإيدو، وغيرهم.",
+        "الموسيقى: بلوز الصحراء النيجرية، قيثارة الطوارق، ألحان الهوسا التقليدية؛ أفروبِيت النيجيرية، هايلايف، الهيب هوب.",
+        "المهرجانات: كير سيلي في النيجر، مهرجانات الطوارق؛ دوربار في نيجيريا، احتفالات اليوروبا، مهرجان يام الإيغبو.",
+        "الحرف: عمل جلود النيجر، مجوهرات الفضة الطوارقية، النسيج؛ منسوجات النيجيرية (آسو أوكي)، حلي خرزية.",
+        "المطبخ: النيجر: الدخن، الأرز، الصلصات المحلية؛ نيجيريا: جولووف رايس، بوند يام، إيغوسي؛ وجبات مشتركة قيمة اجتماعية.",
+        "الملابس: أزياء صحراوية ملونة في النيجر؛ بزّات تقليدية متنوعة في نيجيريا (أغبادة، بوبا/إيرو، لفائف).",
+        "التبادل الثقافي: الأسواق المشتركة، لغة الهوسا شائعة، لكن لكل دولة عاداتها الفريدة."
       ],
-      quizTitle:"اختبار: النيجر أم نيجيريا؟",
-      quiz:[
+      quiz: [
         {
-          q:"أي دولة لديها متوسط عمر أصغر (~15 عامًا)؟",
-          a:["نيجيريا","النيجر","كليهما"],
-          r:1
+          q: "أي بلد لديه مساحة أكبر؟",
+          a: ["نيجيريا", "النيجر", "مساحة متساوية"], 
+          r: 1
         },
         {
-          q:"أي دولة أكبر من حيث المساحة؟",
-          a:["نيجيريا","النيجر","متساويان"],
-          r:1
+          q: "ما هي عاصمة النيجر؟",
+          a: ["نيجيريا", "النيجر", "كلاهما"], 
+          r: 1
         },
         {
-          q:"نيامي هي عاصمة أي دولة؟",
-          a:["نيجيريا","النيجر","لا شيء"],
-          r:1
+          q: "أي بلد اللغة الرسمية فيه هي الفرنسية؟",
+          a: ["نيجيريا", "النيجر", "كلاهما"], 
+          r: 1
         },
         {
-          q:"أي دولة كانت مستعمرة فرنسية؟",
-          a:["النيجر","نيجيريا","كليهما"],
-          r:0
+          q: "أي بلد أكبر سكاناً؟",
+          a: ["النيجر", "نيجيريا", "متقارب"], 
+          r: 1
         },
         {
-          q:"الصحراء الكبرى تغطي أكثر من 80% من مساحة أي دولة؟",
-          a:["نيجيريا","النيجر","كليهما"],
-          r:1
+          q: "أي بلد من كبار منتجي اليورانيوم؟",
+          a: ["نيجيريا", "النيجر", "كلاهما"], 
+          r: 1
         },
         {
-          q:"أي دولة حبيسة؟",
-          a:["نيجيريا","النيجر","كليهما"],
-          r:1
+          q: "في أي بلد متوسط عمر السكان حوالي 15 سنة؟",
+          a: ["نيجيريا", "النيجر", "كلاهما"], 
+          r: 1
         },
         {
-          q:"اليورانيوم يُستخرج من أي دولة؟",
-          a:["نيجيريا","النيجر","كليهما"],
-          r:1
+          q: "أي بلد كان مستعمرة فرنسية؟",
+          a: ["نيجيريا", "النيجر", "كلاهما"], 
+          r: 1
         },
         {
-          q:"صناعة الفيلم Nollywood تنتمي إلى أي دولة؟",
-          a:["النيجر","نيجيريا","كليهما"],
-          r:1
+          q: "في أي بلد تقع مدينة لاجوس؟",
+          a: ["النيجر", "نيجيريا", "لا في أي منهما"], 
+          r: 1
         },
         {
-          q:"أي دولة هي الأكبر سكانًا في إفريقيا؟",
-          a:["النيجر","نيجيريا","كليهما"],
-          r:1
+          q: "أي بلد يغلب عليه الطابع الصحراوي (>80%)؟",
+          a: ["نيجيريا", "النيجر", "كلاهما"], 
+          r: 1
         },
         {
-          q:"أي دولة تشتهر بروح الابتكار من الشباب؟",
-          a:["نيجيريا","النيجر","كليهما"],
-          r:1
+          q: "أي بلد عملته فرنك CFA (XOF)؟",
+          a: ["نيجيريا", "النيجر", "كلاهما"], 
+          r: 1
+        },
+        {
+          q: "أي بلد يعتمد بشكل كبير على صادرات النفط؟",
+          a: ["النيجر", "نيجيريا", "كلاهما"], 
+          r: 1
+        },
+        {
+          q: "أي بلد اللغة الرسمية فيه الإنجليزية؟",
+          a: ["النيجر", "نيجيريا", "كلاهما"], 
+          r: 1
+        },
+        {
+          q: "أي الاسم يبدأ أبجديّاً أولاً؟",
+          a: ["النيجر", "نيجيريا", "متطابق"], 
+          r: 0
+        },
+        {
+          q: "أي بلد لديه سكانٌ أصغر سناً؟",
+          a: ["نيجيريا", "النيجر", "متساوي"], 
+          r: 1
+        },
+        {
+          q: "أي بلد محاط باليابسة (دون منفذ بحري)؟",
+          a: ["نيجيريا", "النيجر", "كلاهما"], 
+          r: 1
         }
       ],
-      contactTitle:"اتصل",
-      contactBtn:"إرسال",
-      contactThanks:"شكراً لرسالتك!",
       correctText: "صحيح!",
-      incorrectText: "خطأ!"
+      incorrectText: "خطأ!",
+      contact: {
+        emailLabel: "البريد الإلكتروني:",
+        whatsappLabel: "واتساب:",
+        nameLabel: "الاسم:"
+      },
+      viewNiamey: "عرض نيامي",
+      viewAbuja: "عرض أبوجا"
+    },
+
+    es: {
+      title: "Níger vs Nigeria",
+      subtitle: "Descubre la belleza, cultura y hechos sobre Níger y Nigeria.",
+      langOptions: [
+        {value:"en", label:"English"},
+        {value:"fr", label:"Français"},
+        {value:"ha", label:"Hausa"},
+        {value:"ar", label:"العربية"},
+        {value:"es", label:"Español"},
+        {value:"zh", label:"中文"}
+      ],
+      nav: {
+        home: "Inicio",
+        about: "Acerca de Níger",
+        history: "Historia",
+        culture: "Cultura",
+        quiz: "Quiz",
+        contact: "Contacto"
+      },
+      th: ["Hecho","Níger","Nigeria"],
+      homeTitle: "Níger 🇳🇪 vs Nigeria 🇳🇬",
+      searchPlaceholder: "Buscar un dato...",
+      facts: [
+        "Níger tiene una superficie mayor que Nigeria.",
+        "Nigeria es más poblada que Níger.",
+        "La capital de Níger es Niamey; la de Nigeria es Abuja.",
+        "La edad mediana en Níger (~15) está entre las más bajas del mundo.",
+        "Níger es predominantemente desértico (Sáhara >80%).",
+        "Nigeria es famosa por Nollywood; Níger por su rico patrimonio cultural.",
+        "Níger es uno de los principales productores de uranio en el mundo.",
+        "Ambos comparten el río Níger, vital para la agricultura local.",
+        "El francés es oficial en Níger; el inglés en Nigeria.",
+        "El crecimiento poblacional en Níger es alto, ofreciendo fuerza joven."
+      ],
+      randomFactPrefix: "¿Sabías que? ",
+      aboutTitle: "Acerca de Níger",
+      aboutContent: [
+        "Níger es un país sin salida al mar en África Occidental, nombrado por el río Níger. Se caracteriza por vastos desiertos en el norte (el Sáhara), la región del Sahel en el centro y zonas más fértiles en el sur.",
+        "La población de Níger es de las más jóvenes del mundo, con una edad mediana de alrededor de 15–16 años, lo cual representa retos y oportunidades para la educación, innovación y una fuerza laboral dinámica.",
+        "La economía de Níger depende de la agricultura (principalmente de subsistencia), la ganadería, la minería de uranio y un potencial creciente en energía solar. El desarrollo de infraestructura e industrias de valor agregado es prioritario.",
+        "Culturalmente, Níger alberga diversos grupos étnicos: hausa, zarma-songhai, tuareg, fulani, kanuri, árabes, toubou, entre otros, contribuyendo a ricas tradiciones en música, artesanía, festivales y narraciones.",
+        "A pesar de retos climáticos y económicos, los nigerinos muestran resiliencia y creatividad: innovaciones en agricultura sostenible, startups digitales y emprendimiento local están en auge.",
+        "El turismo en Níger incluye oasis y dunas del Sáhara, montañas Air, desierto de Tenéré, Parque Nacional W (compartido con países vecinos) y festivales culturales de los tuareg y otras comunidades.",
+        "La educación y el desarrollo del capital humano son centrales: iniciativas para mejorar el acceso escolar, formación técnica y alfabetización digital para aprovechar el potencial juvenil.",
+        "La cocina de Níger presenta mijo, sorgo, arroz y platos como tuwo, sopas con vegetales locales y carnes a la parrilla; la hospitalidad es un valor cultural esencial.",
+        "Níger juega un papel estratégico en la seguridad regional y cooperación en el Sahel; entender su cultura, desafíos y potencial es clave para asociaciones en desarrollo e innovación.",
+        "A medida que Níger crece, equilibrar tradición e innovación es crucial: apoyar a emprendedores locales, fomentar educación y aprovechar energías renovables puede impulsar un progreso sostenible."
+      ],
+      historyIntro: "Níger y Nigeria, pese a su proximidad y nombres semejantes, tienen historias coloniales y caminos a la independencia distintos.",
+      historyList: [
+        "<b>Níger</b>: Antigua colonia francesa. Independencia: 3 de agosto de 1960.",
+        "<b>Nigeria</b>: Antigua colonia británica. Independencia: 1 de octubre de 1960.",
+        "Ambos llevan el nombre del río Níger, que fluye por sus territorios.",
+        "Níger es mayor en superficie pero con menor densidad; Nigeria tiene la población más grande de África.",
+        "Fronteras coloniales dividieron grupos étnicos, creando comunidades transfronterizas que comparten idiomas y culturas.",
+        "Tras la independencia, los países siguieron rutas de desarrollo diferentes; Níger enfrenta desertificación y desafíos económicos.",
+        "La economía nigeriana es mayor (petróleo, industria), mientras Níger se centra en uranio, agricultura y sectores emergentes.",
+        "Existe cooperación en gestión del río, seguridad y comercio, pero cada nación posee su identidad y prioridades propias."
+      ],
+      cultureIntro: "Níger y Nigeria albergan culturas vibrantes, artes y lenguas que reflejan la diversidad de África Occidental.",
+      cultureList: [
+        "Níger: principales grupos étnicos: hausa, zarma-songhai, tuareg, fulani, kanuri, árabes, toubou.",
+        "Nigeria: más de 250 grupos étnicos, incluyendo hausa, yoruba, igbo, fulani, kanuri, efik, tiv, edo, entre otros.",
+        "Idiomas en Níger: francés (oficial), hausa, zarma, tamajeq, fulfulde, kanuri, dialectos árabes, lenguas toubou.",
+        "Idiomas en Nigeria: inglés (oficial), hausa, yoruba, igbo, fulfulde, kanuri, ibibio, tiv, edo y muchos más.",
+        "Música: blues del desierto nigerino, guitarra tuareg, melodías tradicionales hausa; afrobeat nigeriano, highlife, hip-hop.",
+        "Festivales: Cure Salee en Níger, festivales tuareg; Durbar en Nigeria, celebraciones yoruba, festival del ñame en Igbo.",
+        "Artesanía: trabajo en cuero nigerino, joyería de plata tuareg, tejido; textiles nigerianos (Aso Oke), abalorios.",
+        "Gastronomía: Níger: mijo, sorgo, arroz, salsas locales; Nigeria: jollof rice, pounded yam, egusi; comidas compartidas valoradas.",
+        "Vestimenta: ropas coloridas en Níger; trajes tradicionales diversos en Nigeria (agbada, buba/iro, wrappers).",
+        "Intercambio cultural: mercados fronterizos, idioma hausa común, pero cada país conserva costumbres únicas."
+      ],
+      quiz: [
+        {
+          q: "¿Qué país tiene mayor superficie?",
+          a: ["Nigeria", "Níger", "Igual"], 
+          r: 1
+        },
+        {
+          q: "¿Cuál es la capital de Níger?",
+          a: ["Nigeria", "Níger", "Ambos"], 
+          r: 1
+        },
+        {
+          q: "¿Qué país tiene el francés como idioma oficial?",
+          a: ["Nigeria", "Níger", "Ambos"], 
+          r: 1
+        },
+        {
+          q: "¿Cuál país es más poblado?",
+          a: ["Níger", "Nigeria", "Aproximadamente igual"], 
+          r: 1
+        },
+        {
+          q: "¿Qué país es uno de los principales productores de uranio?",
+          a: ["Nigeria", "Níger", "Ambos"], 
+          r: 1
+        },
+        {
+          q: "¿En qué país la edad mediana es alrededor de 15 años?",
+          a: ["Nigeria", "Níger", "Ambos"], 
+          r: 1
+        },
+        {
+          q: "¿Qué país fue colonizado por Francia?",
+          a: ["Nigeria", "Níger", "Ambos"], 
+          r: 1
+        },
+        {
+          q: "¿En qué país se ubica la ciudad de Lagos?",
+          a: ["Níger", "Nigeria", "Ninguno"], 
+          r: 1
+        },
+        {
+          q: "¿Qué país es predominantemente desértico (>80%)?",
+          a: ["Nigeria", "Níger", "Ambos"], 
+          r: 1
+        },
+        {
+          q: "¿En qué país se usa el franco CFA (XOF)?",
+          a: ["Nigeria", "Níger", "Ambos"], 
+          r: 1
+        },
+        {
+          q: "¿Qué país depende en gran medida de las exportaciones de petróleo?",
+          a: ["Níger", "Nigeria", "Ambos"], 
+          r: 1
+        },
+        {
+          q: "¿Qué país tiene el inglés como idioma oficial?",
+          a: ["Níger", "Nigeria", "Ambos"], 
+          r: 1
+        },
+        {
+          q: "¿Qué nombre aparece primero alfabéticamente?",
+          a: ["Níger", "Nigeria", "Igual"], 
+          r: 0
+        },
+        {
+          q: "¿Qué país tiene población más joven?",
+          a: ["Nigeria", "Níger", "Igual"], 
+          r: 1
+        },
+        {
+          q: "¿Qué país es sin salida al mar?",
+          a: ["Nigeria", "Níger", "Ambos"], 
+          r: 1
+        }
+      ],
+      correctText: "¡Correcto!",
+      incorrectText: "¡Incorrecto!",
+      contact: {
+        emailLabel: "Correo:",
+        whatsappLabel: "WhatsApp:",
+        nameLabel: "Nombre:"
+      },
+      viewNiamey: "Ver Niamey",
+      viewAbuja: "Ver Abuja"
+    },
+
+    zh: {
+      title: "尼日尔 vs 尼日利亚",
+      subtitle: "探索有关尼日尔和尼日利亚的美景、文化和事实。",
+      langOptions: [
+        {value:"en", label:"English"},
+        {value:"fr", label:"Français"},
+        {value:"ha", label:"Hausa"},
+        {value:"ar", label:"العربية"},
+        {value:"es", label:"Español"},
+        {value:"zh", label:"中文"}
+      ],
+      nav: {
+        home: "主页",
+        about: "关于尼日尔",
+        history: "历史",
+        culture: "文化",
+        quiz: "测验",
+        contact: "联系"
+      },
+      th: ["项目","尼日尔","尼日利亚"],
+      homeTitle: "尼日尔 🇳🇪 vs 尼日利亚 🇳🇬",
+      searchPlaceholder: "搜索一个事实...",
+      facts: [
+        "尼日尔的国土面积大于尼日利亚。",
+        "尼日利亚的人口多于尼日尔。",
+        "尼日尔的首都是尼亚美；尼日利亚的首都是阿布贾。",
+        "尼日尔的中位年龄约15岁，是全球最年轻之一。",
+        "尼日尔大部分地区为沙漠（撒哈拉覆盖>80%）。",
+        "尼日利亚以诺莱坞闻名；尼日尔以丰富的文化遗产著称。",
+        "尼日尔是世界主要铀生产国之一。",
+        "两国共享尼日尔河，对当地农业至关重要。",
+        "法语为尼日尔官方语言；英语为尼日利亚官方语言。",
+        "尼日尔人口增长率高，提供年轻劳动力。"
+      ],
+      randomFactPrefix: "你知道吗？ ",
+      aboutTitle: "关于尼日尔",
+      aboutContent: [
+        "尼日尔是西非的内陆国家，以尼日尔河命名。北部为广袤沙漠（撒哈拉），中部为萨赫勒地带，南部有更肥沃的地区。",
+        "尼日尔人口年龄极小，中位年龄约15–16岁，这对教育、创新和劳动力既是挑战也是机遇。",
+        "尼日尔经济依赖农业（多为自给农业）、畜牧业、铀矿开采，以及日益增长的太阳能潜力。基础设施建设和增值产业是优先事项。",
+        "在文化方面，尼日尔拥有丰富多样的族群：豪萨人、扎尔马-松盖人、图阿雷格、富拉尼、卡努里人、阿拉伯人、图布人等，共同构成音乐、手工艺、节日和故事传统。",
+        "尽管面临气候和经济挑战，尼日尔人展现出韧性和创造力：可持续农业创新、数字初创企业和本地创业蓬勃发展。",
+        "尼日尔旅游包括撒哈拉绿洲和沙丘、艾尔山脉、特内雷沙漠、W国家公园（与邻国共享），以及图阿雷格等社区举办的文化节。",
+        "教育与人力资本发展至关重要：许多项目致力于改善入学率、职业培训和数字素养，以利用年轻人口红利。",
+        "尼日尔美食以小米、高粱、米饭为主，菜肴如tuwo、小米粥、当地蔬菜酱料和烤肉；热情好客是核心文化价值。",
+        "尼日尔在萨赫勒区域安全与合作中扮演战略角色；了解其文化、挑战与潜力对发展与创新伙伴关系至关重要。",
+        "随着尼日尔发展现代化，平衡传统与创新至关：支持本地创业者、推动教育和利用可再生能源可带来可持续进步。"
+      ],
+      historyIntro: "尼日尔和尼日利亚，尽管地理接近且名称相似，却有不同的殖民史和独立历程。",
+      historyList: [
+        "<b>尼日尔</b>：曾为法国殖民地。独立：1960年8月3日。",
+        "<b>尼日利亚</b>：曾为英国殖民地。独立：1960年10月1日。",
+        "两国名称均源于尼日尔河，该河流经两国。",
+        "尼日尔国土面积更大但人口较少；尼日利亚为非洲人口最多国家。",
+        "殖民时期划定的边界分割了若干族群，产生跨境社区共享语言和文化。",
+        "独立后，两国发展路径不同；尼日尔面临沙漠化和经济挑战。",
+        "尼日利亚经济更大（石油、工业），而尼日尔专注于铀矿、农业和新兴产业。",
+        "两国在河流管理、安全和贸易方面有合作，但各自保持独特身份和优先事项。"
+      ],
+      cultureIntro: "尼日尔和尼日利亚拥有丰富的文化、艺术和语言，展现西非多样性。",
+      cultureList: [
+        "尼日尔：主要族群包括豪萨人、扎尔马-松盖人、图阿雷格、富拉尼、卡努里人、阿拉伯人、图布人。",
+        "尼日利亚：超过250个族群，如豪萨、约鲁巴、伊博、富拉尼、卡努里、伊比比奥、提夫、埃多等。",
+        "尼日尔语言：法语（官方）、豪萨语、扎尔马语、塔马舍克语、富拉尼语、卡努里语、阿拉伯方言、图布语。",
+        "尼日利亚语言：英语（官方）、豪萨语、约鲁巴语、伊博语、富拉尼语、卡努里语、伊比比奥语、提夫语、埃多语等。",
+        "音乐：尼日尔沙漠布鲁斯、图阿雷格吉他、豪萨传统旋律；尼日利亚Afrobeat、高生命、嘻哈。",
+        "节日：尼日尔的Cure Salee、图阿雷格节；尼日利亚的Durbar、约鲁巴节、伊博新芋节。",
+        "手工艺：尼日尔的皮革制品、图阿雷格银饰、纺织；尼日利亚纺织（Aso Oke）、珠饰。",
+        "美食：尼日尔以小米、米饭、当地蔬菜酱料；尼日利亚以jollof rice、pounded yam、egusi；共同用餐重视群体。",
+        "服饰：尼日尔的鲜艳萨赫勒长袍；尼日利亚的多样传统服饰（agbada、buba/iro、wrapper）。",
+        "文化交流：边境集市、共同的豪萨语，但各国保留独特习俗。"
+      ],
+      quiz: [
+        {
+          q: "哪个国家面积更大？",
+          a: ["尼日利亚", "尼日尔", "相等"], 
+          r: 1
+        },
+        {
+          q: "尼亚美是哪个国家的首都？",
+          a: ["尼日利亚", "尼日尔", "两者"], 
+          r: 1
+        },
+        {
+          q: "哪个国家的官方语言是法语？",
+          a: ["尼日利亚", "尼日尔", "两者"], 
+          r: 1
+        },
+        {
+          q: "哪个国家人口更多？",
+          a: ["尼日尔", "尼日利亚", "差不多"], 
+          r: 1
+        },
+        {
+          q: "哪个国家是主要铀生产国之一？",
+          a: ["尼日利亚", "尼日尔", "两者"], 
+          r: 1
+        },
+        {
+          q: "哪个国家的中位年龄约为15岁？",
+          a: ["尼日利亚", "尼日尔", "两者"], 
+          r: 1
+        },
+        {
+          q: "哪个国家曾被法国殖民？",
+          a: ["尼日利亚", "尼日尔", "两者"], 
+          r: 1
+        },
+        {
+          q: "拉各斯位于哪个国家？",
+          a: ["尼日尔", "尼日利亚", "都不是"], 
+          r: 1
+        },
+        {
+          q: "哪个国家大部分是沙漠 (>80%)？",
+          a: ["尼日利亚", "尼日尔", "两者"], 
+          r: 1
+        },
+        {
+          q: "哪个国家使用CFA法郎 (XOF)？",
+          a: ["尼日利亚", "尼日尔", "两者"], 
+          r: 1
+        },
+        {
+          q: "哪个国家在很大程度上依赖石油出口？",
+          a: ["尼日尔", "尼日利亚", "两者"], 
+          r: 1
+        },
+        {
+          q: "哪个国家官方语言是英语？",
+          a: ["尼日尔", "尼日利亚", "两者"], 
+          r: 1
+        },
+        {
+          q: "哪个名称按字母顺序最先？",
+          a: ["尼日尔", "尼日利亚", "相同"], 
+          r: 0
+        },
+        {
+          q: "哪个国家人口更年轻？",
+          a: ["尼日利亚", "尼日尔", "相等"], 
+          r: 1
+        },
+        {
+          q: "哪个国家是内陆国？",
+          a: ["尼日利亚", "尼日尔", "两者"], 
+          r: 1
+        }
+      ],
+      correctText: "正确！",
+      incorrectText: "错误！",
+      contact: {
+        emailLabel: "电子邮件：",
+        whatsappLabel: "WhatsApp：",
+        nameLabel: "姓名："
+      },
+      viewNiamey: "查看尼亚美",
+      viewAbuja: "查看阿布贾"
     }
   };
 
-  const state = {lang:"en",page:"home",quizI:0, quizScore:0};
+  // Etat courant
+  const state = { lang: "en", page: "home", quizI: 0, quizScore: 0 };
   const $ = s => document.querySelector(s);
   const $$ = s => document.querySelectorAll(s);
 
-  // Gestion de la langue via select
+  // Initialisation de la langue et remplissage de la dropdown
+  function initLangSelector(){
+    const select = $('#lang-select');
+    // Remplir options (déjà en HTML, mais on peut synchroniser la sélection)
+    select.value = state.lang;
+    select.onchange = ()=>{
+      const val = select.value;
+      setLang(val);
+    };
+  }
+  // Définir la langue
   function setLang(lang){
+    if(!translations[lang]) lang = "en";
     state.lang = lang;
-    // Header
+    // Header title, subtitle
     $('#title-main').textContent = translations[lang].title;
     $('#subtitle-main').textContent = translations[lang].subtitle;
-    // Sélecteur reflète la langue
-    $('#lang-select').value = lang;
-    // Navbar
-    const navLabels = translations[lang].nav;
-    $$('.navbar button').forEach((b,i)=>{
-      if(navLabels[i]) b.textContent = navLabels[i];
+    // Navbar text
+    $$('.navbar button').forEach(btn=>{
+      const page = btn.dataset.page;
+      btn.textContent = translations[lang].nav[page];
     });
-    // Table headers
+    // Home page table headers & title & placeholder
+    $('#home-title').textContent = translations[lang].homeTitle;
     const ths = translations[lang].th;
     $('#th-fact').textContent = ths[0];
     $('#th-niger').textContent = ths[1];
     $('#th-nigeria').textContent = ths[2];
-    $('#home-title').textContent = translations[lang].homeTitle;
-    $('#search-main').placeholder = translations[lang].search;
+    $('#search-main').placeholder = translations[lang].searchPlaceholder;
     // Random fact initial
-    $('#random-fact').textContent = translations[lang].facts[0];
-    // History/Culture/About
-    $('#history-title').textContent = translations[lang].historyTitle;
-    $('#history-intro').textContent = translations[lang].historyIntro;
-    $('#history-list').innerHTML = translations[lang].history.map(e=>"<li>"+e+"</li>").join('');
-    $('#culture-title').textContent = translations[lang].cultureTitle;
-    $('#culture-intro').textContent = translations[lang].cultureIntro;
-    $('#culture-list').innerHTML = translations[lang].culture.map(e=>"<li>"+e+"</li>").join('');
-    // Liens Google Maps
-    // Niamey
-    $('#link-niamey-map').href = 
-      (lang==='fr'||lang==='en' ? "https://www.google.com/maps/search/Niamey,+Niger" : "https://www.google.com/maps/search/Niamey,+Niger");
-    // Abuja
-    $('#link-abuja-map').href = 
-      (lang==='fr'||lang==='en' ? "https://www.google.com/maps/search/Abuja,+Nigeria" : "https://www.google.com/maps/search/Abuja,+Nigeria");
-    // About
+    $('#random-fact').textContent = translations[lang].randomFactPrefix + translations[lang].facts[0];
+    // About page
     $('#about-title').textContent = translations[lang].aboutTitle;
-    const aboutArr = translations[lang].aboutContent || [];
-    $('#about-content').innerHTML = aboutArr.join("");
-    // Quiz
-    $('#quiz-title').textContent = translations[lang].quizTitle;
+    const aboutContainer = $('#about-content');
+    aboutContainer.innerHTML = "";
+    translations[lang].aboutContent.forEach(paragraph => {
+      const p = document.createElement('p');
+      p.innerHTML = paragraph;
+      aboutContainer.appendChild(p);
+    });
+    // History page
+    $('#history-title').textContent = translations[lang].nav.history;
+    $('#history-intro').textContent = translations[lang].historyIntro;
+    const histList = $('#history-list');
+    histList.innerHTML = "";
+    translations[lang].historyList.forEach(item => {
+      const li = document.createElement('li');
+      li.innerHTML = item;
+      histList.appendChild(li);
+    });
+    // Culture page
+    $('#culture-title').textContent = translations[lang].nav.culture;
+    $('#culture-intro').textContent = translations[lang].cultureIntro;
+    const cultList = $('#culture-list');
+    cultList.innerHTML = "";
+    translations[lang].cultureList.forEach(item => {
+      const li = document.createElement('li');
+      li.innerHTML = item;
+      cultList.appendChild(li);
+    });
+    // Map buttons
+    $('#map-niamey').textContent = translations[lang].viewNiamey;
+    $('#map-abuja').textContent = translations[lang].viewAbuja;
+    // Quiz page title
+    $('#quiz-title').textContent = translations[lang].nav.quiz + ": " + translations[lang].homeTitle;
+    // Reset quiz state
     state.quizI = 0;
     state.quizScore = 0;
     loadQuiz();
-    // Contact
-    $('#contact-title').textContent = translations[lang].contactTitle;
-    $('#contact-btn').textContent = translations[lang].contactBtn;
-    $('#contact-success').textContent = translations[lang].contactThanks;
+    // Contact page
+    $('#contact-title').textContent = translations[lang].nav.contact;
+    // Contact info labels
+    const ci = $('.contact-info');
+    ci.innerHTML = `
+      <p><strong>${translations[lang].contact.emailLabel}</strong> <a href="mailto:entreprise2rc@gmail.com">entreprise2rc@gmail.com</a></p>
+      <p><strong>${translations[lang].contact.whatsappLabel}</strong> <a href="https://wa.me/22796380877" target="_blank">+227 96 38 08 77</a></p>
+      <p><strong>${translations[lang].contact.nameLabel}</strong> Issoufou Abdou Chéfou</p>
+    `;
+    // Mettre à jour la dropdown
+    $('#lang-select').value = lang;
+    // Régénérer les cartes pour Home si mobile
+    if(window.innerWidth <= 700){
+      renderFactCards();
+    }
   }
 
-  // Gestion des pages
+  // Changer de page
   function setPage(page){
     state.page = page;
     $$('.page').forEach(p=>p.classList.remove('active'));
@@ -1112,7 +1640,7 @@
     $$('.navbar button').forEach(b=>{
       b.classList.toggle('active', b.dataset.page===page);
     });
-    // Scroll top of .main
+    // Scroll en haut de .main
     document.querySelector('.main').scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -1120,14 +1648,12 @@
   function randFact(){
     const arr = translations[state.lang].facts;
     const idx = Math.floor(Math.random()*arr.length);
-    $('#random-fact').textContent = arr[idx];
+    $('#random-fact').textContent = translations[state.lang].randomFactPrefix + arr[idx];
+    // Afficher bouton partager si disponible
     if(navigator.share){
-      $('#share-fact-btn').style.display = 'inline-block';
-      $('#share-fact-btn').dataset.fact = arr[idx];
-    }
-    // Regénère les cartes mobile
-    if(window.innerWidth <= 700){
-      renderFactCards();
+      const btn = $('#share-fact-btn');
+      btn.style.display = 'inline-block';
+      btn.dataset.fact = translations[state.lang].randomFactPrefix + arr[idx];
     }
   }
 
@@ -1143,34 +1669,35 @@
     }
   }
 
-  // Quiz loading
+  // Quiz logic
   function loadQuiz(){
     const quizArr = translations[state.lang].quiz;
-    if(!quizArr) return;
     if(state.quizI >= quizArr.length){
       $('#quiz-box').innerHTML = `<div style="font-size:1.12rem;"><b>Score:</b> ${state.quizScore}/${quizArr.length}</div>`;
       $('#quiz-result').textContent = '';
       setTimeout(()=>{
-        state.quizI = 0; state.quizScore = 0;
+        state.quizI = 0;
+        state.quizScore = 0;
         loadQuiz();
       }, 2500);
       return;
     }
-    const q = quizArr[state.quizI];
-    let s = `<div class="quiz-question">${q.q}</div><div class="quiz-choices">`;
-    q.a.forEach((c,i)=>{
-      s += `<label><input type="radio" name="quiz" value="${i}"> ${c}</label>`;
+    const qobj = quizArr[state.quizI];
+    let s = `<div class="quiz-question">${qobj.q}</div><div class="quiz-choices">`;
+    qobj.a.forEach((choice,i)=>{
+      s += `<label><input type="radio" name="quiz" value="${i}"> ${choice}</label>`;
     });
     s += '</div><button id="quiz-next" style="margin-top:1.1rem;background:var(--accent);color:#fff;font-weight:700;border-radius:8px;border:none;padding:.55rem 1.6rem;cursor:pointer;">OK</button>';
     $('#quiz-box').innerHTML = s;
     $('#quiz-result').textContent = '';
+    // Animation d’apparition
     const box = $('#quiz-box');
     box.style.opacity = 0;
-    setTimeout(()=>{ box.style.transition='opacity 0.4s'; box.style.opacity=1; },10);
-    $('#quiz-next').onclick = function(){
+    setTimeout(()=>{ box.style.transition='opacity 0.4s'; box.style.opacity=1; }, 10);
+    $('#quiz-next').onclick = ()=>{
       const v = $('input[name="quiz"]:checked');
       if(!v) return;
-      const isCorrect = Number(v.value) === q.r;
+      const isCorrect = Number(v.value) === qobj.r;
       const resEl = $('#quiz-result');
       if(isCorrect){
         resEl.style.color = 'var(--accent2)';
@@ -1182,7 +1709,7 @@
       }
       state.quizI++;
       setTimeout(loadQuiz, 1200);
-    }
+    };
   }
 
   // Menu mobile toggle
@@ -1192,6 +1719,7 @@
     menuBtn.onclick = ()=>{
       nav.classList.toggle('open');
     };
+    // Clic sur item ferme si mobile
     $$('.navbar button').forEach(b=>{
       b.onclick = ()=>{
         setPage(b.dataset.page);
@@ -1213,7 +1741,7 @@
       }
     });
     btn.onclick = ()=>{
-      window.scrollTo({top:0, behavior:'smooth'});
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     };
   }
 
@@ -1237,13 +1765,13 @@
   function initThemeToggle(){
     const theme0 = localStorage.getItem('theme')||'light';
     setTheme(theme0);
-    $('.theme-toggle').onclick = function(){
+    $('.theme-toggle').onclick = ()=>{
       const next = document.documentElement.classList.contains('dark-mode')?'light':'dark';
       setTheme(next);
     };
   }
 
-  // Share page
+  // Share page / fact
   function initShare(){
     if(navigator.share){
       $('#share-btn').style.display='block';
@@ -1256,34 +1784,36 @@
         navigator.share(shareData).catch(()=>{});
       };
       $('#share-fact-btn').onclick = ()=>{
-        const factText = $('#share-fact-btn').dataset.fact || $('#random-fact').textContent;
+        const fact = $('#share-fact-btn').dataset.fact || $('#random-fact').textContent;
         navigator.share({
           title: translations[state.lang].title,
-          text: factText,
+          text: fact,
           url: window.location.href
         }).catch(()=>{});
       };
     }
   }
 
-  // IntersectionObserver for animations
+  // IntersectionObserver pour animations
   function initObserver(){
     const options = { threshold: 0.1 };
-    const observer = new IntersectionObserver((entries)=>{
+    const observer = new IntersectionObserver((entries, obs)=>{
       entries.forEach(entry=>{
         if(entry.isIntersecting){
           entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+          obs.unobserve(entry.target);
         }
       });
     }, options);
+    // Observer sur les cards existantes
     $$('.card').forEach(el=>{
       el.classList.add('fade-in');
       observer.observe(el);
     });
+    // Observer sur fact-cards lors de génération
   }
 
-  // Render fact cards for mobile
+  // Générer des “cards” pour Home sur mobile
   function renderFactCards(){
     const container = $('#fact-cards-container');
     container.innerHTML = '';
@@ -1295,26 +1825,27 @@
       if(row.style.display==='none') return;
       const cells = Array.from(row.querySelectorAll('td'));
       if(cells.length < headers.length) return;
-      const factTitle = cells[0].textContent.trim();
-      const nigerVal = cells[1].textContent.trim();
-      const nigeriaVal = cells[2].textContent.trim();
+      const title = cells[0].textContent.trim();
+      const valN = cells[1].textContent.trim();
+      const valNi = cells[2].textContent.trim();
       const card = document.createElement('div');
       card.className = 'fact-card fade-in';
       const h3 = document.createElement('h3');
-      h3.textContent = `${headers[0]}: ${factTitle}`;
+      h3.textContent = `${headers[0]}: ${title}`;
       const p1 = document.createElement('p');
-      p1.innerHTML = `<strong>${headers[1]}:</strong> ${nigerVal}`;
+      p1.innerHTML = `<strong>${headers[1]}:</strong> ${valN}`;
       const p2 = document.createElement('p');
-      p2.innerHTML = `<strong>${headers[2]}:</strong> ${nigeriaVal}`;
+      p2.innerHTML = `<strong>${headers[2]}:</strong> ${valNi}`;
       card.appendChild(h3);
       card.appendChild(p1);
       card.appendChild(p2);
       container.appendChild(card);
-      const obs = new IntersectionObserver((entries, obsr)=>{
-        entries.forEach(en=>{
+      // Observer pour apparitions
+      const obs = new IntersectionObserver((ents, ob)=>{
+        ents.forEach(en=>{
           if(en.isIntersecting){
             en.target.classList.add('visible');
-            obsr.unobserve(en.target);
+            ob.unobserve(en.target);
           }
         });
       }, { threshold: 0.1 });
@@ -1322,7 +1853,7 @@
     });
   }
 
-  // Resize listener
+  // Resize listener pour régénérer les cartes si besoin
   function initResizeListener(){
     window.addEventListener('resize', ()=>{
       if(window.innerWidth <= 700){
@@ -1334,52 +1865,26 @@
     }
   }
 
-  // Contact form fake
-  function initContact(){
-    $('#contact-form').onsubmit = function(e){
-      e.preventDefault();
-      $('#contact-success').style.display = '';
-      $('#contact-form').reset();
-      setTimeout(()=>{
-        $('#contact-success').style.display = 'none';
-      },3000);
-    };
-  }
-
   // Initialisation
   document.addEventListener('DOMContentLoaded', ()=>{
-    // Langue initiale
-    setLang('en');
-    // Page initiale
+    initLangSelector();
+    setLang(state.lang);
     setPage('home');
-    // Menu toggle
     initMenuToggle();
-    // Back to top
     initBackToTop();
-    // Theme
     initThemeToggle();
-    // Share
     initShare();
-    // Observer animations
     initObserver();
-    // Resize pour cards
     initResizeListener();
-    // Recherche
+    // Home interactions
     $('#search-main').oninput = filterTable;
-    // Random fact
     $('#btn-fact').onclick = randFact;
-    // Navigation (bureau & mobile)
+    // Navbar for desktop
     $$('.navbar button').forEach(b=>{
       b.onclick = ()=>{ setPage(b.dataset.page); };
     });
-    // Language select
-    $('#lang-select').onchange = ()=>{
-      setLang($('#lang-select').value);
-    };
     // Quiz initial
     loadQuiz();
-    // Contact
-    initContact();
   });
 </script>
 </body>
