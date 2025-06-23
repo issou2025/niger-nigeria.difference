@@ -1183,12 +1183,14 @@
       $('#menu-toggle').classList.add('dark');
       $('.theme-toggle').classList.add('dark');
       $('#share-btn').classList.add('dark');
+      $('#colorful-toggle').classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark-mode');
       $('.theme-toggle').textContent="🌞";
       $('#menu-toggle').classList.remove('dark');
       $('.theme-toggle').classList.remove('dark');
       $('#share-btn').classList.remove('dark');
+      $('#colorful-toggle').classList.remove('dark');
     }
     localStorage.setItem('theme',mode);
   }
@@ -1198,6 +1200,24 @@
     $('.theme-toggle').onclick = ()=>{
       const next = document.documentElement.classList.contains('dark-mode')?'light':'dark';
       setTheme(next);
+    };
+  }
+
+  // Colorful mode toggle
+  function setColorful(on){
+    if(on){
+      document.documentElement.classList.add('colorful-mode');
+    } else {
+      document.documentElement.classList.remove('colorful-mode');
+    }
+    localStorage.setItem('colorful', on ? '1' : '0');
+  }
+  function initColorfulToggle(){
+    const start = localStorage.getItem('colorful') === '1';
+    setColorful(start);
+    $('#colorful-toggle').onclick = ()=>{
+      const on = !document.documentElement.classList.contains('colorful-mode');
+      setColorful(on);
     };
   }
 
@@ -1303,6 +1323,7 @@
     initMenuToggle();
     initBackToTop();
     initThemeToggle();
+    initColorfulToggle();
     initShare();
     initObserver();
     initResizeListener();
