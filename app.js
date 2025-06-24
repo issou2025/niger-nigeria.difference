@@ -66,7 +66,8 @@
     // Map buttons
     $('#map-niamey').textContent = translations[lang].viewNiamey;
     $('#map-abuja').textContent = translations[lang].viewAbuja;
-    $('#footer-text').textContent = translations[lang].footerText;
+    const year = new Date().getFullYear();
+    $('#footer-text').textContent = translations[lang].footerText.replace('{year}', year);
     // Quiz page title
     $('#quiz-title').textContent = translations[lang].nav.quiz + ": " + translations[lang].homeTitle;
     // Reset quiz state
@@ -113,6 +114,10 @@
       btn.style.display = 'inline-block';
       btn.dataset.fact = translations[state.lang].randomFactPrefix + arr[idx];
     }
+    const copyBtn = $('#copy-fact-btn');
+    if(copyBtn){
+      copyBtn.dataset.fact = translations[state.lang].randomFactPrefix + arr[idx];
+    }
   }
 
   // Filtrer la table
@@ -131,6 +136,7 @@
   function loadQuiz(){
     const quizArr = translations[state.lang].quiz;
     if(state.quizI >= quizArr.length){
+      document.onkeydown = null;
       $('#quiz-box').innerHTML = `<div style="font-size:1.12rem;"><b>Score:</b> ${state.quizScore}/${quizArr.length}</div>`;
       $('#quiz-result').textContent = '';
       setTimeout(()=>{
@@ -152,7 +158,8 @@
     const box = $('#quiz-box');
     box.style.opacity = 0;
     setTimeout(()=>{ box.style.transition='opacity 0.4s'; box.style.opacity=1; }, 10);
-    $('#quiz-next').onclick = ()=>{
+    const nextBtn = $('#quiz-next');
+    nextBtn.onclick = ()=>{
       const v = $('input[name="quiz"]:checked');
       if(!v) return;
       const isCorrect = Number(v.value) === qobj.r;
@@ -167,6 +174,12 @@
       }
       state.quizI++;
       setTimeout(loadQuiz, 1200);
+    };
+    document.onkeydown = e=>{
+      if(e.key === 'Enter'){
+        const v = $('input[name="quiz"]:checked');
+        if(v) nextBtn.click();
+      }
     };
   }
 
@@ -272,6 +285,38 @@
     }
   }
 
+  // Print page
+  function initPrint(){
+    const btn = $('#print-btn');
+    if(btn) btn.onclick = ()=>{ window.print(); };
+  }
+
+  // Copy fact
+  function initCopyFact(){
+    const btn = $('#copy-fact-btn');
+    if(!btn) return;
+    if(navigator.clipboard){
+      btn.style.display = 'inline-block';
+    }
+    btn.onclick = ()=>{
+      const fact = btn.dataset.fact || $('#random-fact').textContent;
+      navigator.clipboard.writeText(fact).then(()=>{
+        btn.textContent = '✔';
+        setTimeout(()=>{ btn.textContent = '📋 Copy'; }, 1000);
+      }).catch(()=>{});
+    };
+  }
+
+  // Reset search
+  function initResetSearch(){
+    const btn = $('#reset-search');
+    if(!btn) return;
+    btn.onclick = ()=>{
+      $('#search-main').value = '';
+      filterTable();
+    };
+  }
+
   // IntersectionObserver pour animations
   function initObserver(){
     const options = { threshold: 0.1 };
@@ -353,6 +398,9 @@
     initThemeToggle();
     initColorfulToggle();
     initShare();
+    initPrint();
+    initCopyFact();
+    initResetSearch();
     initObserver();
     initResizeListener();
     // Home interactions
