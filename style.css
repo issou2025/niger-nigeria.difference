@@ -363,6 +363,14 @@
   .contact-info strong {
     color: var(--accent);
   }
+  /* FAQ */
+  #faq-content details {
+    margin-bottom: 1rem;
+  }
+  #faq-content summary {
+    cursor: pointer;
+    font-weight: 600;
+  }
   /* Back to top */
   #back-to-top {
     position: fixed;
