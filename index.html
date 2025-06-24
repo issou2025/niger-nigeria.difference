@@ -11,17 +11,21 @@
 <body>
   <!-- Header -->
   <header class="header-main">
-    <button id="menu-toggle" aria-label="Toggle Menu">☰</button>
-    <button class="theme-toggle" aria-label="Toggle Theme" title="Toggle Theme">🌞</button>
-    <button id="colorful-toggle" aria-label="Toggle Colors" title="Colorful Mode">🎨</button>
-    <button id="share-btn" aria-label="Share Page" title="Share">🔗</button>
-    <button id="print-btn" aria-label="Print Page" title="Print">🖨️</button>
-    <label class="color-picker-label" id="picker1-label">
-      <input type="color" id="accent1-picker" value="#4a90e2" aria-label="Accent color">
-    </label>
-    <label class="color-picker-label" id="picker2-label">
-      <input type="color" id="accent2-picker" value="#27ae60" aria-label="Secondary color">
-    </label>
+    <div class="header-controls">
+      <button id="menu-toggle" aria-label="Toggle Menu">☰</button>
+      <div class="header-actions">
+        <button class="theme-toggle" aria-label="Toggle Theme" title="Toggle Theme">🌞</button>
+        <button id="colorful-toggle" aria-label="Toggle Colors" title="Colorful Mode">🎨</button>
+        <label class="color-picker-label" id="picker1-label">
+          <input type="color" id="accent1-picker" value="#4a90e2" aria-label="Accent color">
+        </label>
+        <label class="color-picker-label" id="picker2-label">
+          <input type="color" id="accent2-picker" value="#27ae60" aria-label="Secondary color">
+        </label>
+        <button id="share-btn" aria-label="Share Page" title="Share">🔗</button>
+        <button id="print-btn" aria-label="Print Page" title="Print">🖨️</button>
+      </div>
+    </div>
     <h1 id="title-main">Niger vs Nigeria</h1>
     <p id="subtitle-main">Discover the beauty, culture and facts about Niger and Nigeria.</p>
     <!-- Language selector -->
@@ -33,20 +37,18 @@
       <option value="es">Español</option>
       <option value="zh">中文</option>
     </select>
+    <nav class="navbar" id="navbar">
+      <button data-page="home" class="active" id="nav-home">Home</button>
+      <button data-page="about" id="nav-about">About</button>
+      <button data-page="history" id="nav-history">History</button>
+      <button data-page="culture" id="nav-culture">Culture</button>
+      <button data-page="quiz" id="nav-quiz">Quiz</button>
+      <button data-page="faq" id="nav-faq">FAQ</button>
+      <button data-page="contact" id="nav-contact">Contact</button>
+      <button data-page="economy" id="nav-economy">Economy</button>
+      <button data-page="food" id="nav-food">Cuisine</button>
+    </nav>
   </header>
-
-  <!-- Navbar -->
-  <nav class="navbar" id="navbar">
-    <button data-page="home" class="active" id="nav-home">Home</button>
-    <button data-page="about" id="nav-about">About</button>
-    <button data-page="history" id="nav-history">History</button>
-    <button data-page="culture" id="nav-culture">Culture</button>
-    <button data-page="quiz" id="nav-quiz">Quiz</button>
-    <button data-page="faq" id="nav-faq">FAQ</button>
-    <button data-page="contact" id="nav-contact">Contact</button>
-          <button data-page="economy" id="nav-economy">Economy</button>
-          <button data-page="food" id="nav-food">Cuisine</button>
-  </nav>
 
   <!-- Main content -->
   <main class="main">
