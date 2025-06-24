@@ -250,6 +250,7 @@
       $('.theme-toggle').classList.add('dark');
       $('#share-btn').classList.add('dark');
       $('#colorful-toggle').classList.add('dark');
+      $('#random-color-btn').classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark-mode');
       $('.theme-toggle').textContent="🌞";
@@ -257,6 +258,7 @@
       $('.theme-toggle').classList.remove('dark');
       $('#share-btn').classList.remove('dark');
       $('#colorful-toggle').classList.remove('dark');
+      $('#random-color-btn').classList.remove('dark');
     }
     localStorage.setItem('theme',mode);
   }
@@ -291,6 +293,23 @@ function initColorPickers(){
   const p2 = document.getElementById("accent2-picker");
   if(p1){ p1.oninput = ()=>{ document.documentElement.style.setProperty("--accent", p1.value); }; }
   if(p2){ p2.oninput = ()=>{ document.documentElement.style.setProperty("--accent2", p2.value); }; }
+}
+
+// Random accent colors
+function initRandomColors(){
+  const btn = document.getElementById('random-color-btn');
+  if(!btn) return;
+  btn.onclick = ()=>{
+    const rand = () => '#'+Math.floor(Math.random()*16777215).toString(16).padStart(6,'0');
+    const c1 = rand();
+    const c2 = rand();
+    document.documentElement.style.setProperty('--accent', c1);
+    document.documentElement.style.setProperty('--accent2', c2);
+    const p1 = document.getElementById('accent1-picker');
+    const p2 = document.getElementById('accent2-picker');
+    if(p1) p1.value = c1;
+    if(p2) p2.value = c2;
+  };
 }
 
 
@@ -340,14 +359,28 @@ function initColorPickers(){
   }
 
   // Reset search
-  function initResetSearch(){
-    const btn = $('#reset-search');
-    if(!btn) return;
-    btn.onclick = ()=>{
-      $('#search-main').value = '';
-      filterTable();
-    };
-  }
+function initResetSearch(){
+  const btn = $('#reset-search');
+  if(!btn) return;
+  btn.onclick = ()=>{
+    $('#search-main').value = '';
+    filterTable();
+  };
+}
+
+// Scroll progress bar
+function initScrollProgress(){
+  const bar = document.getElementById('scroll-progress');
+  if(!bar) return;
+  const update = ()=>{
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    const sc = total>0 ? (window.scrollY/total)*100 : 0;
+    bar.style.width = sc + '%';
+  };
+  window.addEventListener('scroll', update);
+  window.addEventListener('resize', update);
+  update();
+}
 
   // IntersectionObserver pour animations
   function initObserver(){
@@ -433,7 +466,9 @@ function initColorPickers(){
     initPrint();
     initCopyFact();
     initColorPickers();
+    initRandomColors();
     initResetSearch();
+    initScrollProgress();
     initObserver();
     initResizeListener();
     // Home interactions
