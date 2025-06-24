@@ -14,6 +14,7 @@
     <button class="theme-toggle" aria-label="Toggle Theme" title="Toggle Theme">🌞</button>
     <button id="colorful-toggle" aria-label="Toggle Colors" title="Colorful Mode">🎨</button>
     <button id="share-btn" aria-label="Share Page" title="Share">🔗</button>
+    <button id="print-btn" aria-label="Print Page" title="Print">🖨️</button>
     <h1 id="title-main">Niger vs Nigeria</h1>
     <p id="subtitle-main">Discover the beauty, culture and facts about Niger and Nigeria.</p>
     <!-- Language selector -->
@@ -45,6 +46,7 @@
         <h2 id="home-title">Niger 🇳🇪 vs Nigeria 🇳🇬</h2>
         <div class="searchbar">
           <input type="text" id="search-main" placeholder="Search a fact...">
+          <button id="reset-search" aria-label="Reset Search" title="Reset">✖️</button>
         </div>
         <div class="table-wrap">
           <table id="main-table">
@@ -71,6 +73,7 @@
           <span id="random-fact">Did you know? Niger and Nigeria share the Niger River but have distinct paths to independence.</span>
           <button id="btn-fact">🔁 Random Fact</button>
           <button id="share-fact-btn" title="Share this fact" style="background: var(--accent); color:#fff; border:none; border-radius:12px; padding:.5rem 1rem; font-weight:600; cursor:pointer; display:none;">Share Fact</button>
+          <button id="copy-fact-btn" title="Copy this fact" style="background: var(--accent); color:#fff; border:none; border-radius:12px; padding:.5rem 1rem; font-weight:600; cursor:pointer; display:none;">📋 Copy</button>
         </div>
       </div>
     </div>
@@ -140,7 +143,7 @@
 
   <!-- Footer -->
   <footer class="footer-main">
-    <p id="footer-text">© 2024 Niger vs Nigeria. All rights reserved.</p>
+    <p id="footer-text">© {year} Niger vs Nigeria. All rights reserved.</p>
   </footer>
 
   <script src="translations.js"></script>
