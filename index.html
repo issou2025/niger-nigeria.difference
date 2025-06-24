@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Discover and compare Niger and Nigeria – history, culture, facts and more.">
 <title>Niger vs Nigeria | Discover & Compare</title>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:600,700|Nunito:400,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -35,7 +36,7 @@
   </header>
 
   <!-- Navbar -->
-  <div class="navbar" id="navbar">
+  <nav class="navbar" id="navbar">
     <button data-page="home" class="active" id="nav-home">Home</button>
     <button data-page="about" id="nav-about">About</button>
     <button data-page="history" id="nav-history">History</button>
@@ -44,10 +45,10 @@
     <button data-page="contact" id="nav-contact">Contact</button>
           <button data-page="economy" id="nav-economy">Economy</button>
           <button data-page="food" id="nav-food">Cuisine</button>
-  </div>
+  </nav>
 
   <!-- Main content -->
-  <div class="main">
+  <main class="main">
     <!-- Home Page -->
     <div class="page active" id="page-home">
       <div class="card">
@@ -80,8 +81,8 @@
         <div class="factbox">
           <span id="random-fact">Did you know? Niger and Nigeria share the Niger River but have distinct paths to independence.</span>
           <button id="btn-fact">🔁 Random Fact</button>
-          <button id="share-fact-btn" title="Share this fact" style="background: var(--accent); color:#fff; border:none; border-radius:12px; padding:.5rem 1rem; font-weight:600; cursor:pointer; display:none;">Share Fact</button>
-          <button id="copy-fact-btn" title="Copy this fact" style="background: var(--accent); color:#fff; border:none; border-radius:12px; padding:.5rem 1rem; font-weight:600; cursor:pointer; display:none;">📋 Copy</button>
+          <button id="share-fact-btn" title="Share this fact">Share Fact</button>
+          <button id="copy-fact-btn" title="Copy this fact">📋 Copy</button>
         </div>
       </div>
     </div>
@@ -101,7 +102,7 @@
       <div class="card">
         <h2 id="history-title">History</h2>
         <p id="history-intro">Niger and Nigeria, despite their proximity and similar names, have distinct colonial pasts and paths to independence.</p>
-        <ul id="history-list" style="margin-top:1rem;line-height:1.85;">
+        <ul id="history-list">
           <!-- Items insérés par JS -->
         </ul>
       </div>
@@ -112,12 +113,12 @@
       <div class="card">
         <h2 id="culture-title">Culture & Languages</h2>
         <p id="culture-intro">Niger and Nigeria are home to vibrant cultures and hundreds of languages.</p>
-        <ul id="culture-list" style="margin-top:1rem;line-height:1.85;">
+        <ul id="culture-list">
           <!-- Items insérés par JS -->
         </ul>
-        <div style="margin-top:1.5rem; display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
-          <a href="https://www.google.com/maps/search/Niamey,+Niger" target="_blank" id="map-niamey" style="background: var(--accent2); color:#fff; padding:.6rem 1rem; border-radius:8px; text-decoration:none; font-weight:600;">View Niamey</a>
-          <a href="https://www.google.com/maps/search/Abuja,+Nigeria" target="_blank" id="map-abuja" style="background: var(--accent2); color:#fff; padding:.6rem 1rem; border-radius:8px; text-decoration:none; font-weight:600;">View Abuja</a>
+        <div class="map-links">
+          <a href="https://www.google.com/maps/search/Niamey,+Niger" target="_blank" id="map-niamey">View Niamey</a>
+          <a href="https://www.google.com/maps/search/Abuja,+Nigeria" target="_blank" id="map-abuja">View Abuja</a>
         </div>
       </div>
     </div>
@@ -158,7 +159,7 @@
         <p>A glimpse into popular dishes and culinary traditions of both nations.</p>
       </div>
     </div>
-  </div>
+  </main>
 
   <!-- Back to top button -->
   <button id="back-to-top" aria-label="Back to top">↑</button>
