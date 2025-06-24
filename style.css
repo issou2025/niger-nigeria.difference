@@ -465,6 +465,26 @@
     outline: 2px dashed var(--accent);
     outline-offset: 2px;
   }
+  /* Color pickers */
+  .color-picker-label {
+    position: absolute;
+    top: 1.4rem;
+    right: 9rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  #picker2-label {
+    right: 11rem;
+  }
+  .color-picker-label input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
   /* Colorful mode toggle */
   #colorful-toggle {
     position: absolute;

@@ -21,10 +21,10 @@
     $('#title-main').textContent = translations[lang].title;
     $('#subtitle-main').textContent = translations[lang].subtitle;
     // Navbar text
-    $$('.navbar button').forEach(btn=>{
-      const page = btn.dataset.page;
-      btn.textContent = translations[lang].nav[page];
-    });
+  $$(".navbar button").forEach(btn=>{
+    const page = btn.dataset.page;
+    btn.textContent = (translations[lang].nav && translations[lang].nav[page]) || (translations["en"].nav ? translations["en"].nav[page] : undefined) || btn.textContent;
+  });
     // Home page table headers & title & placeholder
     $('#home-title').textContent = translations[lang].homeTitle;
     const ths = translations[lang].th;
@@ -261,6 +261,13 @@
       setColorful(on);
     };
   }
+function initColorPickers(){
+  const p1 = document.getElementById("accent1-picker");
+  const p2 = document.getElementById("accent2-picker");
+  if(p1){ p1.oninput = ()=>{ document.documentElement.style.setProperty("--accent", p1.value); }; }
+  if(p2){ p2.oninput = ()=>{ document.documentElement.style.setProperty("--accent2", p2.value); }; }
+}
+
 
   // Share page / fact
   function initShare(){
@@ -400,6 +407,7 @@
     initShare();
     initPrint();
     initCopyFact();
+    initColorPickers();
     initResetSearch();
     initObserver();
     initResizeListener();
