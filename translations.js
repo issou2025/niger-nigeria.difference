@@ -162,7 +162,8 @@
       contact: {
         emailLabel: "Email:",
         whatsappLabel: "WhatsApp:",
-        nameLabel: "Name:"
+        nameLabel: "Name:",
+        plansText: "Need building plans? Click here"
       },
       // About map links
       viewNiamey: "View Niamey",
@@ -324,7 +325,8 @@
       contact: {
         emailLabel: "Email :",
         whatsappLabel: "WhatsApp :",
-        nameLabel: "Nom :"
+        nameLabel: "Nom :",
+        plansText: "Besoin de plans de construction ? Cliquez ici"
       },
       viewNiamey: "Voir Niamey",
       viewAbuja: "Voir Abuja",
@@ -485,7 +487,8 @@
       contact: {
         emailLabel: "Email:",
         whatsappLabel: "WhatsApp:",
-        nameLabel: "Suna:"
+        nameLabel: "Suna:",
+        plansText: "Ana bukatar tsare-tsaren gine-gine? Danna nan"
       },
       viewNiamey: "Duba Niamey",
       viewAbuja: "Duba Abuja",
@@ -646,7 +649,8 @@
       contact: {
         emailLabel: "البريد الإلكتروني:",
         whatsappLabel: "واتساب:",
-        nameLabel: "الاسم:"
+        nameLabel: "الاسم:",
+        plansText: "للحصول على مخططات البناء اضغط هنا"
       },
       viewNiamey: "عرض نيامي",
       viewAbuja: "عرض أبوجا",
@@ -807,7 +811,8 @@
       contact: {
         emailLabel: "Correo:",
         whatsappLabel: "WhatsApp:",
-        nameLabel: "Nombre:"
+        nameLabel: "Nombre:",
+        plansText: "¿Necesitas planos de construcción? Haz clic aquí"
       },
       viewNiamey: "Ver Niamey",
       viewAbuja: "Ver Abuja",
@@ -968,7 +973,8 @@
       contact: {
         emailLabel: "电子邮件：",
         whatsappLabel: "WhatsApp：",
-        nameLabel: "姓名："
+        nameLabel: "姓名：",
+        plansText: "需要建筑图纸？点击这里"
       },
       viewNiamey: "查看尼亚美",
       viewAbuja: "查看阿布贾",
