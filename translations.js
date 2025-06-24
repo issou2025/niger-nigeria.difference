@@ -18,6 +18,7 @@
         history: "History",
         culture: "Culture",
         quiz: "Quiz",
+        faq: "FAQ",
         contact: "Contact"
       },
       // Home / Table
@@ -80,6 +81,7 @@
       ],
       // Quiz: array of questions
       quiz: [
+
         {
           q: "Which country has the larger land area?",
           a: ["Nigeria", "Niger", "They are equal"],
@@ -167,6 +169,15 @@
       // About map links
       viewNiamey: "View Niamey",
       viewAbuja: "View Abuja",
+      faqTitle: "FAQ",
+      faq: [
+        { q: "Why are Niger and Nigeria often confused?", a: "Both countries are named after the Niger River, but they are independent nations with different histories." },
+        { q: "Are Niger and Nigeria the same country?", a: "No. They are two separate West African states with distinct cultures and colonial pasts." },
+        { q: "Which currencies do they use?", a: "Niger uses the West African CFA franc (XOF) while Nigeria uses the naira (NGN)." },
+        { q: "What languages are spoken?", a: "French is official in Niger along with local languages such as Hausa and Zarma. Nigeria's official language is English with many others like Hausa, Yoruba and Igbo." },
+        { q: "Is Niger richer than Nigeria?", a: "Nigeria has a larger economy largely from oil production, whereas Niger relies more on agriculture and mining." },
+        { q: "Can I travel easily between both countries?", a: "Yes, there are border crossings and shared routes, but check visa requirements and security updates." }
+      ],
       footerText: "© {year} Niger vs Nigeria. All rights reserved."
     },
 
@@ -187,6 +198,7 @@
         history: "Histoire",
         culture: "Culture",
         quiz: "Quiz",
+        faq: "FAQ",
         contact: "Contact"
       },
       th: ["Élément","Niger","Nigéria"],
@@ -243,6 +255,7 @@
         "Échanges culturels : marchés frontaliers, langue haoussa commune, mais chaque pays conserve ses coutumes uniques."
       ],
       quiz: [
+
         {
           q: "Quel pays a la plus grande superficie ?",
           a: ["Nigéria", "Niger", "Ils sont égaux"],
@@ -328,6 +341,15 @@
       },
       viewNiamey: "Voir Niamey",
       viewAbuja: "Voir Abuja",
+      faqTitle: "FAQ",
+      faq: [
+        { q: "Pourquoi les noms Niger et Nigéria se ressemblent-ils ?", a: "Les deux pays tirent leur nom du fleuve Niger mais ont des histoires distinctes." },
+        { q: "Le Niger et le Nigéria sont-ils le même pays ?", a: "Non, ce sont deux États indépendants d'Afrique de l'Ouest avec des cultures et des passés coloniaux différents." },
+        { q: "Quelles monnaies utilise-t-on au Niger et au Nigéria ?", a: "Le Niger utilise le franc CFA (XOF), tandis que le Nigéria utilise le naira (NGN)." },
+        { q: "Quelles langues parle-t-on ?", a: "Au Niger, le français est officiel avec des langues comme le haoussa ou le zarma. Au Nigéria, l'anglais est officiel avec le haoussa, le yoruba, l'igbo..." },
+        { q: "Le Niger est-il plus riche que le Nigéria ?", a: "L'économie nigériane est plus importante grâce au pétrole, tandis que celle du Niger repose sur l'agriculture et les mines." },
+        { q: "Peut-on voyager facilement entre les deux pays ?", a: "Oui, il existe des postes frontières et des routes communes ; il faut néanmoins vérifier les visas et la sécurité." }
+      ],
       footerText: "© {year} Niger vs Nigéria. Tous droits réservés."
     },
 
@@ -348,6 +370,7 @@
         history: "Tarihi",
         culture: "Al’adu",
         quiz: "Quiz",
+        faq: "FAQ",
         contact: "Tuntuɓi"
       },
       th: ["Bayanan","Nijar","Najeriya"],
@@ -404,6 +427,7 @@
         "Canjin al’adu: kasuwannin iyaka, harshen haoussa a biyu, amma kowace ƙasa na da al’adun ta."
       ],
       quiz: [
+
         {
           q: "Wanne ƙasa ke da filin ƙasa mafi girma?",
           a: ["Najeriya", "Nijar", "Duk daidai"], 
@@ -489,6 +513,15 @@
       },
       viewNiamey: "Duba Niamey",
       viewAbuja: "Duba Abuja",
+      faqTitle: "FAQ",
+      faq: [
+        { q: "Why are Niger and Nigeria often confused?", a: "Both countries are named after the Niger River, but they are independent nations with different histories." },
+        { q: "Are Niger and Nigeria the same country?", a: "No. They are two separate West African states with distinct cultures and colonial pasts." },
+        { q: "Which currencies do they use?", a: "Niger uses the West African CFA franc (XOF) while Nigeria uses the naira (NGN)." },
+        { q: "What languages are spoken?", a: "French is official in Niger along with local languages such as Hausa and Zarma. Nigeria's official language is English with many others like Hausa, Yoruba and Igbo." },
+        { q: "Is Niger richer than Nigeria?", a: "Nigeria has a larger economy largely from oil production, whereas Niger relies more on agriculture and mining." },
+        { q: "Can I travel easily between both countries?", a: "Yes, there are border crossings and shared routes, but check visa requirements and security updates." }
+      ],
       footerText: "© {year} Nijar da Najeriya. Duk haƙƙoƙi na ajiye."
     },
 
@@ -509,6 +542,7 @@
         history: "التاريخ",
         culture: "الثقافة",
         quiz: "اختبار",
+        faq: "FAQ",
         contact: "اتصل"
       },
       th: ["العنصر","النيجر","نيجيريا"],
@@ -565,6 +599,7 @@
         "التبادل الثقافي: الأسواق المشتركة، لغة الهوسا شائعة، لكن لكل دولة عاداتها الفريدة."
       ],
       quiz: [
+
         {
           q: "أي بلد لديه مساحة أكبر؟",
           a: ["نيجيريا", "النيجر", "مساحة متساوية"], 
@@ -650,6 +685,15 @@
       },
       viewNiamey: "عرض نيامي",
       viewAbuja: "عرض أبوجا",
+      faqTitle: "FAQ",
+      faq: [
+        { q: "Why are Niger and Nigeria often confused?", a: "Both countries are named after the Niger River, but they are independent nations with different histories." },
+        { q: "Are Niger and Nigeria the same country?", a: "No. They are two separate West African states with distinct cultures and colonial pasts." },
+        { q: "Which currencies do they use?", a: "Niger uses the West African CFA franc (XOF) while Nigeria uses the naira (NGN)." },
+        { q: "What languages are spoken?", a: "French is official in Niger along with local languages such as Hausa and Zarma. Nigeria's official language is English with many others like Hausa, Yoruba and Igbo." },
+        { q: "Is Niger richer than Nigeria?", a: "Nigeria has a larger economy largely from oil production, whereas Niger relies more on agriculture and mining." },
+        { q: "Can I travel easily between both countries?", a: "Yes, there are border crossings and shared routes, but check visa requirements and security updates." }
+      ],
       footerText: "© {year} النيجر ونيجيريا. جميع الحقوق محفوظة."
     },
 
@@ -670,6 +714,7 @@
         history: "Historia",
         culture: "Cultura",
         quiz: "Quiz",
+        faq: "FAQ",
         contact: "Contacto"
       },
       th: ["Hecho","Níger","Nigeria"],
@@ -726,6 +771,7 @@
         "Intercambio cultural: mercados fronterizos, idioma hausa común, pero cada país conserva costumbres únicas."
       ],
       quiz: [
+
         {
           q: "¿Qué país tiene mayor superficie?",
           a: ["Nigeria", "Níger", "Igual"], 
@@ -811,6 +857,15 @@
       },
       viewNiamey: "Ver Niamey",
       viewAbuja: "Ver Abuja",
+      faqTitle: "FAQ",
+      faq: [
+        { q: "Why are Niger and Nigeria often confused?", a: "Both countries are named after the Niger River, but they are independent nations with different histories." },
+        { q: "Are Niger and Nigeria the same country?", a: "No. They are two separate West African states with distinct cultures and colonial pasts." },
+        { q: "Which currencies do they use?", a: "Niger uses the West African CFA franc (XOF) while Nigeria uses the naira (NGN)." },
+        { q: "What languages are spoken?", a: "French is official in Niger along with local languages such as Hausa and Zarma. Nigeria's official language is English with many others like Hausa, Yoruba and Igbo." },
+        { q: "Is Niger richer than Nigeria?", a: "Nigeria has a larger economy largely from oil production, whereas Niger relies more on agriculture and mining." },
+        { q: "Can I travel easily between both countries?", a: "Yes, there are border crossings and shared routes, but check visa requirements and security updates." }
+      ],
       footerText: "© {year} Níger vs Nigeria. Todos los derechos reservados."
     },
 
@@ -831,6 +886,7 @@
         history: "历史",
         culture: "文化",
         quiz: "测验",
+        faq: "FAQ",
         contact: "联系"
       },
       th: ["项目","尼日尔","尼日利亚"],
@@ -887,6 +943,7 @@
         "文化交流：边境集市、共同的豪萨语，但各国保留独特习俗。"
       ],
       quiz: [
+
         {
           q: "哪个国家面积更大？",
           a: ["尼日利亚", "尼日尔", "相等"], 
@@ -972,6 +1029,15 @@
       },
       viewNiamey: "查看尼亚美",
       viewAbuja: "查看阿布贾",
+      faqTitle: "FAQ",
+      faq: [
+        { q: "Why are Niger and Nigeria often confused?", a: "Both countries are named after the Niger River, but they are independent nations with different histories." },
+        { q: "Are Niger and Nigeria the same country?", a: "No. They are two separate West African states with distinct cultures and colonial pasts." },
+        { q: "Which currencies do they use?", a: "Niger uses the West African CFA franc (XOF) while Nigeria uses the naira (NGN)." },
+        { q: "What languages are spoken?", a: "French is official in Niger along with local languages such as Hausa and Zarma. Nigeria's official language is English with many others like Hausa, Yoruba and Igbo." },
+        { q: "Is Niger richer than Nigeria?", a: "Nigeria has a larger economy largely from oil production, whereas Niger relies more on agriculture and mining." },
+        { q: "Can I travel easily between both countries?", a: "Yes, there are border crossings and shared routes, but check visa requirements and security updates." }
+      ],
       footerText: "© {year} 尼日尔 vs 尼日利亚。保留所有权利。"
     }
   };

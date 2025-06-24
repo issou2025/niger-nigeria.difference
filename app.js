@@ -63,6 +63,20 @@
       li.innerHTML = item;
       cultList.appendChild(li);
     });
+      // FAQ page
+      $("#faq-title").textContent = translations[lang].faqTitle;
+      const faqContainer = $("#faq-content");
+      faqContainer.innerHTML = "";
+      translations[lang].faq.forEach(it => {
+        const det = document.createElement("details");
+        const sum = document.createElement("summary");
+        sum.textContent = it.q;
+        const p = document.createElement("p");
+        p.textContent = it.a;
+        det.appendChild(sum);
+        det.appendChild(p);
+        faqContainer.appendChild(det);
+      });
     // Map buttons
     $('#map-niamey').textContent = translations[lang].viewNiamey;
     $('#map-abuja').textContent = translations[lang].viewAbuja;
