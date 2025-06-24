@@ -316,12 +316,41 @@
     cursor: pointer;
     transition: background .2s, transform .1s;
   }
+  #share-fact-btn,
   #copy-fact-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: .5rem 1rem;
+    font-weight: 600;
     display: none;
   }
   .factbox button:hover {
     background: var(--accent2);
     transform: scale(1.06);
+  }
+
+  #history-list,
+  #culture-list {
+    margin-top: 1rem;
+    line-height: 1.85;
+  }
+
+  .map-links {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .map-links a {
+    background: var(--accent2);
+    color: #fff;
+    padding: .6rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
   }
   /* Quiz */
   .quiz-question {
