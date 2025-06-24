@@ -82,6 +82,7 @@
       <p><strong>${translations[lang].contact.emailLabel}</strong> <a href="mailto:entreprise2rc@gmail.com">entreprise2rc@gmail.com</a></p>
       <p><strong>${translations[lang].contact.whatsappLabel}</strong> <a href="https://wa.me/22796380877" target="_blank">+227 96 38 08 77</a></p>
       <p><strong>${translations[lang].contact.nameLabel}</strong> Issoufou Abdou Chéfou</p>
+      <p><a href="https://plan-revit-bim-ne.onrender.com" target="_blank">${translations[lang].contact.plansText}</a></p>
     `;
     // Mettre à jour la dropdown
     $('#lang-select').value = lang;

@@ -13,3 +13,4 @@ Small single-page site comparing Niger and Nigeria. It supports multiple languag
 - **New**: copy facts to clipboard
 - **New**: reset the fact search
 - **New**: press Enter to validate quiz answers
+- **New**: link to construction plans
