@@ -56,15 +56,25 @@
     text-decoration: underline;
   }
   /* Header */
-  .header-main {
+.header-main {
     background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
     background-size: 300% 300%;
     padding: 1.8rem 1rem 1rem 1rem;
     border-radius: 0 0 var(--radius) var(--radius);
     box-shadow: var(--shadow);
     text-align: center;
-    position: relative;
     transition: background var(--fade-duration);
+  }
+  .header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
   }
   .header-main h1 {
     font-family: 'Montserrat', Arial, sans-serif;
@@ -149,9 +159,6 @@
   /* Hamburger menu for mobile */
   #menu-toggle {
     display: none;
-    position: absolute;
-    top: 1.4rem;
-    left: 1rem;
     background: rgba(255,255,255,0.3);
     border: none;
     border-radius: 50%;
@@ -431,9 +438,6 @@
   }
   /* Theme toggle */
   .theme-toggle {
-    position: absolute;
-    top: 1.4rem;
-    right: 1.5rem;
     background: rgba(255,255,255,0.18);
     border: none;
     border-radius: 50%;
@@ -455,9 +459,6 @@
   }
   /* Share button */
   #share-btn {
-    position: absolute;
-    top: 1.4rem;
-    right: 5rem;
     background: rgba(255,255,255,0.18);
     border: none;
     border-radius: 50%;
@@ -472,9 +473,6 @@
   }
   /* Print button */
   #print-btn {
-    position: absolute;
-    top: 1.4rem;
-    right: 7rem;
     background: rgba(255,255,255,0.18);
     border: none;
     border-radius: 50%;
@@ -504,16 +502,10 @@
   }
   /* Color pickers */
   .color-picker-label {
-    position: absolute;
-    top: 1.4rem;
-    right: 9rem;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     overflow: hidden;
-  }
-  #picker2-label {
-    right: 11rem;
   }
   .color-picker-label input {
     width: 100%;
@@ -524,9 +516,6 @@
   }
   /* Colorful mode toggle */
   #colorful-toggle {
-    position: absolute;
-    top: 1.4rem;
-    right: 3.2rem;
     background: rgba(255,255,255,0.18);
     border: none;
     border-radius: 50%;
