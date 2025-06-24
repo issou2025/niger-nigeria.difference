@@ -63,6 +63,16 @@
       li.innerHTML = item;
       cultList.appendChild(li);
     });
+    // Economy page
+    const econTitle = document.getElementById('economy-title');
+    const econIntro = document.getElementById('economy-intro');
+    if(econTitle) econTitle.textContent = translations[lang].economyTitle;
+    if(econIntro) econIntro.textContent = translations[lang].economyIntro;
+    // Food page
+    const foodTitle = document.getElementById('food-title');
+    const foodIntro = document.getElementById('food-intro');
+    if(foodTitle) foodTitle.textContent = translations[lang].foodTitle;
+    if(foodIntro) foodIntro.textContent = translations[lang].foodIntro;
       // FAQ page
       $("#faq-title").textContent = translations[lang].faqTitle;
       const faqContainer = $("#faq-content");
