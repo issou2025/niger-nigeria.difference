@@ -19,7 +19,9 @@
         culture: "Culture",
         quiz: "Quiz",
         faq: "FAQ",
-        contact: "Contact"
+        contact: "Contact",
+        economy: "Economy",
+        food: "Cuisine"
       },
       // Home / Table
       th: ["Fact","Niger","Nigeria"],
@@ -79,6 +81,10 @@
         "Clothing: colorful robes in Nigerien Sahel; Nigeria’s diverse traditional attire (agbada, buba/iro, wrappers).",
         "Cultural exchange: border markets, shared languages (e.g., Hausa spoken in both), but each retains unique customs."
       ],
+      economyTitle: "Economy",
+      economyIntro: "Brief overview of key industries and economic figures for Niger and Nigeria.",
+      foodTitle: "Cuisine",
+      foodIntro: "A glimpse into popular dishes and culinary traditions of both nations.",
       // Quiz: array of questions
       quiz: [
 
@@ -200,7 +206,9 @@
         culture: "Culture",
         quiz: "Quiz",
         faq: "FAQ",
-        contact: "Contact"
+        contact: "Contact",
+        economy: "Économie",
+        food: "Cuisine"
       },
       th: ["Élément","Niger","Nigéria"],
       homeTitle: "Niger 🇳🇪 vs Nigéria 🇳🇬",
@@ -255,6 +263,10 @@
         "Tenues : robes colorées sahéliennes au Niger ; tenues traditionnelles nigérianes variées (agbada, buba/iro, wrappers).",
         "Échanges culturels : marchés frontaliers, langue haoussa commune, mais chaque pays conserve ses coutumes uniques."
       ],
+      economyTitle: "Économie",
+      economyIntro: "Brève présentation des secteurs clés et des chiffres économiques du Niger et du Nigéria.",
+      foodTitle: "Cuisine",
+      foodIntro: "Un aperçu des plats populaires et des traditions culinaires des deux nations.",
       quiz: [
 
         {
@@ -373,7 +385,9 @@
         culture: "Al’adu",
         quiz: "Quiz",
         faq: "FAQ",
-        contact: "Tuntuɓi"
+        contact: "Tuntuɓi",
+        economy: "Tattalin Arziki",
+        food: "Abinci"
       },
       th: ["Bayanan","Nijar","Najeriya"],
       homeTitle: "Nijar 🇳🇪 vs Najeriya 🇳🇬",
@@ -428,6 +442,10 @@
         "Tufafi: launuka masu haske na Sahel a Nijar; tufafin gargajiya iri-iri a Najeriya (agbada, buba/iro, wrappers).",
         "Canjin al’adu: kasuwannin iyaka, harshen haoussa a biyu, amma kowace ƙasa na da al’adun ta."
       ],
+      economyTitle: "Tattalin Arziki",
+      economyIntro: "Taƙaitaccen bayani kan manyan masana’antu da lissafin tattalin arzikin Nijar da Najeriya.",
+      foodTitle: "Abinci",
+      foodIntro: "Dubin wasu shahararrun abinci da al’adun girke-girke na ƙasashen biyu.",
       quiz: [
 
         {
@@ -546,7 +564,9 @@
         culture: "الثقافة",
         quiz: "اختبار",
         faq: "FAQ",
-        contact: "اتصل"
+        contact: "اتصل",
+        economy: "الاقتصاد",
+        food: "المأكولات"
       },
       th: ["العنصر","النيجر","نيجيريا"],
       homeTitle: "النيجر 🇳🇪 vs نيجيريا 🇳🇬",
@@ -601,6 +621,10 @@
         "الملابس: أزياء صحراوية ملونة في النيجر؛ بزّات تقليدية متنوعة في نيجيريا (أغبادة، بوبا/إيرو، لفائف).",
         "التبادل الثقافي: الأسواق المشتركة، لغة الهوسا شائعة، لكن لكل دولة عاداتها الفريدة."
       ],
+      economyTitle: "الاقتصاد",
+      economyIntro: "نظرة موجزة على القطاعات الرئيسية والأرقام الاقتصادية في النيجر ونيجيريا.",
+      foodTitle: "المأكولات",
+      foodIntro: "لمحة عن الأطباق المشهورة والتقاليد الطهوية في كلا البلدين.",
       quiz: [
 
         {
@@ -719,7 +743,9 @@
         culture: "Cultura",
         quiz: "Quiz",
         faq: "FAQ",
-        contact: "Contacto"
+        contact: "Contacto",
+        economy: "Economía",
+        food: "Gastronomía"
       },
       th: ["Hecho","Níger","Nigeria"],
       homeTitle: "Níger 🇳🇪 vs Nigeria 🇳🇬",
@@ -774,6 +800,10 @@
         "Vestimenta: ropas coloridas en Níger; trajes tradicionales diversos en Nigeria (agbada, buba/iro, wrappers).",
         "Intercambio cultural: mercados fronterizos, idioma hausa común, pero cada país conserva costumbres únicas."
       ],
+      economyTitle: "Economía",
+      economyIntro: "Breve reseña de las principales industrias y cifras económicas de Níger y Nigeria.",
+      foodTitle: "Gastronomía",
+      foodIntro: "Un vistazo a los platos populares y tradiciones culinarias de ambas naciones.",
       quiz: [
 
         {
@@ -892,7 +922,9 @@
         culture: "文化",
         quiz: "测验",
         faq: "FAQ",
-        contact: "联系"
+        contact: "联系",
+        economy: "经济",
+        food: "美食"
       },
       th: ["项目","尼日尔","尼日利亚"],
       homeTitle: "尼日尔 🇳🇪 vs 尼日利亚 🇳🇬",
@@ -947,6 +979,10 @@
         "服饰：尼日尔的鲜艳萨赫勒长袍；尼日利亚的多样传统服饰（agbada、buba/iro、wrapper）。",
         "文化交流：边境集市、共同的豪萨语，但各国保留独特习俗。"
       ],
+      economyTitle: "经济",
+      economyIntro: "概述尼日尔和尼日利亚的主要产业和经济数据。",
+      foodTitle: "美食",
+      foodIntro: "了解两国受欢迎的菜肴和烹饪传统。",
       quiz: [
 
         {
