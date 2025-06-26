@@ -1,189 +1,868 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" dir="ltr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Discover and compare Niger and Nigeria – history, culture, facts and more.">
-<title>Niger vs Nigeria | Discover & Compare</title>
-<link href="https://fonts.googleapis.com/css?family=Montserrat:600,700|Nunito:400,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accueil – Issoufou Abdou Chefou | Ingénieur Structure</title>
+
+  <!-- SEO & Metadonnées -->
+  <meta name="description" content="Portfolio interactif de Issoufou Abdou Chefou. Découvrez mes compétences, mes projets en 3D et mon expertise en ingénierie structure.">
+  <meta name="keywords" content="Issoufou Abdou Chefou, ingénieur structure, portfolio interactif, Revit, Robot, BIM, 3D, FAQ ingénierie">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="mobile-styles.css">
+
+  <style>
+    /* === PALETTE "AURORA NEON" === */
+    :root {
+      --color-bg: #0A0A1A;
+      --color-bg-secondary: #0F0F2A;
+      --color-text: #E8E8F0;
+      --color-text-light: #A0A0B0;
+      --color-accent-1: #00D4FF;
+      --color-accent-2: #FF0080;
+      --color-accent-3: #8B5CF6;
+      --color-accent-4: #10B981;
+      --gradient-primary: linear-gradient(135deg, var(--color-accent-1), var(--color-accent-2));
+      --gradient-secondary: linear-gradient(135deg, var(--color-accent-3), var(--color-accent-4));
+      --gradient-text: linear-gradient(90deg, var(--color-accent-1), var(--color-accent-2), var(--color-accent-3));
+      
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body: 'Poppins', sans-serif;
+      --radius: 16px;
+      --radius-lg: 24px;
+      --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      --shadow-glow: 0 0 40px rgba(0, 212, 255, 0.3);
+    }
+
+    /* === Reset & Base === */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      font-weight: 300;
+    }
+
+    /* === Background Effects === */
+    .background-glow {
+      position: fixed;
+      width: 1000px;
+      height: 1000px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+      top: -300px;
+      left: -300px;
+      animation: move-glow 25s infinite alternate ease-in-out;
+      z-index: -1;
+    }
+
+    .background-glow-2 {
+      position: fixed;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 0, 128, 0.08) 0%, transparent 70%);
+      bottom: -200px;
+      right: -200px;
+      animation: move-glow-2 30s infinite alternate-reverse ease-in-out;
+      z-index: -1;
+    }
+
+    @keyframes move-glow {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(50vw, 30vh) scale(1.2); }
+      100% { transform: translate(100vw, 60vh) scale(0.8); }
+    }
+
+    @keyframes move-glow-2 {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-30vw, -50vh) scale(1.3); }
+      100% { transform: translate(-60vw, -100vh) scale(0.9); }
+    }
+
+    /* === Custom Cursor === */
+    .cursor-dot, .cursor-outline {
+      pointer-events: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      opacity: 1;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      transition: opacity 0.3s ease;
+    }
+
+    .cursor-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--gradient-primary);
+      transition: transform 0.2s ease-out;
+    }
+
+    .cursor-outline {
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 212, 255, 0.1);
+      border: 2px solid rgba(0, 212, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    body:has(a:hover, button:hover, .card:hover) .cursor-dot {
+      transform: translate(-50%, -50%) scale(2);
+    }
+
+    body:has(a:hover, button:hover, .card:hover) .cursor-outline {
+      width: 60px;
+      height: 60px;
+      background: rgba(0, 212, 255, 0.2);
+      border-color: rgba(0, 212, 255, 0.5);
+    }
+
+    /* === Language Switcher === */
+    .language-switcher {
+      position: fixed;
+      top: 100px;
+      right: 2rem;
+      z-index: 1001;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 50px;
+      padding: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .lang-btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      background: transparent;
+      color: var(--color-text-light);
+      border-radius: 25px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .lang-btn.active {
+      background: var(--gradient-primary);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+    }
+
+    .lang-btn:hover:not(.active) {
+      color: var(--color-text);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* === Header === */
+    .site-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10, 10, 26, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: var(--transition);
+    }
+
+    .header-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 80px;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .nav-links a {
+      color: var(--color-text-light);
+      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      transition: var(--transition);
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-primary);
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+
+    .nav-links a:hover::before,
+    .nav-links a.active::before {
+      left: 0;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* === Mobile Menu === */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--color-text);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+
+    .mobile-menu-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      background: rgba(10, 10, 26, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: var(--transition);
+      z-index: 999;
+    }
+
+    .mobile-menu.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .mobile-nav {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      gap: 1rem;
+    }
+
+    .mobile-nav a {
+      color: var(--color-text-light);
+      text-decoration: none;
+      padding: 1rem;
+      border-radius: var(--radius);
+      transition: var(--transition);
+      font-weight: 600;
+    }
+
+    .mobile-nav a:hover,
+    .mobile-nav a.active {
+      color: var(--color-text);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* === Hero Section === */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 0 2rem;
+    }
+
+    .hero-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(3rem, 8vw, 5rem);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+
+    .hero-subtitle {
+      font-size: 1.4rem;
+      color: var(--color-accent-1);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .hero-tagline {
+      font-size: 1.2rem;
+      color: var(--color-text-light);
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      font-weight: 600;
+      border-radius: 50px;
+      color: #fff;
+      text-decoration: none;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .cta-primary {
+      background: var(--gradient-primary);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .cta-secondary {
+      background: transparent;
+      border: 2px solid var(--color-accent-1);
+      color: var(--color-accent-1);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 40px rgba(0, 212, 255, 0.4);
+    }
+
+    .cta-secondary:hover {
+      background: var(--color-accent-1);
+      color: #fff;
+    }
+
+    /* === Hero Image === */
+    .hero-image-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image-container {
+      position: relative;
+      width: 400px;
+      height: 500px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .hero-image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(0, 212, 255, 0.2), rgba(255, 0, 128, 0.2));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .hero-image-container:hover .hero-image {
+      transform: scale(1.05);
+    }
+
+    .hero-image-container:hover .hero-image-overlay {
+      opacity: 1;
+    }
+
+    /* === Floating Elements === */
+    .floating-element {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .floating-1 {
+      width: 60px;
+      height: 60px;
+      top: 20%;
+      left: 10%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .floating-2 {
+      width: 40px;
+      height: 40px;
+      top: 60%;
+      right: 15%;
+      animation: float 8s ease-in-out infinite reverse;
+    }
+
+    .floating-3 {
+      width: 80px;
+      height: 80px;
+      bottom: 20%;
+      left: 20%;
+      animation: float 10s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    /* === Loading Animation === */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--color-bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      transition: opacity 0.5s ease;
+    }
+
+    .loading-logo {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* === Responsive === */
+    @media (max-width: 1024px) {
+      .hero-container {
+        gap: 2rem;
+      }
+      
+      .hero-image-container {
+        width: 350px;
+        height: 440px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 0 1rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .language-switcher {
+        top: 90px;
+        right: 1rem;
+        padding: 0.3rem;
+      }
+
+      .lang-btn {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.8rem;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+        padding: 0 1rem;
+      }
+
+      .hero-image-container {
+        width: 300px;
+        height: 380px;
+        margin: 0 auto;
+      }
+
+      .cta-buttons {
+        justify-content: center;
+      }
+
+      .hero-text h1 {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+
+      .hero-tagline {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-container {
+        padding: 0 0.5rem;
+      }
+
+      .hero-image-container {
+        width: 280px;
+        height: 350px;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .cta-button {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div id="scroll-progress"></div>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-logo">Issoufou A.C.</div>
+  </div>
+
+  <!-- Language Switcher -->
+  <div class="language-switcher">
+    <button class="lang-btn active" data-lang="fr">FR</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- Background Effects -->
+  <div class="background-glow"></div>
+  <div class="background-glow-2"></div>
+
+  <!-- Floating Elements -->
+  <div class="floating-element floating-1"></div>
+  <div class="floating-element floating-2"></div>
+  <div class="floating-element floating-3"></div>
+
   <!-- Header -->
-  <header class="header-main">
-    <div class="header-controls">
-      <button id="menu-toggle" aria-label="Toggle Menu">☰</button>
-      <div class="header-actions">
-        <button class="theme-toggle" aria-label="Toggle Theme" title="Toggle Theme">🌞</button>
-        <button id="colorful-toggle" aria-label="Toggle Colors" title="Colorful Mode">🎨</button>
-        <label class="color-picker-label" id="picker1-label">
-          <input type="color" id="accent1-picker" value="#4a90e2" aria-label="Accent color">
-        </label>
-        <label class="color-picker-label" id="picker2-label">
-          <input type="color" id="accent2-picker" value="#27ae60" aria-label="Secondary color">
-        </label>
-        <button id="random-color-btn" aria-label="Random Colors" title="Random Colors">🎲</button>
-        <button id="share-btn" aria-label="Share Page" title="Share">🔗</button>
-        <button id="print-btn" aria-label="Print Page" title="Print">🖨️</button>
-      </div>
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo">Issoufou A.C.</div>
+      <nav class="nav-links">
+        <a href="index.html" class="active" data-translate="nav.home">Accueil</a>
+        <a href="competences.html" data-translate="nav.skills">Compétences</a>
+        <a href="projets.html" data-translate="nav.projects">Projets</a>
+        <a href="services.html" data-translate="nav.services">Services</a>
+        <a href="contact.html" data-translate="nav.contact">Contact</a>
+      </nav>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
-    <h1 id="title-main">Niger vs Nigeria</h1>
-    <p id="subtitle-main">Discover the beauty, culture and facts about Niger and Nigeria.</p>
-    <!-- Language selector -->
-    <select id="lang-select" aria-label="Select Language">
-      <option value="en">English</option>
-      <option value="fr">Français</option>
-      <option value="ha">Hausa</option>
-      <option value="ar">العربية</option>
-      <option value="es">Español</option>
-      <option value="zh">中文</option>
-    </select>
-    <nav class="navbar" id="navbar">
-      <button data-page="home" class="active" id="nav-home">Home</button>
-      <button data-page="about" id="nav-about">About</button>
-      <button data-page="history" id="nav-history">History</button>
-      <button data-page="culture" id="nav-culture">Culture</button>
-      <button data-page="quiz" id="nav-quiz">Quiz</button>
-      <button data-page="faq" id="nav-faq">FAQ</button>
-      <button data-page="contact" id="nav-contact">Contact</button>
-      <button data-page="economy" id="nav-economy">Economy</button>
-      <button data-page="food" id="nav-food">Cuisine</button>
-    </nav>
   </header>
 
-  <!-- Main content -->
-  <main class="main">
-    <!-- Home Page -->
-    <div class="page active" id="page-home">
-      <div class="card">
-        <h2 id="home-title">Niger 🇳🇪 vs Nigeria 🇳🇬</h2>
-        <div class="searchbar">
-          <input type="text" id="search-main" placeholder="Search a fact...">
-          <button id="reset-search" aria-label="Reset Search" title="Reset">✖️</button>
-        </div>
-        <div class="table-wrap">
-          <table id="main-table">
-            <tr><th id="th-fact">Fact</th><th id="th-niger">Niger</th><th id="th-nigeria">Nigeria</th></tr>
-            <tr><td>Capital</td><td>Niamey</td><td>Abuja</td></tr>
-            <tr><td>Largest city</td><td>Niamey</td><td>Lagos</td></tr>
-            <tr><td>Official language</td><td>French</td><td>English</td></tr>
-            <tr><td>Area</td><td>1,267,000 km²</td><td>923,770 km²</td></tr>
-            <tr><td>Population (2023)</td><td>~27 million</td><td>~220 million</td></tr>
-            <tr><td>Median age</td><td>~15 years</td><td>~18 years</td></tr>
-            <tr><td>GDP per capita (approx.)</td><td>~$600 USD</td><td>~$2,400 USD</td></tr>
-            <tr><td>Main natural resource</td><td>Uranium, énergie solaire potentielle</td><td>Oil, gas</td></tr>
-            <tr><td>Climate</td><td>Predominantly desert (Sahara)</td><td>Tropical, varied</td></tr>
-            <tr><td>Cultural richness</td><td>Diverse ethnic groups: Hausa, Zarma, Tuareg, Fulani, Kanuri, etc.</td><td>Over 250 ethnic groups</td></tr>
-            <tr><td>Internet Domain</td><td>.ne</td><td>.ng</td></tr>
-            <tr><td>Time zone</td><td>UTC+1</td><td>UTC+1</td></tr>
-            <tr><td>Independence</td><td>August 3, 1960</td><td>October 1, 1960</td></tr>
-          </table>
-          <div class="fact-cards-container" id="fact-cards-container">
-            <!-- Pour mobile, JS générera des cartes -->
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-nav">
+      <a href="index.html" class="active" data-translate="nav.home">Accueil</a>
+      <a href="competences.html" data-translate="nav.skills">Compétences</a>
+      <a href="projets.html" data-translate="nav.projects">Projets</a>
+      <a href="services.html" data-translate="nav.services">Services</a>
+      <a href="contact.html" data-translate="nav.contact">Contact</a>
+    </nav>
+  </div>
+  
+  <!-- Main Content -->
+  <main>
+    <section id="home">
+      <div class="hero-container">
+        <div class="hero-text">
+          <p class="hero-subtitle" data-translate="hero.subtitle">Ingénieur Structure Visionnaire</p>
+          <h1 data-translate="hero.title">Transformez vos idées en structures d'exception</h1>
+          <p class="hero-tagline" data-translate="hero.tagline">
+            Je traduis la complexité architecturale en structures élégantes, robustes et optimisées grâce à une expertise technique de pointe et des outils BIM révolutionnaires.
+          </p>
+          <div class="cta-buttons">
+            <a href="projets.html" class="cta-button cta-primary" data-translate="hero.cta.projects">Voir mes projets</a>
+            <a href="contact.html" class="cta-button cta-secondary" data-translate="hero.cta.contact">Discuter de votre projet</a>
           </div>
         </div>
-        <div class="factbox">
-          <span id="random-fact">Did you know? Niger and Nigeria share the Niger River but have distinct paths to independence.</span>
-          <button id="btn-fact">🔁 Random Fact</button>
-          <button id="share-fact-btn" title="Share this fact">Share Fact</button>
-          <button id="copy-fact-btn" title="Copy this fact">📋 Copy</button>
+        <div class="hero-image-wrapper">
+          <div class="hero-image-container">
+            <img src="https://images.pexels.com/photos/4240505/pexels-photo-4240505.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                 alt="Portrait de Issoufou Abdou Chefou" 
+                 class="hero-image">
+            <div class="hero-image-overlay"></div>
+          </div>
         </div>
       </div>
-    </div>
-
-    <!-- About (Présentation) Page -->
-    <div class="page" id="page-about">
-      <div class="card">
-        <h2 id="about-title">About Niger</h2>
-        <div id="about-content">
-          <!-- Contenu inséré par JS selon langue -->
-        </div>
-      </div>
-    </div>
-
-    <!-- History Page -->
-    <div class="page" id="page-history">
-      <div class="card">
-        <h2 id="history-title">History</h2>
-        <p id="history-intro">Niger and Nigeria, despite their proximity and similar names, have distinct colonial pasts and paths to independence.</p>
-        <ul id="history-list">
-          <!-- Items insérés par JS -->
-        </ul>
-      </div>
-    </div>
-
-    <!-- Culture Page -->
-    <div class="page" id="page-culture">
-      <div class="card">
-        <h2 id="culture-title">Culture & Languages</h2>
-        <p id="culture-intro">Niger and Nigeria are home to vibrant cultures and hundreds of languages.</p>
-        <ul id="culture-list">
-          <!-- Items insérés par JS -->
-        </ul>
-        <div class="map-links">
-          <a href="https://www.google.com/maps/search/Niamey,+Niger" target="_blank" id="map-niamey">View Niamey</a>
-          <a href="https://www.google.com/maps/search/Abuja,+Nigeria" target="_blank" id="map-abuja">View Abuja</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Quiz Page -->
-    <div class="page" id="page-quiz">
-      <div class="card">
-        <h2 id="quiz-title">Quiz: Niger or Nigeria?</h2>
-        <div id="quiz-box">
-          <!-- Inséré par JS -->
-        </div>
-        <div class="quiz-result" id="quiz-result"></div>
-      </div>
-    </div>
-
-    <!-- FAQ Page -->
-    <div class="page" id="page-faq">
-      <div class="card">
-        <h2 id="faq-title">FAQ</h2>
-        <div id="faq-content">
-          <!-- Populated by JS -->
-        </div>
-      </div>
-    </div>
-    <!-- Contact Page -->
-    <div class="page" id="page-contact">
-      <div class="card">
-        <h2 id="contact-title">Contact</h2>
-        <div class="contact-info">
-          <p><strong>Email:</strong> <a href="mailto:entreprise2rc@gmail.com">entreprise2rc@gmail.com</a></p>
-          <p><strong>WhatsApp:</strong> <a href="https://wa.me/22796380877" target="_blank">+227 96 38 08 77</a></p>
-          <p><strong>Name:</strong> Issoufou Abdou Chéfou</p>
-        </div>
-      </div>
-    </div>
-    <!-- Economy Page -->
-    <div class="page" id="page-economy">
-      <div class="card">
-        <h2 id="economy-title">Economy</h2>
-        <p id="economy-intro">Brief overview of key industries and economic figures for Niger and Nigeria.</p>
-      </div>
-    </div>
-    <!-- Cuisine Page -->
-    <div class="page" id="page-food">
-      <div class="card">
-        <h2 id="food-title">Cuisine</h2>
-        <p id="food-intro">A glimpse into popular dishes and culinary traditions of both nations.</p>
-      </div>
-    </div>
+    </section>
   </main>
 
-  <!-- Back to top button -->
-  <button id="back-to-top" aria-label="Back to top">↑</button>
+  <script>
+    // Translation System
+    const translations = {
+      fr: {
+        "nav.home": "Accueil",
+        "nav.skills": "Compétences",
+        "nav.projects": "Projets",
+        "nav.services": "Services",
+        "nav.contact": "Contact",
+        "hero.subtitle": "Ingénieur Structure Visionnaire",
+        "hero.title": "Transformez vos idées en structures d'exception",
+        "hero.tagline": "Je traduis la complexité architecturale en structures élégantes, robustes et optimisées grâce à une expertise technique de pointe et des outils BIM révolutionnaires.",
+        "hero.cta.projects": "Voir mes projets",
+        "hero.cta.contact": "Discuter de votre projet"
+      },
+      en: {
+        "nav.home": "Home",
+        "nav.skills": "Skills",
+        "nav.projects": "Projects",
+        "nav.services": "Services",
+        "nav.contact": "Contact",
+        "hero.subtitle": "Visionary Structural Engineer",
+        "hero.title": "Transform your ideas into exceptional structures",
+        "hero.tagline": "I translate architectural complexity into elegant, robust, and optimized structures through cutting-edge technical expertise and revolutionary BIM tools.",
+        "hero.cta.projects": "View my projects",
+        "hero.cta.contact": "Discuss your project"
+      }
+    };
 
-  <!-- Footer -->
-  <footer class="footer-main">
-    <p id="footer-text">© {year} Niger vs Nigeria. All rights reserved.</p>
-  </footer>
+    let currentLang = 'fr';
 
-  <script src="translations.js"></script>
-  <script src="app.js" defer></script>
+    function translatePage(lang) {
+      currentLang = lang;
+      const elements = document.querySelectorAll('[data-translate]');
+      
+      elements.forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[lang] && translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+
+      // Update document language
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize GSAP
+      gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
+      // Loading Animation
+      gsap.to('#loadingScreen', {
+        opacity: 0,
+        duration: 1,
+        delay: 1,
+        onComplete: () => {
+          document.getElementById('loadingScreen').style.display = 'none';
+          initAnimations();
+        }
+      });
+
+      function initAnimations() {
+        // Hero Text Animation
+        gsap.from('.hero-subtitle', {
+          y: 50,
+          opacity: 0,
+          duration: 1,
+          delay: 0.5
+        });
+
+        gsap.from('.hero-text h1', {
+          y: 100,
+          opacity: 0,
+          duration: 1.2,
+          delay: 0.8
+        });
+
+        gsap.from('.hero-tagline', {
+          y: 50,
+          opacity: 0,
+          duration: 1,
+          delay: 1.2
+        });
+
+        gsap.from('.cta-buttons', {
+          y: 50,
+          opacity: 0,
+          duration: 1,
+          delay: 1.5
+        });
+
+        gsap.from('.hero-image-container', {
+          x: 100,
+          opacity: 0,
+          duration: 1.2,
+          delay: 1
+        });
+
+        // Floating Elements Animation
+        gsap.from('.floating-element', {
+          scale: 0,
+          opacity: 0,
+          duration: 1,
+          delay: 2,
+          stagger: 0.2
+        });
+      }
+
+      // Custom Cursor
+      const cursorDot = document.querySelector('.cursor-dot');
+      const cursorOutline = document.querySelector('.cursor-outline');
+
+      window.addEventListener('mousemove', (e) => {
+        const { clientX, clientY } = e;
+        gsap.to(cursorDot, { x: clientX, y: clientY, duration: 0.1 });
+        gsap.to(cursorOutline, { x: clientX, y: clientY, duration: 0.3 });
+      });
+
+      // Header Scroll Effect
+      window.addEventListener('scroll', () => {
+        const header = document.querySelector('.site-header');
+        if (window.scrollY > 100) {
+          header.style.background = 'rgba(10, 10, 26, 0.95)';
+        } else {
+          header.style.background = 'rgba(10, 10, 26, 0.8)';
+        }
+      });
+
+      // Language Switcher
+      const langBtns = document.querySelectorAll('.lang-btn');
+      langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const lang = btn.getAttribute('data-lang');
+          
+          // Update active button
+          langBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          
+          // Translate page
+          translatePage(lang);
+        });
+      });
+
+      // Mobile Menu
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+        
+        // Animate menu icon
+        const icon = mobileMenuBtn.querySelector('i');
+        if (mobileMenu.classList.contains('active')) {
+          icon.className = 'fas fa-times';
+        } else {
+          icon.className = 'fas fa-bars';
+        }
+      });
+
+      // Close mobile menu when clicking on links
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('active');
+          const icon = mobileMenuBtn.querySelector('i');
+          icon.className = 'fas fa-bars';
+        });
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+          mobileMenu.classList.remove('active');
+          const icon = mobileMenuBtn.querySelector('i');
+          icon.className = 'fas fa-bars';
+        }
+      });
+
+      // Smooth Scroll for Navigation Links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // Hide cursor on mobile
+      if ('ontouchstart' in window) {
+        cursorDot.style.display = 'none';
+        cursorOutline.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>

@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Services – Issoufou Abdou Chefou | Ingénieur Structure</title>
+
+  <!-- SEO & Metadonnées -->
+  <meta name="description" content="Services d'ingénierie structure sur mesure : BIM, calculs, plans d'exécution et diagnostic.">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <style>
+    /* === PALETTE "AURORA NEON" === */
+    :root {
+      --color-bg: #0A0A1A;
+      --color-bg-secondary: #0F0F2A;
+      --color-text: #E8E8F0;
+      --color-text-light: #A0A0B0;
+      --color-accent-1: #00D4FF;
+      --color-accent-2: #FF0080;
+      --color-accent-3: #8B5CF6;
+      --color-accent-4: #10B981;
+      --gradient-primary: linear-gradient(135deg, var(--color-accent-1), var(--color-accent-2));
+      --gradient-secondary: linear-gradient(135deg, var(--color-accent-3), var(--color-accent-4));
+      --gradient-text: linear-gradient(90deg, var(--color-accent-1), var(--color-accent-2), var(--color-accent-3));
+      
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body: 'Poppins', sans-serif;
+      --radius: 16px;
+      --radius-lg: 24px;
+      --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      --shadow-glow: 0 0 40px rgba(0, 212, 255, 0.3);
+    }
+
+    /* === Reset & Base === */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      font-weight: 300;
+    }
+
+    /* === Background Effects === */
+    .background-glow {
+      position: fixed;
+      width: 1000px;
+      height: 1000px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+      top: -300px;
+      left: -300px;
+      animation: move-glow 25s infinite alternate ease-in-out;
+      z-index: -1;
+    }
+
+    .background-glow-2 {
+      position: fixed;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 0, 128, 0.08) 0%, transparent 70%);
+      bottom: -200px;
+      right: -200px;
+      animation: move-glow-2 30s infinite alternate-reverse ease-in-out;
+      z-index: -1;
+    }
+
+    @keyframes move-glow {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(50vw, 30vh) scale(1.2); }
+      100% { transform: translate(100vw, 60vh) scale(0.8); }
+    }
+
+    @keyframes move-glow-2 {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-30vw, -50vh) scale(1.3); }
+      100% { transform: translate(-60vw, -100vh) scale(0.9); }
+    }
+
+    /* === Custom Cursor === */
+    .cursor-dot, .cursor-outline {
+      pointer-events: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      opacity: 1;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      transition: opacity 0.3s ease;
+    }
+
+    .cursor-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--gradient-primary);
+      transition: transform 0.2s ease-out;
+    }
+
+    .cursor-outline {
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 212, 255, 0.1);
+      border: 2px solid rgba(0, 212, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    body:has(a:hover, button:hover, .card:hover) .cursor-dot {
+      transform: translate(-50%, -50%) scale(2);
+    }
+
+    body:has(a:hover, button:hover, .card:hover) .cursor-outline {
+      width: 60px;
+      height: 60px;
+      background: rgba(0, 212, 255, 0.2);
+      border-color: rgba(0, 212, 255, 0.5);
+    }
+
+    /* === Header === */
+    .site-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10, 10, 26, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: var(--transition);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 80px;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .nav-links a {
+      color: var(--color-text-light);
+      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      transition: var(--transition);
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-primary);
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+
+    .nav-links a:hover::before,
+    .nav-links a.active::before {
+      left: 0;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* === Page Header === */
+    .page-header {
+      padding: 120px 2rem 4rem;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 128, 0.1));
+    }
+
+    .page-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: 1rem;
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-subtitle {
+      font-size: 1.2rem;
+      color: var(--color-text-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* === Services Carousel === */
+    .services-section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .services-carousel-wrapper {
+      position: relative;
+      overflow: hidden;
+      margin: 3rem 0;
+    }
+
+    .services-carousel {
+      display: flex;
+      gap: 2rem;
+      transition: transform 0.5s ease;
+    }
+
+    .service-card {
+      flex: 0 0 350px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-primary);
+      opacity: 0.1;
+      transition: left 0.3s ease;
+    }
+
+    .service-card:hover::before {
+      left: 0;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--color-accent-1);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .service-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+    }
+
+    .service-title {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--color-accent-1);
+    }
+
+    .service-description {
+      color: var(--color-text-light);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .service-features {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .service-features li {
+      padding: 0.5rem 0;
+      color: var(--color-text-light);
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .service-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--color-accent-2);
+      font-weight: bold;
+    }
+
+    .service-price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--color-accent-1);
+      margin-bottom: 1.5rem;
+    }
+
+    .service-cta {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--gradient-primary);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .service-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+    }
+
+    /* === Carousel Navigation === */
+    .carousel-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .carousel-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--color-text-light);
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-btn:hover,
+    .carousel-btn.active {
+      background: var(--gradient-primary);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    /* === Process Section === */
+    .process-section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .process-step:hover {
+      transform: translateY(-5px);
+      border-color: var(--color-accent-1);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .process-number {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 auto 1.5rem;
+    }
+
+    .process-title {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--color-accent-1);
+    }
+
+    .process-description {
+      color: var(--color-text-light);
+      line-height: 1.6;
+    }
+
+    /* === FAQ Section === */
+    .faq-section {
+      padding: 4rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 1rem;
+    }
+
+    .faq-question {
+      padding: 1.5rem 0;
+      font-weight: 600;
+      font-size: 1.1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .faq-question:hover {
+      color: var(--color-accent-1);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out;
+    }
+
+    .faq-answer p {
+      padding-bottom: 1.5rem;
+      color: var(--color-text-light);
+      line-height: 1.7;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+    }
+
+    .faq-icon {
+      transition: transform 0.3s;
+      color: var(--color-accent-2);
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    /* === Responsive === */
+    @media (max-width: 768px) {
+      .services-carousel {
+        gap: 1rem;
+      }
+
+      .service-card {
+        flex: 0 0 300px;
+        padding: 2rem;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- Background Effects -->
+  <div class="background-glow"></div>
+  <div class="background-glow-2"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo">Issoufou A.C.</div>
+      <nav class="nav-links">
+        <a href="index.html">Accueil</a>
+        <a href="competences.html">Compétences</a>
+        <a href="projets.html">Projets</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1 class="page-title">Services sur Mesure</h1>
+    <p class="page-subtitle">Des solutions d'ingénierie structure complètes et personnalisées pour vos projets</p>
+  </section>
+
+  <!-- Services Carousel -->
+  <section class="services-section">
+    <div class="services-carousel-wrapper">
+      <div class="services-carousel" id="servicesCarousel">
+        <!-- Service 1 -->
+        <div class="service-card">
+          <i class="fas fa-cubes service-icon"></i>
+          <h3 class="service-title">Modélisation BIM</h3>
+          <p class="service-description">
+            Maquettes numériques intelligentes pour une vision globale et une coordination interdisciplinaire parfaite.
+          </p>
+          <ul class="service-features">
+            <li>Modélisation 3D précise</li>
+            <li>Coordination interdisciplinaire</li>
+            <li>Détection des conflits</li>
+            <li>Maquette numérique centralisée</li>
+          </ul>
+          <div class="service-price">À partir de 2,500€</div>
+          <a href="contact.html" class="service-cta">Demander un devis</a>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card">
+          <i class="fas fa-calculator service-icon"></i>
+          <h3 class="service-title">Calcul de Structure</h3>
+          <p class="service-description">
+            Analyses poussées et calculs avancés pour des bâtiments performants et optimisés.
+          </p>
+          <ul class="service-features">
+            <li>Calculs conformes Eurocodes</li>
+            <li>Analyses sismiques/dynamiques</li>
+            <li>Optimisation des matériaux</li>
+            <li>Rapports techniques détaillés</li>
+          </ul>
+          <div class="service-price">À partir de 3,000€</div>
+          <a href="contact.html" class="service-cta">Demander un devis</a>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card">
+          <i class="fas fa-drafting-compass service-icon"></i>
+          <h3 class="service-title">Plans d'Exécution</h3>
+          <p class="service-description">
+            Dessins techniques clairs et précis pour le chantier avec tous les détails constructifs.
+          </p>
+          <ul class="service-features">
+            <li>Plans d'exécution détaillés</li>
+            <li>Nomenclatures complètes</li>
+            <li>Détails constructifs</li>
+            <li>Plans de ferraillage</li>
+          </ul>
+          <div class="service-price">À partir de 1,800€</div>
+          <a href="contact.html" class="service-cta">Demander un devis</a>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-card">
+          <i class="fas fa-lightbulb service-icon"></i>
+          <h3 class="service-title">Diagnostic & Renforcement</h3>
+          <p class="service-description">
+            Évaluation et consolidation de structures existantes avec des solutions innovantes.
+          </p>
+          <ul class="service-features">
+            <li>Diagnostic structurel complet</li>
+            <li>Solutions de renforcement</li>
+            <li>Évaluation sismique</li>
+            <li>Suivi de travaux</li>
+          </ul>
+          <div class="service-price">À partir de 4,000€</div>
+          <a href="contact.html" class="service-cta">Demander un devis</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel Navigation -->
+    <div class="carousel-nav">
+      <button class="carousel-btn active" data-slide="0">1</button>
+      <button class="carousel-btn" data-slide="1">2</button>
+      <button class="carousel-btn" data-slide="2">3</button>
+      <button class="carousel-btn" data-slide="3">4</button>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="process-section">
+    <h2 class="page-title" style="text-align: center; margin-bottom: 3rem;">Notre Processus</h2>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="process-number">1</div>
+        <h3 class="process-title">Consultation</h3>
+        <p class="process-description">
+          Analyse de vos besoins et définition des objectifs du projet en collaboration étroite.
+        </p>
+      </div>
+
+      <div class="process-step">
+        <div class="process-number">2</div>
+        <h3 class="process-title">Conception</h3>
+        <p class="process-description">
+          Développement de la solution technique optimale avec modélisation BIM et calculs.
+        </p>
+      </div>
+
+      <div class="process-step">
+        <div class="process-number">3</div>
+        <h3 class="process-title">Validation</h3>
+        <p class="process-description">
+          Présentation des résultats et ajustements selon vos retours et exigences.
+        </p>
+      </div>
+
+      <div class="process-step">
+        <div class="process-number">4</div>
+        <h3 class="process-title">Livraison</h3>
+        <p class="process-description">
+          Remise des documents finaux et support technique pour la réalisation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <h2 class="page-title" style="text-align: center; margin-bottom: 3rem;">Questions Fréquentes</h2>
+    <div class="faq-accordion">
+      <div class="faq-item">
+        <div class="faq-question">
+          Quels sont les délais de livraison ? <i class="fas fa-plus faq-icon"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Les délais varient selon la complexité du projet. Un projet standard prend 2-4 semaines, tandis qu'un projet complexe peut nécessiter 6-8 semaines. Je m'engage à respecter les échéances convenues.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Travaillez-vous à distance ? <i class="fas fa-plus faq-icon"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Oui, je peux travailler entièrement à distance grâce aux outils BIM et de collaboration en ligne. Les réunions se font par visioconférence et les fichiers sont partagés via des plateformes sécurisées.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Proposez-vous des garanties ? <i class="fas fa-plus faq-icon"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Absolument. Tous mes projets bénéficient d'une garantie de conformité aux normes en vigueur et d'un support technique post-livraison. Je reste disponible pour toute question ou ajustement nécessaire.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Comment se déroule la facturation ? <i class="fas fa-plus faq-icon"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Je propose un système de facturation transparent : 30% à la commande, 40% à mi-parcours, et 30% à la livraison. Des devis détaillés sont fournis avant tout engagement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize GSAP
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Custom Cursor
+      const cursorDot = document.querySelector('.cursor-dot');
+      const cursorOutline = document.querySelector('.cursor-outline');
+
+      window.addEventListener('mousemove', (e) => {
+        const { clientX, clientY } = e;
+        gsap.to(cursorDot, { x: clientX, y: clientY, duration: 0.1 });
+        gsap.to(cursorOutline, { x: clientX, y: clientY, duration: 0.3 });
+      });
+
+      // Header Scroll Effect
+      window.addEventListener('scroll', () => {
+        const header = document.querySelector('.site-header');
+        if (window.scrollY > 100) {
+          header.style.background = 'rgba(10, 10, 26, 0.95)';
+        } else {
+          header.style.background = 'rgba(10, 10, 26, 0.8)';
+        }
+      });
+
+      // Services Carousel
+      const carousel = document.getElementById('servicesCarousel');
+      const carouselBtns = document.querySelectorAll('.carousel-btn');
+      let currentSlide = 0;
+      const slideWidth = 370; // card width + gap
+
+      function updateCarousel() {
+        gsap.to(carousel, {
+          x: -currentSlide * slideWidth,
+          duration: 0.5,
+          ease: 'power2.out'
+        });
+
+        // Update active button
+        carouselBtns.forEach((btn, index) => {
+          btn.classList.toggle('active', index === currentSlide);
+        });
+      }
+
+      carouselBtns.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+          currentSlide = index;
+          updateCarousel();
+        });
+      });
+
+      // Auto-play carousel
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % carouselBtns.length;
+        updateCarousel();
+      }, 5000);
+
+      // FAQ Accordion
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        item.querySelector('.faq-question').addEventListener('click', () => {
+          const wasActive = item.classList.contains('active');
+          faqItems.forEach(i => i.classList.remove('active'));
+          if (!wasActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+
+      // Service Cards Animation
+      gsap.from('.service-card', {
+        y: 100,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: '.services-carousel-wrapper',
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      // Process Steps Animation
+      gsap.from('.process-step', {
+        scale: 0,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: '.process-grid',
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      // FAQ Animation
+      gsap.from('.faq-item', {
+        x: -100,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: '.faq-accordion',
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      // Page Header Animation
+      gsap.from('.page-title', {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        delay: 0.3
+      });
+
+      gsap.from('.page-subtitle', {
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        delay: 0.6
+      });
+
+      // Carousel Navigation Animation
+      gsap.from('.carousel-nav', {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        delay: 1
+      });
+    });
+  </script>
+</body>
+</html> 

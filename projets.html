@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projets – Issoufou Abdou Chefou | Ingénieur Structure</title>
+
+  <!-- SEO & Metadonnées -->
+  <meta name="description" content="Découvrez les projets d'ingénierie structure réalisés par Issoufou Abdou Chefou.">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <style>
+    /* === PALETTE "AURORA NEON" === */
+    :root {
+      --color-bg: #0A0A1A;
+      --color-bg-secondary: #0F0F2A;
+      --color-text: #E8E8F0;
+      --color-text-light: #A0A0B0;
+      --color-accent-1: #00D4FF;
+      --color-accent-2: #FF0080;
+      --color-accent-3: #8B5CF6;
+      --color-accent-4: #10B981;
+      --gradient-primary: linear-gradient(135deg, var(--color-accent-1), var(--color-accent-2));
+      --gradient-secondary: linear-gradient(135deg, var(--color-accent-3), var(--color-accent-4));
+      --gradient-text: linear-gradient(90deg, var(--color-accent-1), var(--color-accent-2), var(--color-accent-3));
+      
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body: 'Poppins', sans-serif;
+      --radius: 16px;
+      --radius-lg: 24px;
+      --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      --shadow-glow: 0 0 40px rgba(0, 212, 255, 0.3);
+    }
+
+    /* === Reset & Base === */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      font-weight: 300;
+    }
+
+    /* === Background Effects === */
+    .background-glow {
+      position: fixed;
+      width: 1000px;
+      height: 1000px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+      top: -300px;
+      left: -300px;
+      animation: move-glow 25s infinite alternate ease-in-out;
+      z-index: -1;
+    }
+
+    .background-glow-2 {
+      position: fixed;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 0, 128, 0.08) 0%, transparent 70%);
+      bottom: -200px;
+      right: -200px;
+      animation: move-glow-2 30s infinite alternate-reverse ease-in-out;
+      z-index: -1;
+    }
+
+    @keyframes move-glow {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(50vw, 30vh) scale(1.2); }
+      100% { transform: translate(100vw, 60vh) scale(0.8); }
+    }
+
+    @keyframes move-glow-2 {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-30vw, -50vh) scale(1.3); }
+      100% { transform: translate(-60vw, -100vh) scale(0.9); }
+    }
+
+    /* === Custom Cursor === */
+    .cursor-dot, .cursor-outline {
+      pointer-events: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      opacity: 1;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      transition: opacity 0.3s ease;
+    }
+
+    .cursor-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--gradient-primary);
+      transition: transform 0.2s ease-out;
+    }
+
+    .cursor-outline {
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 212, 255, 0.1);
+      border: 2px solid rgba(0, 212, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    body:has(a:hover, button:hover, .card:hover) .cursor-dot {
+      transform: translate(-50%, -50%) scale(2);
+    }
+
+    body:has(a:hover, button:hover, .card:hover) .cursor-outline {
+      width: 60px;
+      height: 60px;
+      background: rgba(0, 212, 255, 0.2);
+      border-color: rgba(0, 212, 255, 0.5);
+    }
+
+    /* === Header === */
+    .site-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10, 10, 26, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: var(--transition);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 80px;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .nav-links a {
+      color: var(--color-text-light);
+      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      transition: var(--transition);
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-primary);
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+
+    .nav-links a:hover::before,
+    .nav-links a.active::before {
+      left: 0;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* === Page Header === */
+    .page-header {
+      padding: 120px 2rem 4rem;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 128, 0.1));
+    }
+
+    .page-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: 1rem;
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-subtitle {
+      font-size: 1.2rem;
+      color: var(--color-text-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* === Portfolio Section === */
+    .portfolio-section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .portfolio-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--color-accent-1);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .portfolio-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .portfolio-card:hover .portfolio-image {
+      transform: scale(1.05);
+    }
+
+    .portfolio-content {
+      padding: 2rem;
+    }
+
+    .portfolio-category {
+      font-size: 0.9rem;
+      color: var(--color-accent-2);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .portfolio-title {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--color-accent-1);
+    }
+
+    .portfolio-description {
+      color: var(--color-text-light);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .portfolio-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius);
+    }
+
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-accent-1);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+    }
+
+    .portfolio-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tag {
+      padding: 0.25rem 0.75rem;
+      background: rgba(0, 212, 255, 0.2);
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: var(--color-accent-1);
+    }
+
+    .portfolio-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--color-accent-2);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .portfolio-link:hover {
+      color: var(--color-accent-1);
+      transform: translateX(5px);
+    }
+
+    /* === Comparison Section === */
+    .comparison-section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .comparison-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 3rem;
+    }
+
+    .comparison-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .comparison-title {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--color-accent-1);
+    }
+
+    .comparison-description {
+      color: var(--color-text-light);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .comparison-slider {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .comparison-container {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    .comparison-before,
+    .comparison-after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .comparison-after {
+      width: 50%;
+      border-right: 3px solid var(--color-accent-1);
+    }
+
+    .comparison-handle {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 4px;
+      height: 100%;
+      background: var(--color-accent-1);
+      cursor: ew-resize;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .comparison-handle::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      background: var(--color-accent-1);
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+    }
+
+    .comparison-handle::after {
+      content: '◀ ▶';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .comparison-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+    }
+
+    /* === Stats Section === */
+    .stats-section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius);
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: var(--transition);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--color-accent-1);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-text {
+      color: var(--color-text-light);
+      font-size: 1.1rem;
+    }
+
+    /* === Responsive === */
+    @media (max-width: 768px) {
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .comparison-card {
+        padding: 2rem;
+      }
+
+      .comparison-container {
+        height: 300px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- Background Effects -->
+  <div class="background-glow"></div>
+  <div class="background-glow-2"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo">Issoufou A.C.</div>
+      <nav class="nav-links">
+        <a href="index.html">Accueil</a>
+        <a href="competences.html">Compétences</a>
+        <a href="projets.html" class="active">Projets</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1 class="page-title">De la Vision à la Réalité</h1>
+    <p class="page-subtitle">Découvrez comment je transforme les esquisses architecturales en structures d'exception</p>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section class="portfolio-section">
+    <div class="portfolio-grid">
+      <!-- Projet 1 -->
+      <div class="portfolio-card">
+        <img src="https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+             alt="Immeuble Résidentiel" class="portfolio-image">
+        <div class="portfolio-content">
+          <div class="portfolio-category">Résidentiel</div>
+          <h3 class="portfolio-title">Immeuble Résidentiel</h3>
+          <p class="portfolio-description">
+            Transformation de l'esquisse architecturale en un modèle structurel BIM détaillé et optimisé pour un complexe de 50 logements.
+          </p>
+          <div class="portfolio-stats">
+            <div class="stat-item">
+              <span class="stat-value">50</span>
+              <span class="stat-label">Logements</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">15%</span>
+              <span class="stat-label">Économies</span>
+            </div>
+          </div>
+          <div class="portfolio-tags">
+            <span class="tag">Revit</span>
+            <span class="tag">Robot</span>
+            <span class="tag">BIM</span>
+          </div>
+          <a href="#" class="portfolio-link">
+            Voir les détails <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Projet 2 -->
+      <div class="portfolio-card">
+        <img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+             alt="Centre Commercial" class="portfolio-image">
+        <div class="portfolio-content">
+          <div class="portfolio-category">Commercial</div>
+          <h3 class="portfolio-title">Centre Commercial</h3>
+          <p class="portfolio-description">
+            Conception structurelle innovante pour un centre commercial de 20,000 m² avec des espaces modulables et une optimisation des coûts.
+          </p>
+          <div class="portfolio-stats">
+            <div class="stat-item">
+              <span class="stat-value">20k</span>
+              <span class="stat-label">m²</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">25%</span>
+              <span class="stat-label">Économies</span>
+            </div>
+          </div>
+          <div class="portfolio-tags">
+            <span class="tag">Structure</span>
+            <span class="tag">Optimisation</span>
+            <span class="tag">Eurocodes</span>
+          </div>
+          <a href="#" class="portfolio-link">
+            Voir les détails <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Projet 3 -->
+      <div class="portfolio-card">
+        <img src="https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+             alt="Pont Suspendu" class="portfolio-image">
+        <div class="portfolio-content">
+          <div class="portfolio-category">Infrastructure</div>
+          <h3 class="portfolio-title">Pont Suspendu</h3>
+          <p class="portfolio-description">
+            Analyse sismique et dynamique complète d'un pont suspendu de 300m avec des calculs de pointe sur Robot Structural Analysis.
+          </p>
+          <div class="portfolio-stats">
+            <div class="stat-item">
+              <span class="stat-value">300</span>
+              <span class="stat-label">mètres</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">100%</span>
+              <span class="stat-label">Sécurité</span>
+            </div>
+          </div>
+          <div class="portfolio-tags">
+            <span class="tag">Sismique</span>
+            <span class="tag">Dynamique</span>
+            <span class="tag">Robot</span>
+          </div>
+          <a href="#" class="portfolio-link">
+            Voir les détails <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section -->
+  <section class="comparison-section">
+    <div class="comparison-card">
+      <div class="comparison-header">
+        <h2 class="comparison-title">Avant / Après</h2>
+        <p class="comparison-description">
+          Découvrez la transformation complète d'un projet, de l'esquisse architecturale au modèle structurel final optimisé.
+        </p>
+      </div>
+      
+      <div class="comparison-slider">
+        <div class="comparison-container">
+          <img src="https://i.imgur.com/rNKVf8A.jpeg" alt="Esquisse Architecturale" class="comparison-before">
+          <img src="https://i.imgur.com/gK9pY8v.jpeg" alt="Modèle de structure 3D" class="comparison-after">
+          <div class="comparison-handle" id="comparisonHandle"></div>
+        </div>
+        <div class="comparison-labels">
+          <span>Esquisse Architecturale</span>
+          <span>Modèle Structurel BIM</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <h2 class="page-title" style="margin-bottom: 3rem;">Chiffres Clés</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-number">50+</span>
+        <div class="stat-text">Projets Réalisés</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">100%</span>
+        <div class="stat-text">Satisfaction Client</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">20%</span>
+        <div class="stat-text">Économies Moyennes</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">24h</span>
+        <div class="stat-text">Délai de Réponse</div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize GSAP
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Custom Cursor
+      const cursorDot = document.querySelector('.cursor-dot');
+      const cursorOutline = document.querySelector('.cursor-outline');
+
+      window.addEventListener('mousemove', (e) => {
+        const { clientX, clientY } = e;
+        gsap.to(cursorDot, { x: clientX, y: clientY, duration: 0.1 });
+        gsap.to(cursorOutline, { x: clientX, y: clientY, duration: 0.3 });
+      });
+
+      // Header Scroll Effect
+      window.addEventListener('scroll', () => {
+        const header = document.querySelector('.site-header');
+        if (window.scrollY > 100) {
+          header.style.background = 'rgba(10, 10, 26, 0.95)';
+        } else {
+          header.style.background = 'rgba(10, 10, 26, 0.8)';
+        }
+      });
+
+      // Comparison Slider
+      const comparisonHandle = document.getElementById('comparisonHandle');
+      const comparisonAfter = document.querySelector('.comparison-after');
+      const comparisonContainer = document.querySelector('.comparison-container');
+      let isDragging = false;
+
+      function updateComparison(e) {
+        const rect = comparisonContainer.getBoundingClientRect();
+        const x = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
+        const percentage = (x / rect.width) * 100;
+        
+        comparisonAfter.style.width = percentage + '%';
+        comparisonHandle.style.left = percentage + '%';
+      }
+
+      comparisonHandle.addEventListener('mousedown', () => {
+        isDragging = true;
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+          updateComparison(e);
+        }
+      });
+
+      document.addEventListener('mouseup', () => {
+        isDragging = false;
+      });
+
+      comparisonContainer.addEventListener('click', (e) => {
+        updateComparison(e);
+      });
+
+      // Portfolio Cards Animation
+      gsap.from('.portfolio-card', {
+        y: 100,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: '.portfolio-grid',
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      // Stats Animation
+      gsap.from('.stat-card', {
+        scale: 0,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: '.stats-grid',
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      // Number Counter Animation
+      const statNumbers = document.querySelectorAll('.stat-number');
+      statNumbers.forEach(number => {
+        const finalValue = number.textContent;
+        const isPercentage = finalValue.includes('%');
+        const isTime = finalValue.includes('h');
+        const numericValue = parseInt(finalValue.replace(/[^0-9]/g, ''));
+        
+        gsap.fromTo(number, 
+          { textContent: 0 },
+          {
+            textContent: numericValue,
+            duration: 2,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: number,
+              start: 'top 80%',
+              toggleActions: 'play none none reverse'
+            },
+            onUpdate: function() {
+              const currentValue = Math.floor(this.targets()[0].textContent);
+              if (isPercentage) {
+                number.textContent = currentValue + '%';
+              } else if (isTime) {
+                number.textContent = currentValue + 'h';
+              } else if (finalValue.includes('+')) {
+                number.textContent = currentValue + '+';
+              } else {
+                number.textContent = currentValue;
+              }
+            }
+          }
+        );
+      });
+
+      // Page Header Animation
+      gsap.from('.page-title', {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        delay: 0.3
+      });
+
+      gsap.from('.page-subtitle', {
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        delay: 0.6
+      });
+
+      // Comparison Section Animation
+      gsap.from('.comparison-card', {
+        x: -100,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: '.comparison-card',
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+    });
+  </script>
+</body>
+</html> 
